@@ -1,0 +1,4 @@
+<%- | String $username
+| -%>
+# THIS FILE IS MANAGED BY PUPPET
+export BORG_REPO=backup:<%= $username %>/borg

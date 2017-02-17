@@ -1,0 +1,6 @@
+<%- | String $username
+| -%>
+# THIS FILE IS MANAGED BY PUPPET
+BORG_PASSPHRASE=''
+REPOSITORY=backup:<%= $username %>/borg
+COLLECTOR_DIR=/var/lib/prometheus-dropzone

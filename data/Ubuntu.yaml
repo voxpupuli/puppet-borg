@@ -1,0 +1,4 @@
+---
+borg::package_name:
+  - 'borgbackup'
+  - 'borgbackup-doc'

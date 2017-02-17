@@ -1,0 +1,20 @@
+---
+borg::excludes:
+  - '/tmp'
+  - '/sys'
+  - '/dev'
+  - '/proc'
+  - '/run'
+  - '/media'
+  - '/var/lib/nfs/rpc_pipefs'
+borg::includes:
+  - '/'
+  - '/boot'
+borg::keep_yearly: 3
+borg::keep_monthly: 24
+borg::keep_weekly: 36
+borg::keep_daily: 60
+borg::keep_within: 30
+borg::use_upstream_reporter: false
+borg::create_prometheus_metrics: true
+borg::update_borg_restore_db_after_backuprun: false
