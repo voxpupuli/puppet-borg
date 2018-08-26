@@ -23,7 +23,7 @@ describe 'borg' do
         it { is_expected.to contain_class('borg::config')}
         it { is_expected.to contain_class('borg::service')}
         it { is_expected.to contain_ssh__client__config__user('root_borg')}
-        it { is_expected.to contain_base__ssh_keygen('root_borg')}
+        it { is_expected.to contain_borg__ssh_keygen('root_borg')}
       end
 
       case facts[:os]['name']
