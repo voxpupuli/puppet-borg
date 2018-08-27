@@ -1,19 +1,19 @@
 class borg::config {
 
   # script to run the backup
-  file{'/usr/local/bin/borg-backup':
-    ensure  => 'file',
-    source  => "${module_name}/borg-backup.py",
-    mode    => '0755',
-    owner   => 'root',
-    group   => 'root',
+  file{'/usr/local/bin/borg-backup.py':
+    ensure => 'file',
+    source => "puppet:///modules/${module_name}/borg-backup.py",
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
   }
 
   $ensure = $facts['os']['name'] ? {
     'Archlinux' => 'absent',
     default     => 'file'
-  } 
-  
+  }
+
   # script to make restores and create sqlite db
   file{'/usr/local/bin/borg-restore':
     ensure  => $ensure,
@@ -30,7 +30,7 @@ class borg::config {
     home     => '/root',
     user     => 'root',
   }
-  
+
   # /root/.ssh/config entry for the backup server
   ssh::client::config::user{'root':
     ensure        => present,
@@ -46,29 +46,29 @@ class borg::config {
 
   # Write /etc/borg-backup.yaml config file
   $config_content = {
-    "borg" => {
-      "repo" => {
-        "type"       => "borgserver",
-        "server"     => $borg::backupserver,
-        "remote_dir" => $borg::username,
+    'borg' => {
+      'repo' => {
+        'type'       => 'borgserver',
+        'server'     => $borg::backupserver,
+        'remote_dir' => $borg::username,
       },
-      "prune" => {
-        "keep-within"  => $borg::keep_within,
-        "keep-daily"   => $borg::keep_daily,
-        "keep-weekly"  => $borg::keep_weekly,
-        "keep-monthly" => $borg::keep_monthly,
-        "keep-yearly"  => $borg::keep_yearly,        
+      'prune' => {
+        'keep-within'  => $borg::keep_within,
+        'keep-daily'   => $borg::keep_daily,
+        'keep-weekly'  => $borg::keep_weekly,
+        'keep-monthly' => $borg::keep_monthly,
+        'keep-yearly'  => $borg::keep_yearly,
       },
-      "includes" => {
-        "mountpoints" => concat($borg::includes, $borg::additonal_includes),
+      'includes' => {
+        'mountpoints' => concat($borg::includes, $borg::additonal_includes),
       },
-      "excludes" => {
-        "mountpoints" => concat($borg::excludes, $borg::additonal_excludes),
-      }
-    }
+      'excludes' => {
+        'mountpoints' => concat($borg::excludes, $borg::additonal_excludes),
+      },
+    },
   }
 
-   file{'/etc/borg-backup.yaml':
+  file{'/etc/borg-backup.yaml':
     ensure  => 'file',
     content => $config_content.to_yaml,
     mode    => '0655',
