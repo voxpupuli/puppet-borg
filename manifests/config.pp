@@ -3,14 +3,7 @@ class borg::config {
   # script to run the backup
   file{'/usr/local/bin/borg-backup':
     ensure  => 'file',
-    content => epp("${module_name}/borg-backup.sh.epp", {
-      'keep_within'  => $borg::keep_within,
-      'keep_daily'   => $borg::keep_daily,
-      'keep_weekly'  => $borg::keep_weekly,
-      'keep_monthly' => $borg::keep_monthly,
-      'keep_yearly'  => $borg::keep_yearly,
-      'username'     => $borg::username,
-    }),
+    source  => "${module_name}/borg-backup.py",
     mode    => '0755',
     owner   => 'root',
     group   => 'root',
@@ -19,7 +12,8 @@ class borg::config {
   $ensure = $facts['os']['name'] ? {
     'Archlinux' => 'absent',
     default     => 'file'
-  }
+  } 
+  
   # script to make restores and create sqlite db
   file{'/usr/local/bin/borg-restore':
     ensure  => $ensure,
@@ -29,13 +23,6 @@ class borg::config {
     group   => 'root',
   }
 
-  # config file with all excludes and includes
-  file{'/etc/backup-sh-conf.sh':
-    ensure  => 'file',
-    content => epp("${module_name}/backup-sh-conf.sh.epp"),
-    owner   => 'root',
-    group   => 'root',
-  }
   # create the backup key for a user
   borg::ssh_keygen{'root_borg':
     type     => 'ed25519',
@@ -43,10 +30,10 @@ class borg::config {
     home     => '/root',
     user     => 'root',
   }
+  
   # /root/.ssh/config entry for the backup server
-  ssh::client::config::user{'root_borg':
+  ssh::client::config::user{'root':
     ensure        => present,
-    #user          => 'root',
     user_home_dir => '/root',
     options       => {
       'Host backup' => {
@@ -55,5 +42,37 @@ class borg::config {
         'Hostname'     => $borg::backupserver,
       },
     },
+  }
+
+  # Write /etc/borg-backup.yaml config file
+  $config_content = {
+    "borg" => {
+      "repo" => {
+        "type"       => "borgserver",
+        "server"     => $borg::backupserver,
+        "remote_dir" => $borg::username,
+      },
+      "prune" => {
+        "keep-within"  => $borg::keep_within,
+        "keep-daily"   => $borg::keep_daily,
+        "keep-weekly"  => $borg::keep_weekly,
+        "keep-monthly" => $borg::keep_monthly,
+        "keep-yearly"  => $borg::keep_yearly,        
+      },
+      "includes" => {
+        "mountpoints" => concat($borg::includes, $borg::additonal_includes),
+      },
+      "excludes" => {
+        "mountpoints" => concat($borg::excludes, $borg::additonal_excludes),
+      }
+    }
+  }
+
+   file{'/etc/borg-backup.yaml':
+    ensure  => 'file',
+    content => $config_content.to_yaml,
+    mode    => '0655',
+    owner   => 'root',
+    group   => 'root',
   }
 }
