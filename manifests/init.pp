@@ -16,6 +16,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_includes = [],
   String[1] $username                              = $facts['hostname'],
   Variant[String[1],Array[String[1]]] $python_yaml_package_name,
+  String $backup_name = $facts['hostname'],
   Integer $backupserver_port                       = 22,
 ) {
 

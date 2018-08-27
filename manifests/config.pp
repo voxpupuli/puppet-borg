@@ -51,8 +51,8 @@ class borg::config {
       'repo' => {
         'type'       => 'borgserver',
         'server'     => {
-          'hostname'   => $borg::backupserver,
-          'remote_dir' => $borg::username,
+          'hostname'   => 'backup',
+          'remote_dir' => $borg::backup_name,
         },
       },
       'prune' => {
