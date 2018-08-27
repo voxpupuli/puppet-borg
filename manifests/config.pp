@@ -40,6 +40,7 @@ class borg::config {
         'User'         => $borg::username,
         'IdentityFile' => '~/.ssh/id_ed25519_borg',
         'Hostname'     => $borg::backupserver,
+        'Port'         => $borg::backupserver_port,
       },
     },
   }
