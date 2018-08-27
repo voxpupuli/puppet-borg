@@ -14,13 +14,7 @@ class borg::install {
   }
    
   ## additional packages
-  if $facts['os']['family'] == 'Archlinux' {
-    $real_python_yaml_package_name = 'python-yaml'
-  } else {
-    $real_python_yaml_package_name = 'python3-yaml'
-  }
-
-  package{$real_python_yaml_package_name:
+  package{$borg::python_yaml_package_name:
     ensure   => $borg::package_ensure,
     provider => $real_package_provider,
   }
