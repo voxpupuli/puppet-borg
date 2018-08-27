@@ -49,8 +49,10 @@ class borg::config {
     'borg' => {
       'repo' => {
         'type'       => 'borgserver',
-        'server'     => $borg::backupserver,
-        'remote_dir' => $borg::username,
+        'server'     => {
+          'hostname'   => $borg::backupserver,
+          'remote_dir' => $borg::username,
+        },
       },
       'prune' => {
         'keep-within'  => $borg::keep_within,
@@ -59,12 +61,17 @@ class borg::config {
         'keep-monthly' => $borg::keep_monthly,
         'keep-yearly'  => $borg::keep_yearly,
       },
-      'includes' => {
-        'mountpoints' => concat($borg::includes, $borg::additonal_includes),
-      },
-      'excludes' => {
-        'mountpoints' => concat($borg::excludes, $borg::additonal_excludes),
-      },
+    },
+    'lvm' => {
+      'use_snapshots' => false,        
+    },
+    'include' => {
+      'mountpoints' => concat($borg::includes, $borg::additonal_includes),
+      'paths'       => [],
+    },
+    'exclude' => {
+      'mountpoints' => concat($borg::excludes, $borg::additonal_excludes),
+      'paths'       => [],
     },
   }
 
