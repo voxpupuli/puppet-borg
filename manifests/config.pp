@@ -56,11 +56,11 @@ class borg::config {
         },
       },
       'prune' => {
-        'keep-within'  => $borg::keep_within,
-        'keep-daily'   => $borg::keep_daily,
-        'keep-weekly'  => $borg::keep_weekly,
-        'keep-monthly' => $borg::keep_monthly,
-        'keep-yearly'  => $borg::keep_yearly,
+        'keep-within'  => "${borg::keep_within}d",
+        'keep-daily'   => "${borg::keep_daily}",
+        'keep-weekly'  => "${borg::keep_weekly}",
+        'keep-monthly' => "${borg::keep_monthly}",
+        'keep-yearly'  => "${borg::keep_yearly}",
       },
     },
     'lvm' => {
