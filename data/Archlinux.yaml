@@ -3,3 +3,4 @@ borg::package_name:
   - 'borg'
   - 'perl-app-borgrestore'
 borg::update_borg_restore_db_after_backuprun: true
+borg::python_yaml_package_name: 'python-yaml'

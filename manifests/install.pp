@@ -12,7 +12,13 @@ class borg::install {
     ensure   => $borg::package_ensure,
     provider => $real_package_provider,
   }
+   
   ## additional packages
+  package{$borg::python_yaml_package_name:
+    ensure   => $borg::package_ensure,
+    provider => $real_package_provider,
+  }
+  
   # centos: perl-autodie perl-Carp-Assert perl-DateTime perl-DB_File perl-File-Slurp perl-IO-Compress perl-IPC-Run
   # ... okay, List::Util is way to old...
 
