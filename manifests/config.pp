@@ -20,14 +20,6 @@ class borg::config {
     'Archlinux' => 'absent',
     default     => 'file'
   }
-  # script to make restores and create sqlite db
-  file{'/usr/local/bin/borg-restore':
-    ensure  => $ensure,
-    content => epp("${module_name}/borg-restore.pl.epp"),
-    mode    => '0755',
-    owner   => 'root',
-    group   => 'root',
-  }
 
   # config file with all excludes and includes
   file{'/etc/backup-sh-conf.sh':
