@@ -21,6 +21,11 @@ class borg::config {
     default     => 'file'
   }
 
+  # setup the config for the restore script
+  file{'/etc/borg-restore.cfg':
+    ensure  => 'file',
+    content => epp("${module_name}/borg-restore.cfg.epp", {'username' => $borg::username}),
+  }
   # config file with all excludes and includes
   file{'/etc/backup-sh-conf.sh':
     ensure  => 'file',
