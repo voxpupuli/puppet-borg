@@ -12,10 +12,22 @@ class borg::install {
     ensure   => $borg::package_ensure,
     provider => $real_package_provider,
   }
-  ## additional packages
-  # centos: perl-autodie perl-Carp-Assert perl-DateTime perl-DB_File perl-File-Slurp perl-IO-Compress perl-IPC-Run
-  # ... okay, List::Util is way to old...
 
+  if $borg::install_restore_script {
+    $venv_directory = '/opt/BorgRestore'
+    ensure_packages(['perl-App-cpanminus', 'perl-local-lib', 'perl-Test-Simple', 'gcc'], {before => Exec['install_borg_restore']})
+    file{$venv_directory:
+      ensure => 'directory',
+    }
+    -> exec{'install_borg_restore':
+      command     => 'cpanm -l /opt/BorgRestore App::BorgRestore',
+      creates     => "${venv_directory}/bin/borg-restore.pl",
+      path        => "${$venv_directory}/bin::/usr/sbin:/usr/bin:/sbin:/bin",
+      environment => ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}"],
+      timeout     => 600,
+      cwd         => '/root',
+    }
+  }
   # we're now switching to rh-perl524 from centos-sclo-rh (which comes from the foreman module?)
   if $borg::create_prometheus_metrics {
     if $borg::use_upstream_reporter {

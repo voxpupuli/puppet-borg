@@ -10,6 +10,12 @@ describe 'borg' do
       let :facts do
         facts
       end
+
+      let :params do
+        {
+          backupserver: 'localhost'
+        }
+      end
       context 'with all defaults' do
         it { is_expected.to compile.with_all_deps }
 
