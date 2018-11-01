@@ -16,6 +16,7 @@ describe 'borg' do
           backupserver: 'localhost'
         }
       end
+
       context 'with all defaults' do
         it { is_expected.to compile.with_all_deps }
 
@@ -25,11 +26,11 @@ describe 'borg' do
         it { is_expected.to contain_file('/usr/local/bin/borg-backup') }
         it { is_expected.to contain_file('/usr/local/bin/borg-restore') }
         it { is_expected.to contain_file('/usr/local/bin/borg_exporter') }
-        it { is_expected.to contain_class('borg::install')}
-        it { is_expected.to contain_class('borg::config')}
-        it { is_expected.to contain_class('borg::service')}
-        it { is_expected.to contain_ssh__client__config__user('root_borg')}
-        it { is_expected.to contain_borg__ssh_keygen('root_borg')}
+        it { is_expected.to contain_class('borg::install') }
+        it { is_expected.to contain_class('borg::config') }
+        it { is_expected.to contain_class('borg::service') }
+        it { is_expected.to contain_ssh__client__config__user('root_borg') }
+        it { is_expected.to contain_borg__ssh_keygen('root_borg') }
       end
 
       case facts[:os]['name']
@@ -39,7 +40,7 @@ describe 'borg' do
           it { is_expected.to contain_package('perl-app-borgrestore') }
         end
       when 'Ubuntu'
-       context 'on Ubuntu' do
+        context 'on Ubuntu' do
           it { is_expected.to contain_package('borgbackup') }
           it { is_expected.to contain_package('borgbackup-doc') }
         end
