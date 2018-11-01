@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec perl -T -I /opt/BorgRestore/lib/perl5/ /opt/BorgRestore/bin/borg-restore.pl "$@"
