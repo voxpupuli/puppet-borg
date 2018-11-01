@@ -44,9 +44,8 @@ class borg::config {
     user     => 'root',
   }
   # /root/.ssh/config entry for the backup server
-  ssh::client::config::user{'root_borg':
+  ssh::client::config::user{'root':
     ensure        => present,
-    #user          => 'root',
     user_home_dir => '/root',
     options       => {
       'Host backup' => {

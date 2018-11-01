@@ -1,2 +1,3 @@
 ---
 borg::package_name: 'borgbackup'
+borg::install_restore_script: true
