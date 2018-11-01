@@ -44,12 +44,12 @@ describe 'borg' do
           it { is_expected.to contain_package('borgbackup') }
           it { is_expected.to contain_package('borgbackup-doc') }
         end
-      when 'RedHat','CentOS'
+      when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
-          it { is_expected.to contain_package('perl-local-lib')}
-          it { is_expected.to contain_package('perl-Test-Simple')}
-          it { is_expected.to contain_package('perl-App-cpanminus')}
-          it { is_expected.to contain_package('gcc')}
+          it { is_expected.to contain_package('perl-local-lib') }
+          it { is_expected.to contain_package('perl-Test-Simple') }
+          it { is_expected.to contain_package('perl-App-cpanminus') }
+          it { is_expected.to contain_package('gcc') }
           it { is_expected.to contain_exec('install_borg_restore') }
           it { is_expected.to contain_file('/opt/BorgRestore') }
           it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
