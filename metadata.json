@@ -42,17 +42,17 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "5.0",
-        "6.0",
-        "7.0"
+        "5",
+        "6",
+        "7"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5.0",
-        "6.0",
-        "7.0"
+        "5",
+        "6",
+        "7"
       ]
     },
     {
