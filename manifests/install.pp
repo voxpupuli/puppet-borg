@@ -15,7 +15,7 @@ class borg::install {
 
   if $borg::install_restore_script {
     $venv_directory = '/opt/BorgRestore'
-    ensure_packages(['perl-App-cpanminus', 'perl-local-lib', 'perl-Test-Simple', 'gcc'], {before => Exec['install_borg_restore']})
+    ensure_packages($borg::restore_dependencies, {before => Exec['install_borg_restore']})
     file{$venv_directory:
       ensure => 'directory',
     }
