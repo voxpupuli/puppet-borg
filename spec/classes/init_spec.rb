@@ -44,6 +44,9 @@ describe 'borg' do
         context 'on Ubuntu' do
           it { is_expected.to contain_package('borgbackup') }
           it { is_expected.to contain_package('borgbackup-doc') }
+          it { is_expected.to contain_package('gcc') }
+          it { is_expected.to contain_package('make') }
+          it { is_expected.to contain_package('cpanminus') }
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
