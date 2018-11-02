@@ -27,6 +27,13 @@ class borg::install {
       timeout     => 600,
       cwd         => '/root',
     }
+    file{'/usr/local/bin/borg-restore.pl':
+      ensure  => 'file',
+      content => epp("${module_name}/borg-restore.pl"),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0755',
+    }
   }
   # we're now switching to rh-perl524 from centos-sclo-rh (which comes from the foreman module?)
   if $borg::create_prometheus_metrics {

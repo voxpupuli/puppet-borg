@@ -1,0 +1,5 @@
+<%- | String $username
+| -%>
+# THIS FILE IS MANAGED BY PUPPET
+$borg_repo = "backup:<%= $username %>/borg";
+1;

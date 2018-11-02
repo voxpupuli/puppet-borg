@@ -1,4 +1,7 @@
-<%- | Boolean $create_prometheus_metrics
+<%- | Boolean $create_prometheus_metrics,
+      Boolean $use_upstream_reporter,
+      Boolean $update_borg_restore_db_after_backuprun,
+      Stdlib::Absolutepath $restore_script_path
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
 [Unit]
@@ -9,10 +12,10 @@ Type=oneshot
 ExecStart=/usr/local/bin/borg-backup
 <% if $create_prometheus_metrics { -%>
 ExecStartPost=/usr/local/bin/borg_exporter
-<% if ($borg::use_upstream_reporter == true) { -%>
+<% if ($use_upstream_reporter == true) { -%>
 ExecStartPost=/usr/bin/cp /var/lib/node_exporter/textfile_collector/backup.prom /var/lib/prometheus-dropzone/
 <% } -%>
-<% if ($borg::update_borg_restore_db_after_backuprun == true) { -%>
-ExecStartPost=/usr/bin/vendor_perl/borg-restore.pl --update-cache --debug
+<% if ($update_borg_restore_db_after_backuprun == true) { -%>
+  ExecStartPost=<%= $restore_script_path %> --update-cache --debug
 <% } -%>
 <% } -%>

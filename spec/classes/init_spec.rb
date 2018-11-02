@@ -24,8 +24,8 @@ describe 'borg' do
         it { is_expected.to contain_file('/etc/borg') }
         it { is_expected.to contain_file('/etc/profile.d/borg.sh') }
         it { is_expected.to contain_file('/usr/local/bin/borg-backup') }
-        it { is_expected.to contain_file('/usr/local/bin/borg-restore') }
         it { is_expected.to contain_file('/usr/local/bin/borg_exporter') }
+        it { is_expected.to contain_file('/etc/borg-restore.cfg') }
         it { is_expected.to contain_class('borg::install') }
         it { is_expected.to contain_class('borg::config') }
         it { is_expected.to contain_class('borg::service') }
@@ -43,6 +43,16 @@ describe 'borg' do
         context 'on Ubuntu' do
           it { is_expected.to contain_package('borgbackup') }
           it { is_expected.to contain_package('borgbackup-doc') }
+        end
+      when 'RedHat', 'CentOS'
+        context 'on osfamily Redhat' do
+          it { is_expected.to contain_package('perl-local-lib') }
+          it { is_expected.to contain_package('perl-Test-Simple') }
+          it { is_expected.to contain_package('perl-App-cpanminus') }
+          it { is_expected.to contain_package('gcc') }
+          it { is_expected.to contain_exec('install_borg_restore') }
+          it { is_expected.to contain_file('/opt/BorgRestore') }
+          it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
         end
       end
     end
