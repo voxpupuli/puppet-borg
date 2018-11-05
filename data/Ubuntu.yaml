@@ -2,3 +2,8 @@
 borg::package_name:
   - 'borgbackup'
   - 'borgbackup-doc'
+borg::restore_dependencies:
+  - cpanminus
+  - make
+  - gcc
+borg::install_restore_script: true

@@ -13,6 +13,7 @@ class borg (
   String[1] $backupserver,
   Boolean $install_restore_script,
   Stdlib::Absolutepath $restore_script_path,
+  Array[String[1]] $restore_dependencies           = [],
   String[1] $package_ensure                        = present,
   Array[Stdlib::Absolutepath] $additional_excludes = [],
   Array[Stdlib::Absolutepath] $additional_includes = [],

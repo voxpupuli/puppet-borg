@@ -31,6 +31,7 @@ describe 'borg' do
         it { is_expected.to contain_class('borg::service') }
         it { is_expected.to contain_ssh__client__config__user('root') }
         it { is_expected.to contain_borg__ssh_keygen('root_borg') }
+        it { is_expected.to contain_exec('ssh_keygen-root_borg') }
       end
 
       case facts[:os]['name']
@@ -43,6 +44,9 @@ describe 'borg' do
         context 'on Ubuntu' do
           it { is_expected.to contain_package('borgbackup') }
           it { is_expected.to contain_package('borgbackup-doc') }
+          it { is_expected.to contain_package('gcc') }
+          it { is_expected.to contain_package('make') }
+          it { is_expected.to contain_package('cpanminus') }
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do

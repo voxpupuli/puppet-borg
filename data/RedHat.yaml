@@ -2,3 +2,8 @@
 borg::package_name: 'borgbackup'
 borg::install_restore_script: true
 borg::update_borg_restore_db_after_backuprun: true
+borg::restore_dependencies:
+  - perl-App-cpanminus
+  - perl-local-lib
+  - perl-Test-Simple
+  - gcc
