@@ -6,4 +6,5 @@ borg::restore_dependencies:
   - cpanminus
   - make
   - gcc
+  - libdbd-sqlite3-perl
 borg::install_restore_script: true
