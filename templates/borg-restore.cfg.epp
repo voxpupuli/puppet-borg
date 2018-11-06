@@ -2,4 +2,5 @@
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
 $borg_repo = "backup:<%= $username %>/borg";
+$cache_path_base = "/root/.cache/borg-restore.pl/";
 1;
