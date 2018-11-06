@@ -23,7 +23,7 @@ class borg::install {
       command     => 'cpanm -l /opt/BorgRestore App::BorgRestore',
       creates     => "${venv_directory}/bin/borg-restore.pl",
       path        => "${$venv_directory}/bin::/usr/sbin:/usr/bin:/sbin:/bin",
-      environment => ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}"],
+      environment => ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}", 'HOME=/root'],
       timeout     => 600,
       cwd         => '/root',
     }
