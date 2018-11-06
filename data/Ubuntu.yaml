@@ -8,3 +8,4 @@ borg::restore_dependencies:
   - gcc
   - libdbd-sqlite3-perl
 borg::install_restore_script: true
+borg::update_borg_restore_db_after_backuprun: true
