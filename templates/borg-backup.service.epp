@@ -16,6 +16,6 @@ ExecStartPost=/usr/local/bin/borg_exporter
 ExecStartPost=/usr/bin/cp /var/lib/node_exporter/textfile_collector/backup.prom /var/lib/prometheus-dropzone/
 <% } -%>
 <% if ($update_borg_restore_db_after_backuprun == true) { -%>
-  ExecStartPost=<%= $restore_script_path %> --update-cache --debug
+ExecStartPost=<%= $restore_script_path %> --update-cache --debug
 <% } -%>
 <% } -%>
