@@ -8,7 +8,6 @@
 Description=Create borg backups
 
 [Service]
-Type=oneshot
 ExecStart=/usr/local/bin/borg-backup
 <% if $create_prometheus_metrics { -%>
 ExecStartPost=/usr/local/bin/borg_exporter
