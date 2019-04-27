@@ -3,7 +3,8 @@
       Integer[1] $keep_monthly,
       Integer[1] $keep_weekly,
       Integer[1] $keep_daily,
-      Integer[1] $keep_within
+      Integer[1] $keep_within,
+      String[1] $backupdestdir
 | -%>
 #!/bin/bash
 #
@@ -16,7 +17,7 @@
 #  - define a host "backup" in root's .ssh/config
 #  - You can override variables from main() as well as the pre_backup() and post_backup() functions in
 #    $XDG_CONFIG_HOME/backup-sh-conf.sh or /etc/backup-sh-conf.sh
-#  - As root run `borg init -v --encryption=keyfile backup:$(facter -p hostname)/borg`
+#  - As root run `borg init -v --encryption=keyfile backup:<%= $username %>/<%= $backupdestdir %>`
 #    (note that zsh uses $HOST instead of $HOSTNAME)
 #  - If you want, increase the max_segment_size in
 #    ssh://backup/borg-$HOSTNAME/config from the default 5MiB
@@ -60,7 +61,8 @@ main() {
 
   # The backup repository used by borg
   username=<%= $username %>
-  borg_repo="backup:${username}/borg"
+  backupdestdir=<%= $backupdestdir %>
+  borg_repo="backup:${username}/${backupdestdir}"
 
   # These mountpoints will be excluded. Mountpoints not listed in either this
   # or the includeMountpoints variable below will throw an error

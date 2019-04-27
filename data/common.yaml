@@ -20,3 +20,4 @@ borg::create_prometheus_metrics: true
 borg::update_borg_restore_db_after_backuprun: false
 borg::install_restore_script: false
 borg::restore_script_path: '/usr/local/bin/borg-restore.pl'
+borg::backupdestdir: 'borg'

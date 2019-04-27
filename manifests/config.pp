@@ -4,12 +4,13 @@ class borg::config {
   file{'/usr/local/bin/borg-backup':
     ensure  => 'file',
     content => epp("${module_name}/borg-backup.sh.epp", {
-      'keep_within'  => $borg::keep_within,
-      'keep_daily'   => $borg::keep_daily,
-      'keep_weekly'  => $borg::keep_weekly,
-      'keep_monthly' => $borg::keep_monthly,
-      'keep_yearly'  => $borg::keep_yearly,
-      'username'     => $borg::username,
+      'keep_within'   => $borg::keep_within,
+      'keep_daily'    => $borg::keep_daily,
+      'keep_weekly'   => $borg::keep_weekly,
+      'keep_monthly'  => $borg::keep_monthly,
+      'keep_yearly'   => $borg::keep_yearly,
+      'username'      => $borg::username,
+      'backupdestdir' => $borg::backupdestdir,
     }),
     mode    => '0755',
     owner   => 'root',
@@ -24,7 +25,10 @@ class borg::config {
   # setup the config for the restore script
   file{'/etc/borg-restore.cfg':
     ensure  => 'file',
-    content => epp("${module_name}/borg-restore.cfg.epp", {'username' => $borg::username}),
+    content => epp("${module_name}/borg-restore.cfg.epp", {
+      'username'      => $borg::username,
+      'backupdestdir' => $borg::backupdestdir,
+      }),
   }
   # config file with all excludes and includes
   file{'/etc/backup-sh-conf.sh':

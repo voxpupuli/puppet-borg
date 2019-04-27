@@ -64,13 +64,19 @@ class borg::install {
     }
     file{'/etc/borg':
       ensure  => 'file',
-      content => epp("${module_name}/borg.epp", {'username' => $borg::username}),
+      content => epp("${module_name}/borg.epp", {
+        'username'      => $borg::username,
+        'backupdestdir' => $borg::backupdestdir,
+        }),
     }
   }
 
   # setup a profile to export the backup server/path. Otherwise the CLI tooles don't work
   file{'/etc/profile.d/borg.sh':
     ensure  => 'file',
-    content => epp("${module_name}/borg.sh.epp", {'username' => $borg::username}),
+    content => epp("${module_name}/borg.sh.epp", {
+      'username'      => $borg::username,
+      'backupdestdir' => $borg::backupdestdir,
+    }),
   }
 }
