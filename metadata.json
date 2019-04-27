@@ -61,6 +61,13 @@
         "16.04",
         "18.04"
       ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
     }
   ],
   "requirements": [
