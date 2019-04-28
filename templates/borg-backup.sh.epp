@@ -110,12 +110,27 @@ pre_backup() {
   # save some data that's useful for restores
   local backupDataDir=/root/backup-data/
   mkdir -p "$backupDataDir"
-  fdisk -l > "$backupDataDir/fdisk"
-  vgdisplay > "$backupDataDir/vgdisplay"
-  pvdisplay > "$backupDataDir/pvdisplay"
-  lvdisplay > "$backupDataDir/lvdisplay"
-  df -a > "$backupDataDir/df"
-  findmnt -l > "$backupDataDir/findmnt"
+  if [ $(command -v fdisk) ]; then
+    fdisk -l > "$backupDataDir/fdisk"
+  fi
+  if [ $(command -v vgdisplay) ]; then
+    vgdisplay > "$backupDataDir/vgdisplay"
+  fi
+  if [ $(command -v pvdisplay) ]; then
+    pvdisplay > "$backupDataDir/pvdisplay"
+  fi
+  if [ $(command -v lvdisplay) ]; then
+    lvdisplay > "$backupDataDir/lvdisplay"
+  fi
+  if [ $(command -v df) ]; then
+    df -a > "$backupDataDir/df"
+  fi
+  if [ $(command -v findmnt) ]; then
+    findmnt -l > "$backupDataDir/findmnt"
+  fi
+  if [ $(command -v mdadm) ]; then
+    mdadm --detail --scan > "$backupDataDir/mdadm"
+  fi
 
   # If you wish to use snapshots, create them here
 
