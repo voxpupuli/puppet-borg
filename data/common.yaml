@@ -21,3 +21,7 @@ borg::update_borg_restore_db_after_backuprun: false
 borg::install_restore_script: false
 borg::restore_script_path: '/usr/local/bin/borg-restore.pl'
 borg::backupdestdir: 'borg'
+borg::exclude_pattern:
+  - 'sh:/home/*/.cache/*'
+  - 'sh:/root/.cache/*'
+  - 'sh:/var/cache/pacman/pkg/*'
