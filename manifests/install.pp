@@ -2,6 +2,8 @@
 # This class handles the installation. Avoid modifying private classes.
 class borg::install {
 
+  assert_private()
+
   if $facts['os']['osfamily'] == 'FreeBSD' {
     $real_package_provider = 'portsng'
   } else {

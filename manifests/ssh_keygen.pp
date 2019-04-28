@@ -1,12 +1,24 @@
 # Define: ssh_keygen
-# Parameters:
-# $user
-# $type
-# $bits
-# $home
-# $filename
-# $comment
-# $options
+# @param user
+#   The user that will own they key
+#
+# @param type
+#   the openssh key type
+#
+# @param bits
+#   The key length
+#
+# @param home
+#   The homedir where we will store the key
+#
+# @param filename
+#   The filename for the new key
+#
+# @param comment
+#   Comments that should be added to the key
+#
+# @param options
+#   Additional ssh-keygen paramters and options
 #
 # this is based on https://github.com/maestrodev/puppet-ssh_keygen/blob/master/manifests/init.pp
 define borg::ssh_keygen (

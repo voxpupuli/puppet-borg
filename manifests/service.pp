@@ -1,4 +1,8 @@
+# @api private
 class borg::service {
+
+  assert_private()
+
   # there isn't any real service
   # borg runs via a systemd timer
   # You don't have systemd? GO AWAY!

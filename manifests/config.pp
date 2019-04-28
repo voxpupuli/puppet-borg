@@ -1,4 +1,7 @@
+# @api private
 class borg::config {
+
+  assert_private()
 
   # script to run the backup
   file{'/usr/local/bin/borg-backup':
