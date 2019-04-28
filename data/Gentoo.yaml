@@ -1,0 +1,6 @@
+---
+borg::package_name: 'borgbackup'
+borg::update_borg_restore_db_after_backuprun: true
+borg::install_restore_script: true
+borg::restore_dependencies:
+  - App-cpanminus

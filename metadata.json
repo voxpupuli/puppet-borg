@@ -31,6 +31,9 @@
       "operatingsystem": "Archlinux"
     },
     {
+      "operatingsystem": "Gentoo"
+    },
+    {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
         "22",
