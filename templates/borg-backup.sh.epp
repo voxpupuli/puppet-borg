@@ -87,9 +87,9 @@ main() {
   # List of patterns that should be excluded. This supports shell globbing as
   # well as regex pattern. Refer to man borg for details.
   IFS='' read -r -d '' excludeList <<-EOF || true
-  <% $borg::exclude_pattern.each |$key| { -%>
-    <%= $key %>
-  <% } -%>
+<% $borg::exclude_pattern.each |$key| { -%>
+  <%= $key %>
+<% } -%>
 EOF
 
   for configfile in "${XDG_CONFIG_HOME:-$HOME/.config}/backup-sh-conf.sh" /etc/backup-sh-conf.sh; do
