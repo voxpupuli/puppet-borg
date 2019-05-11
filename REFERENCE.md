@@ -186,7 +186,7 @@ The following parameters are available in the `borg::ssh_keygen` defined type.
 
 ##### `user`
 
-Data type: `String[1]`
+Data type: `Any`
 
 The user that will own they key
 
@@ -194,7 +194,7 @@ Default value: `undef`
 
 ##### `type`
 
-Data type: `String[1]`
+Data type: `Any`
 
 the openssh key type
 
@@ -202,7 +202,7 @@ Default value: `undef`
 
 ##### `bits`
 
-Data type: `Integer`
+Data type: `Any`
 
 The key length
 
@@ -210,7 +210,7 @@ Default value: `undef`
 
 ##### `home`
 
-Data type: `String[1]`
+Data type: `Any`
 
 The homedir where we will store the key
 
@@ -218,7 +218,7 @@ Default value: `undef`
 
 ##### `filename`
 
-Data type: `String[1]`
+Data type: `Any`
 
 The filename for the new key
 
@@ -226,7 +226,7 @@ Default value: `undef`
 
 ##### `comment`
 
-Data type: `String[1]`
+Data type: `Any`
 
 Comments that should be added to the key
 
@@ -234,7 +234,7 @@ Default value: `undef`
 
 ##### `options`
 
-Data type: `String[1]`
+Data type: `Any`
 
 Additional ssh-keygen paramters and options
 
