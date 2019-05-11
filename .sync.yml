@@ -1,3 +1,9 @@
 ---
 .travis.yml:
   secure: "GCBy2umN37ID0gA/vdQj4VUCAZhV44PNTJjZi07J8gzDQdHbDuosORqn4CF1l9n2+B6Op+BLqenglodrxzN9dpLjigTf5yeQeVb059sZXj0ZqNQMvgEZJbGrmL99/bFDFS8rHjdJSFU8nMEyBsgRm0z7UGyq3XXlPIKx5w4Hvirud7jkCQ832K158SzpyBWSwecNSZ8d55p6agcSRstUedu1NWINDTDNVCL4O7ItNkCxRTdePHgkDlGLrun6DTniYMXMJHvS2DVx3QWwiCoCvY9ULpOuVGTGUqq7nYZLs4fVQH1D4Q0TmfAWBTNqG3qtiytzutn0rKlyeFssNJSkhWV0lA30qGMaAY8XpgVbX1vOJLRxobLQzWJVgT5ASJbbM9WgZxNqSEteP+20ZX6mStZx4WBG6MIAPnvYFmYxdZjSTtDkNJ2y51b7UXssAZUKnu6OYU8JgKCnhp79X72CksNwXXcc0VQEvjx58eJLwir3ZjDmFGAgO06/3lybLDmyjZ3nEM6fXgileGPDXW4vYkZPVqvewjGQES0Cgr1D0O+prcAjhbuzGwrggeLnqKd4UyiBmIVrLJB5WXdRnu7UW0mDu5NDM5gDrMpcnbVFpsUFZFHvV4oujStwvjRnNzejAEeBKg1cw2eRByYFJ+lZX6ftUtx6Onws/P/nufW2vnY="
+  docker_sets:
+    - set: ubuntu1604-64
+    - set: ubuntu1804-64
+    - set: centos7-64
+    - set: debian8-64
+    - set: debian9-64

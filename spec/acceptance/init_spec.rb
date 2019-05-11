@@ -5,10 +5,13 @@ describe 'borg' do
     # Using puppet_apply as a helper
     it 'works idempotently with no errors' do
       pp = <<-EOS
-      package{'epel-release':
-        ensure => 'present',
+      if ( $facts['os']['family'] == 'RedHat') {
+        package{'epel-release':
+          ensure => 'present',
+          before => Class['borg'],
         }
-      -> class{'borg':
+      }
+      class{'borg':
         backupserver => 'localhost',
       }
       EOS
