@@ -1,42 +1,60 @@
 ---
-sudo: false
-dist: trusty
+dist: xenial
 language: ruby
 cache: bundler
 before_install:
-  - rm -f Gemfile.lock
+  - gem update --system
+  - gem update bundler
+  - bundle --version
 script:
   - 'bundle exec rake $CHECK'
 matrix:
   fast_finish: true
   include:
-  - rvm: 2.1.9
-    bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 4.0" CHECK=test PARALLEL_TEST_PROCESSORS=12
   - rvm: 2.4.4
     bundler_args: --without system_tests development release
     env: PUPPET_VERSION="~> 5.0" CHECK=test
-  - rvm: 2.5.1
+  - rvm: 2.5.3
     bundler_args: --without system_tests development release
     env: PUPPET_VERSION="~> 6.0" CHECK=test_with_coveralls
-  - rvm: 2.5.1
+  - rvm: 2.5.3
     bundler_args: --without system_tests development release
     env: PUPPET_VERSION="~> 6.0" CHECK=rubocop
   - rvm: 2.4.4
     bundler_args: --without system_tests development release
     env: PUPPET_VERSION="~> 5.0" CHECK=build DEPLOY_TO_FORGE=yes
-  - rvm: 2.5.1
+  - rvm: 2.5.3
     bundler_args: --without development release
-    dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_debug=true BEAKER_setfile=centos7-64{hypervisor=docker} CHECK=beaker
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_debug=true BEAKER_setfile=ubuntu1604-64 BEAKER_HYPERVISOR=docker CHECK=beaker
     services: docker
-    sudo: required
-  - rvm: 2.5.1
+  - rvm: 2.5.3
     bundler_args: --without development release
-    dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_debug=true BEAKER_setfile=centos7-64{hypervisor=docker} CHECK=beaker
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_debug=true BEAKER_setfile=ubuntu1604-64 BEAKER_HYPERVISOR=docker CHECK=beaker
     services: docker
-    sudo: required
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_debug=true BEAKER_setfile=ubuntu1804-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_debug=true BEAKER_setfile=ubuntu1804-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_debug=true BEAKER_setfile=centos7-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_debug=true BEAKER_setfile=centos7-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_debug=true BEAKER_setfile=debian9-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
+  - rvm: 2.5.3
+    bundler_args: --without development release
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_IS_PE=no BEAKER_PUPPET_COLLECTION=puppet6 BEAKER_debug=true BEAKER_setfile=debian9-64 BEAKER_HYPERVISOR=docker CHECK=beaker
+    services: docker
 branches:
   only:
   - master
@@ -52,7 +70,7 @@ deploy:
   provider: puppetforge
   user: puppet
   password:
-    secure: ""
+    secure: "GCBy2umN37ID0gA/vdQj4VUCAZhV44PNTJjZi07J8gzDQdHbDuosORqn4CF1l9n2+B6Op+BLqenglodrxzN9dpLjigTf5yeQeVb059sZXj0ZqNQMvgEZJbGrmL99/bFDFS8rHjdJSFU8nMEyBsgRm0z7UGyq3XXlPIKx5w4Hvirud7jkCQ832K158SzpyBWSwecNSZ8d55p6agcSRstUedu1NWINDTDNVCL4O7ItNkCxRTdePHgkDlGLrun6DTniYMXMJHvS2DVx3QWwiCoCvY9ULpOuVGTGUqq7nYZLs4fVQH1D4Q0TmfAWBTNqG3qtiytzutn0rKlyeFssNJSkhWV0lA30qGMaAY8XpgVbX1vOJLRxobLQzWJVgT5ASJbbM9WgZxNqSEteP+20ZX6mStZx4WBG6MIAPnvYFmYxdZjSTtDkNJ2y51b7UXssAZUKnu6OYU8JgKCnhp79X72CksNwXXcc0VQEvjx58eJLwir3ZjDmFGAgO06/3lybLDmyjZ3nEM6fXgileGPDXW4vYkZPVqvewjGQES0Cgr1D0O+prcAjhbuzGwrggeLnqKd4UyiBmIVrLJB5WXdRnu7UW0mDu5NDM5gDrMpcnbVFpsUFZFHvV4oujStwvjRnNzejAEeBKg1cw2eRByYFJ+lZX6ftUtx6Onws/P/nufW2vnY="
   on:
     tags: true
     # all_branches is required to use tags
