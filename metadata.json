@@ -73,6 +73,6 @@
     }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 5.5.8 < 6.0.0" }
+    { "name": "puppet", "version_requirement": ">= 5.5.8 < 7.0.0" }
   ]
 }
