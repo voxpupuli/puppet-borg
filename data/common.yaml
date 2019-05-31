@@ -25,3 +25,4 @@ borg::exclude_pattern:
   - 'sh:/home/*/.cache/*'
   - 'sh:/root/.cache/*'
   - 'sh:/var/cache/pacman/pkg/*'
+borg::manage_repository: false

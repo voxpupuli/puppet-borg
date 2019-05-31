@@ -9,6 +9,15 @@ class borg::install {
   } else {
     $real_package_provider = undef
   }
+
+  # at the moment, we only support Ubuntu
+  if $borg::manage_repository {
+    include apt
+    apt::ppa {'ppa:costamagnagianfranco/borgbackup':
+      package_manage => true,
+      before         => Package[$borg::package_name],
+    }
+  }
   # ports and portupgrade provider are not available providers on FreeBSD 11
   package{$borg::package_name:
     ensure   => $borg::package_ensure,
@@ -28,6 +37,7 @@ class borg::install {
       environment => ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}", 'HOME=/root'],
       timeout     => 600,
       cwd         => '/root',
+      require     => Package[$borg::package_name],
     }
     file{'/usr/local/bin/borg-restore.pl':
       ensure  => 'file',
