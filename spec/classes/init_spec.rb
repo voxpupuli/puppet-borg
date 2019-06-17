@@ -47,6 +47,10 @@ describe 'borg' do
           it { is_expected.to contain_package('gcc') }
           it { is_expected.to contain_package('make') }
           it { is_expected.to contain_package('cpanminus') }
+          it { is_expected.to contain_package('libdbd-sqlite3-perl') }
+          if facts[:os]['release']['major'] == '16.04'
+            it { is_expected.to contain_apt__ppa('ppa:costamagnagianfranco/borgbackup') }
+          end
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
@@ -57,6 +61,17 @@ describe 'borg' do
           it { is_expected.to contain_exec('install_borg_restore') }
           it { is_expected.to contain_file('/opt/BorgRestore') }
           it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
+        end
+      when 'Gentoo'
+        context 'on osfamily Gentoo' do
+          it { is_expected.to contain_package('App-cpanminus') }
+        end
+      when 'Fedora'
+        context 'on osfamily Fedora' do
+          it { is_expected.to contain_package('perl-Path-Tiny') }
+          it { is_expected.to contain_package('perl-Test-MockObject') }
+          it { is_expected.to contain_package('perl-Test') }
+          it { is_expected.to contain_package('perl-autodie') }
         end
       end
     end

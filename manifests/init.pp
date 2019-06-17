@@ -45,6 +45,9 @@
 # @param backupdestdir
 #   The path on the remote server where the backups should be written to.
 #
+# @param manage_repository
+#   A Boolean that enables/disables repository management. Only true on Ubuntu 16.04 at the moment
+#
 # @param exclude_pattern
 #   We currently support excludes/includes for mountpoints. borg supports also a list of shell glob/regex pattern to filter for files.
 #
@@ -82,6 +85,7 @@ class borg (
   Boolean $install_restore_script,
   Stdlib::Absolutepath $restore_script_path,
   String[1] $backupdestdir,
+  Boolean $manage_repository,
   Array[String[1]] $exclude_pattern,
   Array[String[1]] $additional_exclude_pattern     = [],
   Array[String[1]] $restore_dependencies           = [],
