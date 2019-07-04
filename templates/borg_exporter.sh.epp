@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ##
+# THIS FILE IS MANAGED BY PUPPET
+##
 # Apache-2 licence
 # Based on https://github.com/teemow/prometheus-borg-exporter
 ##

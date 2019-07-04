@@ -1,3 +1,4 @@
 #!/bin/bash
 
+# THIS FILE IS MANAGED BY PUPPET
 exec perl -T -I /opt/BorgRestore/lib/perl5/ /opt/BorgRestore/bin/borg-restore.pl "$@"
