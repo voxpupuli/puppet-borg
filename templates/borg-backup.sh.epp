@@ -133,7 +133,7 @@ pre_backup() {
     mdadm --detail --scan > "$backupDataDir/mdadm"
   fi
   if [ $(command -v vgcfgbackup) ]; then
-    vgcfgbackup --file "$backupDataDir/vgcfgbackup"
+    vgcfgbackup --file "$backupDataDir/vgcfgbackup_%s"
   fi
 
   # If you wish to use snapshots, create them here
