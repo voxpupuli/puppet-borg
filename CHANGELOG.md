@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.0.1](https://github.com/voxpupuli/puppet-borg/tree/v1.0.1) (2019-07-11)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.0.0...v1.0.1)
+
+**Fixed bugs:**
+
+- vgcfgbackup: add support for multiple VGs [\#32](https://github.com/voxpupuli/puppet-borg/pull/32) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- allow puppetlabs/vcsrepo 3.x [\#33](https://github.com/voxpupuli/puppet-borg/pull/33) ([bastelfreak](https://github.com/bastelfreak))
+- add `managed by puppet` header to templates [\#31](https://github.com/voxpupuli/puppet-borg/pull/31) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.0.0](https://github.com/voxpupuli/puppet-borg/tree/v1.0.0) (2019-06-17)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/494a35987e3936fca037eb6610d67acb0122905b...v1.0.0)
