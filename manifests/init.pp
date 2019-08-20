@@ -69,6 +69,9 @@
 # @param username
 #   The ssh username to connect to the remote borg service.
 #
+# @param ssh_port
+#   SSH port for the remote server (default: 22). Will be written into the local ssh client configuration file.
+#
 class borg (
   Variant[String[1],Array[String[1]]] $package_name,
   Boolean $create_prometheus_metrics,
@@ -93,6 +96,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_excludes = [],
   Array[Stdlib::Absolutepath] $additional_includes = [],
   String[1] $username                              = $facts['hostname'],
+  Stdlib::Port $ssh_port                           = 22,
 ) {
 
   contain borg::install
