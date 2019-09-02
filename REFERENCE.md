@@ -119,6 +119,12 @@ Data type: `String[1]`
 
 The path on the remote server where the backups should be written to.
 
+##### `manage_repository`
+
+Data type: `Boolean`
+
+A Boolean that enables/disables repository management. Only true on Ubuntu 16.04 at the moment
+
 ##### `exclude_pattern`
 
 Data type: `Array[String[1]]`
@@ -172,6 +178,14 @@ Data type: `String[1]`
 The ssh username to connect to the remote borg service.
 
 Default value: $facts['hostname']
+
+##### `ssh_port`
+
+Data type: `Stdlib::Port`
+
+SSH port for the remote server (default: 22). Will be written into the local ssh client configuration file.
+
+Default value: 22
 
 ## Defined types
 
