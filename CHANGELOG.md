@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.1.0](https://github.com/voxpupuli/puppet-borg/tree/v1.1.0) (2019-09-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.0.1...v1.1.0)
+
+**Implemented enhancements:**
+
+- allow ssh port configuration [\#37](https://github.com/voxpupuli/puppet-borg/pull/37) ([deubert-it](https://github.com/deubert-it))
+
+**Closed issues:**
+
+- Add non-standard port configuration parameter for ssh config [\#36](https://github.com/voxpupuli/puppet-borg/issues/36)
+
 ## [v1.0.1](https://github.com/voxpupuli/puppet-borg/tree/v1.0.1) (2019-07-11)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.0.0...v1.0.1)
