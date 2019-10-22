@@ -4,7 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.1.0](https://github.com/voxpupuli/puppet-borg/tree/v1.1.0) (2019-09-02)
+## [v1.1.1](https://github.com/voxpupuli/puppet-borg/tree/v1.1.1) (2019-10-22)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.1.0...v1.1.1)
+
+**Fixed bugs:**
+
+- centos: install missing dep perl-Test-MockObject [\#40](https://github.com/voxpupuli/puppet-borg/pull/40) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- simplify systemd timer setup [\#39](https://github.com/voxpupuli/puppet-borg/pull/39) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v1.1.0](https://github.com/voxpupuli/puppet-borg/tree/v1.1.0) (2019-09-03)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.0.1...v1.1.0)
 
