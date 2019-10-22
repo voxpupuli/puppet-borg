@@ -95,7 +95,7 @@ class borg (
   String[1] $package_ensure                        = present,
   Array[Stdlib::Absolutepath] $additional_excludes = [],
   Array[Stdlib::Absolutepath] $additional_includes = [],
-  String[1] $username                              = $facts['hostname'],
+  String[1] $username                              = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                           = 22,
 ) {
 
