@@ -7,3 +7,4 @@ borg::restore_dependencies:
   - perl-local-lib
   - perl-Test-Simple
   - gcc
+  - perl-Test-MockObject
