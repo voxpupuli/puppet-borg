@@ -32,6 +32,8 @@ group :test do
   gem 'coveralls',                                                  :require => false
   gem 'simplecov-console',                                          :require => false
   gem 'parallel_tests',                                             :require => false
+  # gem the facterdb gem to get CentOS 8 / Gentoo / Fedora 30 facts
+  gem 'facterdb',                                                   :require => false, :git => 'https://github.com/voxpupuli/facterdb', :branch => 'voxpupulifixes'
 end
 
 group :development do
