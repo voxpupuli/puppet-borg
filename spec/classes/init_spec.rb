@@ -72,6 +72,7 @@ describe 'borg' do
           it { is_expected.to contain_package('perl-Test-MockObject') }
           it { is_expected.to contain_package('perl-Test') }
           it { is_expected.to contain_package('perl-autodie') }
+          it { is_expected.to contain_package('perl-App-cpanminus') }
         end
       end
     end
