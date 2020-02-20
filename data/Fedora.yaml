@@ -1,6 +1,7 @@
 ---
 borg::package_name: 'borgbackup'
 borg::restore_dependencies:
+  - perl-App-cpanminus
   - perl-autodie
   - perl-Path-Tiny
   - perl-Test-MockObject
