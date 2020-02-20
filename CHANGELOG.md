@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.2.0](https://github.com/voxpupuli/puppet-borg/tree/v1.2.0) (2020-02-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.1.1...v1.2.0)
+
+**Implemented enhancements:**
+
+- Add fedora 31 support [\#45](https://github.com/voxpupuli/puppet-borg/pull/45) ([kBite](https://github.com/kBite))
+
+**Merged pull requests:**
+
+- update repo links to https [\#44](https://github.com/voxpupuli/puppet-borg/pull/44) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.1.1](https://github.com/voxpupuli/puppet-borg/tree/v1.1.1) (2019-10-22)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.1.0...v1.1.1)
