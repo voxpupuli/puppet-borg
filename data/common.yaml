@@ -10,6 +10,7 @@ borg::excludes:
 borg::includes:
   - '/'
   - '/boot'
+  - '/var/log'
 borg::keep_yearly: 3
 borg::keep_monthly: 24
 borg::keep_weekly: 36
