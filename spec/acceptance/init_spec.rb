@@ -13,6 +13,7 @@ describe 'borg' do
       }
       class{'borg':
         backupserver => 'localhost',
+        manage_repository => false,
       }
       EOS
 
