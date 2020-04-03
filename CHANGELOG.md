@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.3.0](https://github.com/voxpupuli/puppet-borg/tree/v1.3.0) (2020-04-03)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.2.0...v1.3.0)
+
+**Implemented enhancements:**
+
+- Add VZ 7 support [\#51](https://github.com/voxpupuli/puppet-borg/pull/51) ([bastelfreak](https://github.com/bastelfreak))
+- Replace vendored ssh\_keygen with voxpupuli/ssh\_keygen [\#50](https://github.com/voxpupuli/puppet-borg/pull/50) ([bastelfreak](https://github.com/bastelfreak))
+- Add /var/log to default includes [\#49](https://github.com/voxpupuli/puppet-borg/pull/49) ([bastelfreak](https://github.com/bastelfreak))
+- Add CentOS/RedHat 8 to metadata.json [\#48](https://github.com/voxpupuli/puppet-borg/pull/48) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.2.0](https://github.com/voxpupuli/puppet-borg/tree/v1.2.0) (2020-02-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.1.1...v1.2.0)
