@@ -1,6 +1,6 @@
 {
   "name": "puppet-borg",
-  "version": "1.3.0",
+  "version": "1.3.1-rc0",
   "author": "Vox Pupuli",
   "summary": "installs, configures, and manages borg",
   "license": "AGPL-3.0",
