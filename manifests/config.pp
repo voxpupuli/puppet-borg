@@ -42,7 +42,7 @@ class borg::config {
     group   => 'root',
   }
   # create the backup key for a user
-  borg::ssh_keygen{'root_borg':
+  ssh_keygen{'root_borg':
     type     => 'ed25519',
     filename => '/root/.ssh/id_ed25519_borg',
     home     => '/root',
