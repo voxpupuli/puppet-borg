@@ -2,24 +2,23 @@ require 'spec_helper_acceptance'
 
 describe 'borg' do
   context 'with a backup server' do
-    # Using puppet_apply as a helper
-    it 'works idempotently with no errors' do
-      pp = <<-EOS
-      if ( $facts['os']['family'] == 'RedHat') {
-        package{'epel-release':
-          ensure => 'present',
-          before => Class['borg'],
-        }
-      }
-      class{'borg':
-        backupserver => 'localhost',
+    let(:pp) do
+      <<-PUPPET
+      class { 'borg':
+        backupserver      => 'localhost',
         manage_repository => false,
       }
-      EOS
+      PUPPET
+    end
 
-      # Run it twice and test for idempotency
+    it 'works idempotently with no errors' do
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
+    end
+
+    describe service('borg-backup.timer') do
+      it { is_expected.to be_enabled }
+      it { is_expected.to be_running }
     end
   end
 end
