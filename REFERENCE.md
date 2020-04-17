@@ -15,10 +15,6 @@ _Private Classes_
 * `borg::install`: This class handles the installation. Avoid modifying private classes.
 * `borg::service`: 
 
-**Defined types**
-
-* [`borg::ssh_keygen`](#borgssh_keygen): Define: ssh_keygen this is based on https://github.com/maestrodev/puppet-ssh_keygen/blob/master/manifests/init.pp
-
 ## Classes
 
 ### borg
@@ -177,7 +173,7 @@ Data type: `String[1]`
 
 The ssh username to connect to the remote borg service.
 
-Default value: $facts['hostname']
+Default value: $facts['networking']['hostname']
 
 ##### `ssh_port`
 
@@ -186,71 +182,4 @@ Data type: `Stdlib::Port`
 SSH port for the remote server (default: 22). Will be written into the local ssh client configuration file.
 
 Default value: 22
-
-## Defined types
-
-### borg::ssh_keygen
-
-Define: ssh_keygen
-this is based on https://github.com/maestrodev/puppet-ssh_keygen/blob/master/manifests/init.pp
-
-#### Parameters
-
-The following parameters are available in the `borg::ssh_keygen` defined type.
-
-##### `user`
-
-Data type: `Any`
-
-The user that will own they key
-
-Default value: `undef`
-
-##### `type`
-
-Data type: `Any`
-
-the openssh key type
-
-Default value: `undef`
-
-##### `bits`
-
-Data type: `Any`
-
-The key length
-
-Default value: `undef`
-
-##### `home`
-
-Data type: `Any`
-
-The homedir where we will store the key
-
-Default value: `undef`
-
-##### `filename`
-
-Data type: `Any`
-
-The filename for the new key
-
-Default value: `undef`
-
-##### `comment`
-
-Data type: `Any`
-
-Comments that should be added to the key
-
-Default value: `undef`
-
-##### `options`
-
-Data type: `Any`
-
-Additional ssh-keygen paramters and options
-
-Default value: `undef`
 
