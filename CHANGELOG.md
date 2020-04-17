@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.3.0](https://github.com/voxpupuli/puppet-borg/tree/v1.3.0) (2020-04-03)
+## [v1.3.1](https://github.com/voxpupuli/puppet-borg/tree/v1.3.1) (2020-04-17)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.3.0...v1.3.1)
+
+**Fixed bugs:**
+
+- Backup EFI data as well [\#56](https://github.com/voxpupuli/puppet-borg/pull/56) ([bastelfreak](https://github.com/bastelfreak))
+- BorgRestore: Increase exec timeout to 10-\>20min [\#55](https://github.com/voxpupuli/puppet-borg/pull/55) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Use voxpupuli-acceptance [\#54](https://github.com/voxpupuli/puppet-borg/pull/54) ([ekohl](https://github.com/ekohl))
+
+## [v1.3.0](https://github.com/voxpupuli/puppet-borg/tree/v1.3.0) (2020-04-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.2.0...v1.3.0)
 
