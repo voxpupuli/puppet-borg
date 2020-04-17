@@ -10,6 +10,8 @@ borg::excludes:
 borg::includes:
   - '/'
   - '/boot'
+  - '/boot/efi'
+  - '/boot/EFI'
   - '/var/log'
 borg::keep_yearly: 3
 borg::keep_monthly: 24
