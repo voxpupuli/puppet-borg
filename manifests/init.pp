@@ -98,7 +98,6 @@ class borg (
   String[1] $username                              = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                           = 22,
 ) {
-
   contain borg::install
   contain borg::config
   contain borg::service
