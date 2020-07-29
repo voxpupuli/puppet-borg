@@ -1,7 +1,6 @@
 # @api private
 # This class handles the installation. Avoid modifying private classes.
 class borg::install {
-
   assert_private()
 
   if $facts['os']['osfamily'] == 'FreeBSD' {
@@ -13,24 +12,24 @@ class borg::install {
   # at the moment, we only support Ubuntu
   if $borg::manage_repository {
     include apt
-    apt::ppa {'ppa:costamagnagianfranco/borgbackup':
+    apt::ppa { 'ppa:costamagnagianfranco/borgbackup':
       package_manage => true,
       before         => Package[$borg::package_name],
     }
   }
   # ports and portupgrade provider are not available providers on FreeBSD 11
-  package{$borg::package_name:
+  package { $borg::package_name:
     ensure   => $borg::package_ensure,
     provider => $real_package_provider,
   }
 
   if $borg::install_restore_script {
     $venv_directory = '/opt/BorgRestore'
-    ensure_packages($borg::restore_dependencies, {before => Exec['install_borg_restore']})
-    file{$venv_directory:
+    ensure_packages($borg::restore_dependencies, { before => Exec['install_borg_restore'] })
+    file { $venv_directory:
       ensure => 'directory',
     }
-    -> exec{'install_borg_restore':
+    -> exec { 'install_borg_restore':
       command     => 'cpanm -l /opt/BorgRestore App::BorgRestore',
       creates     => "${venv_directory}/bin/borg-restore.pl",
       path        => "${$venv_directory}/bin::/usr/sbin:/usr/bin:/sbin:/bin",
@@ -39,7 +38,7 @@ class borg::install {
       cwd         => '/root',
       require     => Package[$borg::package_name],
     }
-    file{'/usr/local/bin/borg-restore.pl':
+    file { '/usr/local/bin/borg-restore.pl':
       ensure  => 'file',
       content => epp("${module_name}/borg-restore.pl"),
       owner   => 'root',
@@ -50,7 +49,7 @@ class borg::install {
   # we're now switching to rh-perl524 from centos-sclo-rh (which comes from the foreman module?)
   if $borg::create_prometheus_metrics {
     if $borg::use_upstream_reporter {
-      archive{'/opt/0.1.1.tar.gz':
+      archive { '/opt/0.1.1.tar.gz':
         extract_path  => '/opt',
         creates       => '/opt/prometheus-borg-exporter-0.1.1/borg_exporter',
         source        => 'https://github.com/teemow/prometheus-borg-exporter/archive/0.1.1.tar.gz',
@@ -58,7 +57,7 @@ class borg::install {
         checksum      => '307432be6453d83825b18537e105d1180f2d13fa',
         checksum_type => 'sha1',
       }
-      ~> file{'/usr/local/bin/borg_exporter':
+      ~> file { '/usr/local/bin/borg_exporter':
         ensure => 'file',
         source => '/opt/prometheus-borg-exporter-0.1.1/borg_exporter',
         owner  => 'root',
@@ -66,7 +65,7 @@ class borg::install {
         mode   => '0755',
       }
     } else {
-      file{'/usr/local/bin/borg_exporter':
+      file { '/usr/local/bin/borg_exporter':
         ensure  => 'file',
         content => epp("${module_name}/borg_exporter.sh.epp"),
         owner   => 'root',
@@ -74,21 +73,21 @@ class borg::install {
         mode    => '0755',
       }
     }
-    file{'/etc/borg':
+    file { '/etc/borg':
       ensure  => 'file',
       content => epp("${module_name}/borg.epp", {
-        'username'      => $borg::username,
-        'backupdestdir' => $borg::backupdestdir,
-        }),
+          'username'      => $borg::username,
+          'backupdestdir' => $borg::backupdestdir,
+      }),
     }
   }
 
   # setup a profile to export the backup server/path. Otherwise the CLI tooles don't work
-  file{'/etc/profile.d/borg.sh':
+  file { '/etc/profile.d/borg.sh':
     ensure  => 'file',
     content => epp("${module_name}/borg.sh.epp", {
-      'username'      => $borg::username,
-      'backupdestdir' => $borg::backupdestdir,
+        'username'      => $borg::username,
+        'backupdestdir' => $borg::backupdestdir,
     }),
   }
 }
