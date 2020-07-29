@@ -18,7 +18,7 @@
 #  - define a host "backup" in root's .ssh/config
 #  - You can override variables from main() as well as the pre_backup() and post_backup() functions in
 #    $XDG_CONFIG_HOME/backup-sh-conf.sh or /etc/backup-sh-conf.sh
-#  - As root run `borg init -v --encryption=keyfile backup:<%= $username %>/<%= $backupdestdir %>`
+#  - As root run `BORG_PASSPHRASE='' borg init -v --encryption=keyfile backup:<%= $username %>/<%= $backupdestdir %>`
 #    (note that zsh uses $HOST instead of $HOSTNAME)
 #  - If you want, increase the max_segment_size in
 #    ssh://backup/borg-$HOSTNAME/config from the default 5MiB
