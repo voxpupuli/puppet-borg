@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.4.0](https://github.com/voxpupuli/puppet-borg/tree/v1.4.0) (2020-08-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.3.1...v1.4.0)
+
+**Implemented enhancements:**
+
+- borg-backup script: mention env var for passphrase [\#59](https://github.com/voxpupuli/puppet-borg/pull/59) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- modulesync 3.0.0 & puppet-lint updates [\#58](https://github.com/voxpupuli/puppet-borg/pull/58) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.3.1](https://github.com/voxpupuli/puppet-borg/tree/v1.3.1) (2020-04-17)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.3.0...v1.3.1)
