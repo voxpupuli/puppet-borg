@@ -22,6 +22,9 @@
 
 Main class, includes all other classes.
 
+* **See also**
+  * https://metacpan.org/pod/App::BorgRestore
+
 #### Parameters
 
 The following parameters are available in the `borg` class.
@@ -183,4 +186,12 @@ Data type: `Stdlib::Port`
 SSH port for the remote server (default: 22). Will be written into the local ssh client configuration file.
 
 Default value: `22`
+
+##### `borg_restore_version`
+
+Data type: `Pattern[/^\d*\.\d*\.\d*$/]`
+
+Version for the perl script App::BorgRestore. change this version and the module will upgrade/downgrade it
+
+Default value: `'3.4.3'`
 

@@ -30,8 +30,8 @@ class borg::install {
       ensure => 'directory',
     }
     -> exec { 'install_borg_restore':
-      command     => "cpanm -l ${venv_directory} App::BorgRestore",
-      creates     => "${venv_directory}/bin/borg-restore.pl",
+      command     => "cpanm -l ${venv_directory} App::BorgRestore@${borg::borg_restore_version}",
+      creates     => "${venv_directory}/lib/perl5/x86_64-linux-thread-multi/.meta/App-BorgRestore-${borg::borg_restore_version}",
       path        => "${$venv_directory}/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin",
       environment => ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}", 'HOME=/root'],
       timeout     => 1200,

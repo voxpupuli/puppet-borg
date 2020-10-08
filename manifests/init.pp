@@ -72,6 +72,11 @@
 # @param ssh_port
 #   SSH port for the remote server (default: 22). Will be written into the local ssh client configuration file.
 #
+# @param borg_restore_version
+#   Version for the perl script App::BorgRestore. change this version and the module will upgrade/downgrade it
+#
+# @see https://metacpan.org/pod/App::BorgRestore
+#
 class borg (
   Variant[String[1],Array[String[1]]] $package_name,
   Boolean $create_prometheus_metrics,
@@ -97,6 +102,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_includes = [],
   String[1] $username                              = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                           = 22,
+  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version = '3.4.3',
 ) {
   contain borg::install
   contain borg::config
