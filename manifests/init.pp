@@ -75,6 +75,9 @@
 # @param borg_restore_version
 #   Version for the perl script App::BorgRestore. change this version and the module will upgrade/downgrade it
 #
+# @param install_fatpacked_cpanm
+#   cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -94,6 +97,7 @@ class borg (
   Stdlib::Absolutepath $restore_script_path,
   String[1] $backupdestdir,
   Boolean $manage_repository,
+  Boolean $install_fatpacked_cpanm,
   Array[String[1]] $exclude_pattern,
   Array[String[1]] $additional_exclude_pattern     = [],
   Array[String[1]] $restore_dependencies           = [],

@@ -54,9 +54,7 @@ describe 'borg' do
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
-          it { is_expected.to contain_package('perl-local-lib') }
-          it { is_expected.to contain_package('perl-Test-Simple') }
-          it { is_expected.to contain_package('perl-App-cpanminus') }
+          it { is_expected.to contain_package('perl-TAP-Harness-Env') }
           it { is_expected.to contain_package('gcc') }
           it { is_expected.to contain_exec('install_borg_restore') }
           it { is_expected.to contain_file('/opt/BorgRestore') }

@@ -195,3 +195,9 @@ Version for the perl script App::BorgRestore. change this version and the module
 
 Default value: `'3.4.3'`
 
+##### `install_fatpacked_cpanm`
+
+Data type: `Boolean`
+
+cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
+
