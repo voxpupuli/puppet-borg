@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.5.0](https://github.com/voxpupuli/puppet-borg/tree/v1.5.0) (2020-10-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.4.0...v1.5.0)
+
+**Implemented enhancements:**
+
+- Implement support for upstream cpanm management / BorgRestore: Add support for upgrades/downgrades [\#66](https://github.com/voxpupuli/puppet-borg/pull/66) ([bastelfreak](https://github.com/bastelfreak))
+- installation: Add local bin paths to $PATH [\#64](https://github.com/voxpupuli/puppet-borg/pull/64) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Rework puppet-strings documentation [\#70](https://github.com/voxpupuli/puppet-borg/pull/70) ([bastelfreak](https://github.com/bastelfreak))
+- regenerate REFERENCE.md / Add puppet-lint-param-docs linter [\#61](https://github.com/voxpupuli/puppet-borg/pull/61) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.4.0](https://github.com/voxpupuli/puppet-borg/tree/v1.4.0) (2020-08-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.3.1...v1.4.0)
