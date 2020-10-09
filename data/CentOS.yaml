@@ -1,4 +1,5 @@
 ---
 borg::package_name: 'borgbackup'
 borg::install_restore_script: true
-borg::update_borg_restore_db_after_backuprun: true
+borg::restore_script_path: '/usr/local/bin/borg-restore.pl'
+borg::manage_repository: false

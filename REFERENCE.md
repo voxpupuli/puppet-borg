@@ -41,11 +41,15 @@ Data type: `Boolean`
 
 Enable a postrun command to create prometheus compatible metrics about all backups
 
+Default value: ``true``
+
 ##### `use_upstream_reporter`
 
 Data type: `Boolean`
 
 Enable to upstream reporter (see create_prometheus_metrics param) or our vendored version
+
+Default value: ``false``
 
 ##### `update_borg_restore_db_after_backuprun`
 
@@ -53,11 +57,15 @@ Data type: `Boolean`
 
 Enable the restore helper from Florian 'Bluewind' Pritz (https://metacpan.org/release/App-BorgRestore) as another postrun command (see also the install_restore_script parameter)
 
+Default value: ``true``
+
 ##### `keep_yearly`
 
 Data type: `Integer[1]`
 
 For how many years should we keep our backups?
+
+Default value: `3`
 
 ##### `keep_monthly`
 
@@ -65,11 +73,15 @@ Data type: `Integer[1]`
 
 For how many months should we keep our backups?
 
+Default value: `24`
+
 ##### `keep_weekly`
 
 Data type: `Integer[1]`
 
 For how many weeks should we keep our backups?
+
+Default value: `36`
 
 ##### `keep_daily`
 
@@ -77,11 +89,15 @@ Data type: `Integer[1]`
 
 For how many days should we keep our backups?
 
+Default value: `60`
+
 ##### `keep_within`
 
 Data type: `Integer[1]`
 
 For how many days should we keep all backups we have?
+
+Default value: `30`
 
 ##### `excludes`
 
@@ -89,11 +105,15 @@ Data type: `Array[Stdlib::Absolutepath]`
 
 list of default mountpoints that should be excluded from backups. Every mountpoint needs to be explicitly excluded or included. See also the additional_excludes parameter.
 
+Default value: `['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs']`
+
 ##### `includes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
 list of default mountpoints that should be included from backups. Every mountpoint needs to be explicitly excluded or included. See also the additional_includes parameter.
+
+Default value: `['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log']`
 
 ##### `backupserver`
 
@@ -119,6 +139,8 @@ Data type: `String[1]`
 
 The path on the remote server where the backups should be written to.
 
+Default value: `'borg'`
+
 ##### `manage_repository`
 
 Data type: `Boolean`
@@ -130,6 +152,8 @@ A Boolean that enables/disables repository management. Only true on Ubuntu 16.04
 Data type: `Array[String[1]]`
 
 We currently support excludes/includes for mountpoints. borg supports also a list of shell glob/regex pattern to filter for files.
+
+Default value: `['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*']`
 
 ##### `additional_exclude_pattern`
 

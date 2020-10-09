@@ -1,2 +1,5 @@
 ---
 borg::package_name: 'archivers/py-borgbackup'
+borg::restore_script_path: '/usr/local/bin/borg-restore.pl'
+borg::manage_repository: false
+borg::install_fatpacked_cpanm: false
