@@ -20,6 +20,9 @@ describe 'borg' do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+    describe command('borg-restore.pl --version') do
+      its(:stdout) { is_expected.to match(%r{^Version: 3.4.3$}) }
+    end
   end
   context 'with a backup server and App:BorgRestore' do
     let(:pp) do
@@ -40,6 +43,9 @@ describe 'borg' do
     describe service('borg-backup.timer') do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
+    end
+    describe command('borg-restore.pl --version') do
+      its(:stdout) { is_expected.to match(%r{^Version: 3.4.3$}) }
     end
   end
 end
