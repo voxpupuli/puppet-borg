@@ -29,3 +29,4 @@ borg::exclude_pattern:
   - 'sh:/root/.cache/*'
   - 'sh:/var/cache/pacman/pkg/*'
 borg::manage_repository: false
+borg::install_fatpacked_cpanm: false
