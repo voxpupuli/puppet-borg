@@ -159,17 +159,17 @@ backup_borg() {
     )
 
   if tty -s; then
-    options+=(--progress --stats)
+    options+=(--progress)
   fi
 
-  borg create "${options[@]}" "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "$src"
+  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "$src"
   # keep all backups from the last <%= $keep_within %> days
   # keep at least one backup for each day for <%= $keep_daily %> days
   # keep at least one backup for each week for <%= $keep_weekly %> weeks
   # keep at least one backup for each month for <%= $keep_monthly %> months
   # keep at least one backup for each year for <%= $keep_yearly %> years
   # more details at https://borgbackup.readthedocs.io/en/stable/usage/prune.html
-  borg prune --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> --verbose "$dst"
+  borg prune --stats --verbose --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> "$dst"
 }
 
 ### support functions below ###
