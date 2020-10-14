@@ -106,7 +106,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_includes = [],
   String[1] $username                              = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                           = 22,
-  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version = '3.4.3',
+  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version = '3.4.4',
 ) {
   contain borg::install
   contain borg::config
