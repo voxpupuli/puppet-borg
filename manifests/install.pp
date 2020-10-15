@@ -32,6 +32,8 @@ class borg::install {
         source        => 'https://github.com/miyagawa/cpanminus/archive/Menlo-Legacy-1.9022.tar.gz',
         checksum      => '2765ec98c48f85d7652b346d671a0fb3f5cfe4bd',
         checksum_type => 'sha1',
+        proxy_type    => $borg::proxy_type,
+        proxy_server  => $borg::proxy_server,
       }
       ~> file { '/usr/local/bin/cpanm':
         ensure => 'file',
@@ -74,6 +76,8 @@ class borg::install {
         extract       => true,
         checksum      => '307432be6453d83825b18537e105d1180f2d13fa',
         checksum_type => 'sha1',
+        proxy_type    => $borg::proxy_type,
+        proxy_server  => $borg::proxy_server,
       }
       ~> file { '/usr/local/bin/borg_exporter':
         ensure => 'file',

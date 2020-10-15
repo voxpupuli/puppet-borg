@@ -78,6 +78,12 @@
 # @param install_fatpacked_cpanm
 #   cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
 #
+# @param proxy_type
+#   configue a network proxy *type* for the archive resources in this module. You also need to set `proxy_server` if you need a proxy.
+#
+# @param proxy_server
+#   Configurea network proxy for the archive resources in this module. By default no proxy will be used
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -87,26 +93,28 @@ class borg (
   Stdlib::Absolutepath $restore_script_path,
   Boolean $manage_repository,
   Boolean $install_fatpacked_cpanm,
-  Boolean $create_prometheus_metrics               = true,
-  Boolean $use_upstream_reporter                   = false,
-  Boolean $update_borg_restore_db_after_backuprun  = true,
-  Integer[1] $keep_yearly                          = 3,
-  Integer[1] $keep_monthly                         = 24,
-  Integer[1] $keep_weekly                          = 36,
-  Integer[1] $keep_daily                           = 60,
-  Integer[1] $keep_within                          = 30,
-  Array[Stdlib::Absolutepath] $excludes            = ['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs'],
-  Array[Stdlib::Absolutepath] $includes            = ['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log'],
-  String[1] $backupdestdir                         = 'borg',
-  Array[String[1]] $exclude_pattern                = ['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*'],
-  Array[String[1]] $additional_exclude_pattern     = [],
-  Array[String[1]] $restore_dependencies           = [],
-  String[1] $package_ensure                        = present,
-  Array[Stdlib::Absolutepath] $additional_excludes = [],
-  Array[Stdlib::Absolutepath] $additional_includes = [],
-  String[1] $username                              = $facts['networking']['hostname'],
-  Stdlib::Port $ssh_port                           = 22,
-  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version = '3.4.4',
+  Boolean $create_prometheus_metrics                       = true,
+  Boolean $use_upstream_reporter                           = false,
+  Boolean $update_borg_restore_db_after_backuprun          = true,
+  Integer[1] $keep_yearly                                  = 3,
+  Integer[1] $keep_monthly                                 = 24,
+  Integer[1] $keep_weekly                                  = 36,
+  Integer[1] $keep_daily                                   = 60,
+  Integer[1] $keep_within                                  = 30,
+  Array[Stdlib::Absolutepath] $excludes                    = ['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs'],
+  Array[Stdlib::Absolutepath] $includes                    = ['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log'],
+  String[1] $backupdestdir                                 = 'borg',
+  Array[String[1]] $exclude_pattern                        = ['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*'],
+  Array[String[1]] $additional_exclude_pattern             = [],
+  Array[String[1]] $restore_dependencies                   = [],
+  String[1] $package_ensure                                = present,
+  Array[Stdlib::Absolutepath] $additional_excludes         = [],
+  Array[Stdlib::Absolutepath] $additional_includes         = [],
+  String[1] $username                                      = $facts['networking']['hostname'],
+  Stdlib::Port $ssh_port                                   = 22,
+  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.4',
+  Optional[Enum['none', 'ftp','http','https']] $proxy_type = undef,
+  Optional[String[1]] $proxy_server                        = undef,
 ) {
   contain borg::install
   contain borg::config

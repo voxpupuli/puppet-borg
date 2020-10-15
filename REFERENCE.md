@@ -225,3 +225,19 @@ Data type: `Boolean`
 
 cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
 
+##### `proxy_type`
+
+Data type: `Optional[Enum['none', 'ftp','http','https']]`
+
+configue a network proxy *type* for the archive resources in this module. You also need to set `proxy_server` if you need a proxy.
+
+Default value: ``undef``
+
+##### `proxy_server`
+
+Data type: `Optional[String[1]]`
+
+Configurea network proxy for the archive resources in this module. By default no proxy will be used
+
+Default value: ``undef``
+
