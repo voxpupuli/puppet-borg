@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.6.0](https://github.com/voxpupuli/puppet-borg/tree/v1.6.0) (2020-10-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.5.0...v1.6.0)
+
+**Implemented enhancements:**
+
+- Implement proxy support for archive and exec resources [\#75](https://github.com/voxpupuli/puppet-borg/pull/75) ([bastelfreak](https://github.com/bastelfreak))
+- update borg-restore.pl 3.4.3-\>3.4.4 [\#74](https://github.com/voxpupuli/puppet-borg/pull/74) ([bastelfreak](https://github.com/bastelfreak))
+- borg-backup: Increase logging for create/prune [\#73](https://github.com/voxpupuli/puppet-borg/pull/73) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.5.0](https://github.com/voxpupuli/puppet-borg/tree/v1.5.0) (2020-10-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.4.0...v1.5.0)
