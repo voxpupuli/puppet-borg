@@ -61,7 +61,7 @@ Default value: ``true``
 
 ##### `keep_yearly`
 
-Data type: `Integer[1]`
+Data type: `Integer[0]`
 
 For how many years should we keep our backups?
 
@@ -69,7 +69,7 @@ Default value: `3`
 
 ##### `keep_monthly`
 
-Data type: `Integer[1]`
+Data type: `Integer[0]`
 
 For how many months should we keep our backups?
 
@@ -77,7 +77,7 @@ Default value: `24`
 
 ##### `keep_weekly`
 
-Data type: `Integer[1]`
+Data type: `Integer[0]`
 
 For how many weeks should we keep our backups?
 
@@ -85,7 +85,7 @@ Default value: `36`
 
 ##### `keep_daily`
 
-Data type: `Integer[1]`
+Data type: `Integer[0]`
 
 For how many days should we keep our backups?
 
@@ -93,7 +93,7 @@ Default value: `60`
 
 ##### `keep_within`
 
-Data type: `Integer[1]`
+Data type: `Integer[0]`
 
 For how many days should we keep all backups we have?
 
