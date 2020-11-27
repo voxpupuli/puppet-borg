@@ -84,6 +84,9 @@
 # @param proxy_server
 #   Configurea network proxy for the archive resources in this module. By default no proxy will be used
 #
+# @param manage_package
+#   Enable/Disable management of the actual borg package. People on legacy OS or isolated environments can disable this and manage the binary in their profile.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -115,6 +118,7 @@ class borg (
   Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.4',
   Optional[Enum['none', 'ftp','http','https']] $proxy_type = undef,
   Optional[String[1]] $proxy_server                        = undef,
+  Boolean $manage_package                                  = true,
 ) {
   contain borg::install
   contain borg::config

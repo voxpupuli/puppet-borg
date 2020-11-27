@@ -241,3 +241,11 @@ Configurea network proxy for the archive resources in this module. By default no
 
 Default value: ``undef``
 
+##### `manage_package`
+
+Data type: `Boolean`
+
+Enable/Disable management of the actual borg package. People on legacy OS or isolated environments can disable this and manage the binary in their profile.
+
+Default value: ``true``
+

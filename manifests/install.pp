@@ -9,18 +9,24 @@ class borg::install {
     $real_package_provider = undef
   }
 
+  # ports and portupgrade provider are not available providers on FreeBSD 11
+  if $borg::manage_package {
+    package { $borg::package_name:
+      ensure   => $borg::package_ensure,
+      provider => $real_package_provider,
+    }
+    $dependency = Package[$borg::package_name]
+  } else {
+    $dependency = undef
+  }
+
   # at the moment, we only support Ubuntu
   if $borg::manage_repository {
     include apt
     apt::ppa { 'ppa:costamagnagianfranco/borgbackup':
       package_manage => true,
-      before         => Package[$borg::package_name],
+      before         => $dependency,
     }
-  }
-  # ports and portupgrade provider are not available providers on FreeBSD 11
-  package { $borg::package_name:
-    ensure   => $borg::package_ensure,
-    provider => $real_package_provider,
   }
 
   if $borg::install_restore_script {
@@ -62,7 +68,7 @@ class borg::install {
       environment => $env_vars,
       timeout     => 1200,
       cwd         => '/root',
-      require     => Package[$borg::package_name],
+      require     => $dependency,
     }
     file { '/usr/local/bin/borg-restore.pl':
       ensure  => 'file',

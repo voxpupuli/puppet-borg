@@ -102,6 +102,18 @@ describe 'borg' do
 
         it { is_expected.not_to compile }
       end
+
+      context 'without manage_package' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            manage_package: false
+          }
+        end
+
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.not_to contain_package('borgbackup') }
+      end
     end
   end
 end
