@@ -249,3 +249,11 @@ Enable/Disable management of the actual borg package. People on legacy OS or iso
 
 Default value: ``true``
 
+##### `ssh_key_type`
+
+Data type: `Enum['rsa', 'ed25519']`
+
+configure your most favourite ssh key type. This will be used to connect to the remote borg server.
+
+Default value: `'ed25519'`
+
