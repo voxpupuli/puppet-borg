@@ -87,6 +87,9 @@
 # @param manage_package
 #   Enable/Disable management of the actual borg package. People on legacy OS or isolated environments can disable this and manage the binary in their profile.
 #
+# @param ssh_key_type
+#   configure your most favourite ssh key type. This will be used to connect to the remote borg server.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -119,6 +122,7 @@ class borg (
   Optional[Enum['none', 'ftp','http','https']] $proxy_type = undef,
   Optional[String[1]] $proxy_server                        = undef,
   Boolean $manage_package                                  = true,
+  Enum['rsa', 'ed25519'] $ssh_key_type                     = 'ed25519',
 ) {
   contain borg::install
   contain borg::config

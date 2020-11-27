@@ -44,8 +44,8 @@ class borg::config {
   }
   # create the backup key for a user
   ssh_keygen { 'root_borg':
-    type     => 'ed25519',
-    filename => '/root/.ssh/id_ed25519_borg',
+    type     => $borg::ssh_key_type,
+    filename => "/root/.ssh/id_${borg::ssh_key_type}_borg",
     home     => '/root',
     user     => 'root',
   }
@@ -57,7 +57,7 @@ class borg::config {
     options       => {
       'Host backup' => {
         'User'         => $borg::username,
-        'IdentityFile' => '~/.ssh/id_ed25519_borg',
+        'IdentityFile' => "~/.ssh/id_${borg::ssh_key_type}_borg",
         'Hostname'     => $borg::backupserver,
         'Port'         => $borg::ssh_port,
       },
