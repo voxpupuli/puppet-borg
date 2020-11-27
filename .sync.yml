@@ -1,11 +1,4 @@
 ---
-.travis.yml:
-  secure: "YaM+1NaZ5PFn6rDg03uK/qJUfHPTTpk1wV0d8hy+O1g5xzt+v+Pn/ZzJ7hglBhEeWRNfBhcHWK9Wr/yghGHhZyjMhK4MXSIQnJjgSPVZFJM7PrH+IRzzwaCUT6tomnTdvbVWBr9R3BMgNUg2r1pvpAkFoDmWGcjJkwwQlDS1RnfkYmsf2rF5S0yOCqhdvTdsItHvpuXPMTnRtDhylvbQbp55BQXmHqDhFEv5JU9Rb1nXOaDPNqWeR+aaHp8IkSW/hiLn2giAVopek9gJVMeIqdlmXh5RQgCdPv/WOisMfsU/c3vc3z2EgdLZlWO7LkH2dh9H4129i2xLLuJB/CcpFyfWzNdqyu2aMf+yia0jkqy/QRZwjn+h4RKR+jmLWpGV+74m9z4EBkF0wdma0eiC7ZCY3E225E7UzX1o15lljWdQtd9Ou8sFWumoLRqnkNtSZR+kRHDdxem+M5pR2YK89iycCiywMCMw2uE6sdy51V/CIlZhwT7bXaogvld2WofSkm8iiaPVTyv3GiPmbK2YYlSh5//yqQz5Ggyaw78i1m7+4JW+ex2Saf8iJaU+29eWUT2/LjBHxljDXdTHuumsBjiigGl1MJg+w103Y8cnPLzQK1fxAeAolUrolm6UylAw0FepEI+4CtwkUJ0+QSL9b49lsN9xgc5EIahwtFnOZDo="
-  docker_sets:
-    - set: ubuntu1604-64
-    - set: ubuntu1804-64
-    - set: centos7-64
-    - set: debian9-64
 Gemfile:
   optional:
     ':test':
