@@ -80,6 +80,28 @@ describe 'borg' do
           it { is_expected.to contain_package('perl-App-cpanminus') }
         end
       end
+
+      context 'with keep intervall set to 0' do
+        let :params do
+          {
+            keep_yearly: 0,
+            keep_monthly: 0,
+            keep_weekly: 0,
+            keep_daily: 0,
+            keep_within: 0,
+            backupserver: 'localhost'
+          }
+        end
+
+        it { is_expected.to compile.with_all_deps }
+      end
+      context 'fails without backupserver' do
+        let :params do
+          {}
+        end
+
+        it { is_expected.not_to compile }
+      end
     end
   end
 end
