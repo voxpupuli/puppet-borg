@@ -54,11 +54,18 @@ describe 'borg' do
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
-          it { is_expected.to contain_package('perl-TAP-Harness-Env') }
           it { is_expected.to contain_package('gcc') }
+          it { is_expected.to contain_package('perl-core') }
           it { is_expected.to contain_exec('install_borg_restore') }
           it { is_expected.to contain_file('/opt/BorgRestore') }
           it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
+          if facts[:os]['release']['major'].to_i == 8
+            it { is_expected.not_to contain_package('perl-TAP-Harness-Env') }
+            it { is_expected.to contain_package('perl-App-cpanminus') }
+          else
+            it { is_expected.to contain_package('perl-TAP-Harness-Env') }
+            it { is_expected.not_to contain_package('perl-App-cpanminus') }
+          end
         end
       when 'Gentoo'
         context 'on osfamily Gentoo' do
