@@ -4,10 +4,10 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
 group :test do
-  gem 'voxpupuli-test', '~> 5.0',   :require => false
-  gem 'coveralls',                  :require => false
-  gem 'simplecov-console',          :require => false
-  gem 'puppet_metadata', '~> 1.0',  :require => false
+  gem 'voxpupuli-test', '~> 5.0', :require => false
+  gem 'coveralls',                :require => false
+  gem 'simplecov-console',        :require => false
+  gem 'puppet_metadata',          :require => false, :git => 'https://github.com/bastelfreak/puppet_metadata.git', :branch => 'add-archlinux'
 end
 
 group :development do
@@ -16,6 +16,7 @@ group :development do
 end
 
 group :system_tests do
+  gem 'beaker-hostgenerator',            :require => false
   gem 'voxpupuli-acceptance', '~> 1.0',  :require => false
 end
 

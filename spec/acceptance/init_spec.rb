@@ -24,7 +24,7 @@ describe 'borg' do
       it { is_expected.to be_running }
     end
 
-    describe command('borg-restore.pl --version') do
+    describe command('PATH="/usr/bin/vendor_perl:${PATH}" borg-restore.pl --version') do
       its(:stdout) { is_expected.to match(%r{^Version: 3.4.4$}) }
     end
   end
@@ -48,8 +48,10 @@ describe 'borg' do
       it { is_expected.to be_running }
     end
   end
+  # bootstrapping App:BorgRestore via cpanm is not required/working on Archlinux
+  # Archlinux has a package for it
 
-  context 'with a backup server and App:BorgRestore' do
+  context 'with a backup server and App:BorgRestore', unless: default[:platform] =~ %r{archlinux} do
     let(:pp) do
       <<-PUPPET
       class { 'borg':
