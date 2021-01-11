@@ -90,6 +90,9 @@
 # @param ssh_key_type
 #   configure your most favourite ssh key type. This will be used to connect to the remote borg server.
 #
+# @param backuptime
+#   Configure the name of each backupjob and the time of that job.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -123,7 +126,7 @@ class borg (
   Optional[String[1]] $proxy_server                        = undef,
   Boolean $manage_package                                  = true,
   Enum['rsa', 'ed25519'] $ssh_key_type                     = 'ed25519',
-  Hash[String,String] $backuptime                          = { 'default' => '18:30:00'},
+  Hash[String,String] $backuptime                          = { 'default' => '18:30:00' },
 ) {
   contain borg::install
   contain borg::config
