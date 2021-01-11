@@ -257,3 +257,11 @@ configure your most favourite ssh key type. This will be used to connect to the 
 
 Default value: `'ed25519'`
 
+##### `backuptime`
+
+Data type: `Hash[String,String]`
+
+Configure the name of each backupjob and the time of that job. Please note, use the 24 hour format like this: 18:00:00 (HH:MM:SS).
+Supports multiple jobs per day, with the following syntax: `{ 'jobname' => 'time', 'jobname2' => 'time2' }`.
+
+Default value: `'{ 'default' => '18:30:00'}'`

@@ -1,12 +1,17 @@
+<%- | Hash[String,String] $backuptime,
+| -%>
 # THIS FILE IS MANAGED BY PUPPET
 [Unit]
-Description=Daily Timer for borg-backup
+Description=Daily Timer(s) for borg-backup
 
 [Timer]
 # OnBootSec=10min
 # OnUnitActiveSec=1d
-# Daily at 8am
-OnCalendar=*-*-* 18:30:00
+<% include stdlib -%>
+<% $backuptime.keys.each | $key | { -%>
+# Daily named job "<%= $key %>" at <%= $backuptime[$key] %>
+OnCalendar=*-*-* <%= $backuptime[$key] %>
+<% } -%>
 Persistent=True
 
 [Install]
