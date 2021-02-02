@@ -18,7 +18,7 @@
 
 ## Classes
 
-### `borg`
+### <a name="borg"></a>`borg`
 
 Main class, includes all other classes.
 
@@ -27,15 +27,47 @@ Main class, includes all other classes.
 
 #### Parameters
 
-The following parameters are available in the `borg` class.
+The following parameters are available in the `borg` class:
 
-##### `package_name`
+* [`package_name`](#package_name)
+* [`create_prometheus_metrics`](#create_prometheus_metrics)
+* [`use_upstream_reporter`](#use_upstream_reporter)
+* [`update_borg_restore_db_after_backuprun`](#update_borg_restore_db_after_backuprun)
+* [`keep_yearly`](#keep_yearly)
+* [`keep_monthly`](#keep_monthly)
+* [`keep_weekly`](#keep_weekly)
+* [`keep_daily`](#keep_daily)
+* [`keep_within`](#keep_within)
+* [`excludes`](#excludes)
+* [`includes`](#includes)
+* [`backupserver`](#backupserver)
+* [`install_restore_script`](#install_restore_script)
+* [`restore_script_path`](#restore_script_path)
+* [`backupdestdir`](#backupdestdir)
+* [`manage_repository`](#manage_repository)
+* [`exclude_pattern`](#exclude_pattern)
+* [`additional_exclude_pattern`](#additional_exclude_pattern)
+* [`restore_dependencies`](#restore_dependencies)
+* [`package_ensure`](#package_ensure)
+* [`additional_excludes`](#additional_excludes)
+* [`additional_includes`](#additional_includes)
+* [`username`](#username)
+* [`ssh_port`](#ssh_port)
+* [`borg_restore_version`](#borg_restore_version)
+* [`install_fatpacked_cpanm`](#install_fatpacked_cpanm)
+* [`proxy_type`](#proxy_type)
+* [`proxy_server`](#proxy_server)
+* [`manage_package`](#manage_package)
+* [`ssh_key_type`](#ssh_key_type)
+* [`backuptime`](#backuptime)
+
+##### <a name="package_name"></a>`package_name`
 
 Data type: `Variant[String[1],Array[String[1]]]`
 
 Name of the borg package
 
-##### `create_prometheus_metrics`
+##### <a name="create_prometheus_metrics"></a>`create_prometheus_metrics`
 
 Data type: `Boolean`
 
@@ -43,7 +75,7 @@ Enable a postrun command to create prometheus compatible metrics about all backu
 
 Default value: ``true``
 
-##### `use_upstream_reporter`
+##### <a name="use_upstream_reporter"></a>`use_upstream_reporter`
 
 Data type: `Boolean`
 
@@ -51,7 +83,7 @@ Enable to upstream reporter (see create_prometheus_metrics param) or our vendore
 
 Default value: ``false``
 
-##### `update_borg_restore_db_after_backuprun`
+##### <a name="update_borg_restore_db_after_backuprun"></a>`update_borg_restore_db_after_backuprun`
 
 Data type: `Boolean`
 
@@ -59,7 +91,7 @@ Enable the restore helper from Florian 'Bluewind' Pritz (https://metacpan.org/re
 
 Default value: ``true``
 
-##### `keep_yearly`
+##### <a name="keep_yearly"></a>`keep_yearly`
 
 Data type: `Integer[0]`
 
@@ -67,7 +99,7 @@ For how many years should we keep our backups?
 
 Default value: `3`
 
-##### `keep_monthly`
+##### <a name="keep_monthly"></a>`keep_monthly`
 
 Data type: `Integer[0]`
 
@@ -75,7 +107,7 @@ For how many months should we keep our backups?
 
 Default value: `24`
 
-##### `keep_weekly`
+##### <a name="keep_weekly"></a>`keep_weekly`
 
 Data type: `Integer[0]`
 
@@ -83,7 +115,7 @@ For how many weeks should we keep our backups?
 
 Default value: `36`
 
-##### `keep_daily`
+##### <a name="keep_daily"></a>`keep_daily`
 
 Data type: `Integer[0]`
 
@@ -91,7 +123,7 @@ For how many days should we keep our backups?
 
 Default value: `60`
 
-##### `keep_within`
+##### <a name="keep_within"></a>`keep_within`
 
 Data type: `Integer[0]`
 
@@ -99,7 +131,7 @@ For how many days should we keep all backups we have?
 
 Default value: `30`
 
-##### `excludes`
+##### <a name="excludes"></a>`excludes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -107,7 +139,7 @@ list of default mountpoints that should be excluded from backups. Every mountpoi
 
 Default value: `['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs']`
 
-##### `includes`
+##### <a name="includes"></a>`includes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -115,25 +147,25 @@ list of default mountpoints that should be included from backups. Every mountpoi
 
 Default value: `['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log']`
 
-##### `backupserver`
+##### <a name="backupserver"></a>`backupserver`
 
 Data type: `String[1]`
 
 FQDN for the remote server. Will be written into the local ssh client configuration file.
 
-##### `install_restore_script`
+##### <a name="install_restore_script"></a>`install_restore_script`
 
 Data type: `Boolean`
 
 Install the restore helper via cpanm.
 
-##### `restore_script_path`
+##### <a name="restore_script_path"></a>`restore_script_path`
 
 Data type: `Stdlib::Absolutepath`
 
 The path to the restore helper.
 
-##### `backupdestdir`
+##### <a name="backupdestdir"></a>`backupdestdir`
 
 Data type: `String[1]`
 
@@ -141,13 +173,13 @@ The path on the remote server where the backups should be written to.
 
 Default value: `'borg'`
 
-##### `manage_repository`
+##### <a name="manage_repository"></a>`manage_repository`
 
 Data type: `Boolean`
 
 A Boolean that enables/disables repository management. Only true on Ubuntu 16.04 at the moment
 
-##### `exclude_pattern`
+##### <a name="exclude_pattern"></a>`exclude_pattern`
 
 Data type: `Array[String[1]]`
 
@@ -155,7 +187,7 @@ We currently support excludes/includes for mountpoints. borg supports also a lis
 
 Default value: `['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*']`
 
-##### `additional_exclude_pattern`
+##### <a name="additional_exclude_pattern"></a>`additional_exclude_pattern`
 
 Data type: `Array[String[1]]`
 
@@ -163,7 +195,7 @@ Another array of patterns to extend the modules built-in list (`exclude_pattern`
 
 Default value: `[]`
 
-##### `restore_dependencies`
+##### <a name="restore_dependencies"></a>`restore_dependencies`
 
 Data type: `Array[String[1]]`
 
@@ -171,7 +203,7 @@ A list of dependencies for the restore helper.
 
 Default value: `[]`
 
-##### `package_ensure`
+##### <a name="package_ensure"></a>`package_ensure`
 
 Data type: `String[1]`
 
@@ -179,7 +211,7 @@ Ensure state for the borg package.
 
 Default value: `present`
 
-##### `additional_excludes`
+##### <a name="additional_excludes"></a>`additional_excludes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -187,7 +219,7 @@ Another array of mountpoints to extend the modules built-in list (`excludes` par
 
 Default value: `[]`
 
-##### `additional_includes`
+##### <a name="additional_includes"></a>`additional_includes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -195,7 +227,7 @@ Another array of mountpoints to extend to modules built-in list (`includes` para
 
 Default value: `[]`
 
-##### `username`
+##### <a name="username"></a>`username`
 
 Data type: `String[1]`
 
@@ -203,7 +235,7 @@ The ssh username to connect to the remote borg service.
 
 Default value: `$facts['networking']['hostname']`
 
-##### `ssh_port`
+##### <a name="ssh_port"></a>`ssh_port`
 
 Data type: `Stdlib::Port`
 
@@ -211,7 +243,7 @@ SSH port for the remote server (default: 22). Will be written into the local ssh
 
 Default value: `22`
 
-##### `borg_restore_version`
+##### <a name="borg_restore_version"></a>`borg_restore_version`
 
 Data type: `Pattern[/^\d*\.\d*\.\d*$/]`
 
@@ -219,13 +251,13 @@ Version for the perl script App::BorgRestore. change this version and the module
 
 Default value: `'3.4.4'`
 
-##### `install_fatpacked_cpanm`
+##### <a name="install_fatpacked_cpanm"></a>`install_fatpacked_cpanm`
 
 Data type: `Boolean`
 
 cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
 
-##### `proxy_type`
+##### <a name="proxy_type"></a>`proxy_type`
 
 Data type: `Optional[Enum['none', 'ftp','http','https']]`
 
@@ -233,7 +265,7 @@ configue a network proxy *type* for the archive resources in this module. You al
 
 Default value: ``undef``
 
-##### `proxy_server`
+##### <a name="proxy_server"></a>`proxy_server`
 
 Data type: `Optional[String[1]]`
 
@@ -241,7 +273,7 @@ Configurea network proxy for the archive resources in this module. By default no
 
 Default value: ``undef``
 
-##### `manage_package`
+##### <a name="manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
@@ -249,7 +281,7 @@ Enable/Disable management of the actual borg package. People on legacy OS or iso
 
 Default value: ``true``
 
-##### `ssh_key_type`
+##### <a name="ssh_key_type"></a>`ssh_key_type`
 
 Data type: `Enum['rsa', 'ed25519']`
 
@@ -257,11 +289,11 @@ configure your most favourite ssh key type. This will be used to connect to the 
 
 Default value: `'ed25519'`
 
-##### `backuptime`
+##### <a name="backuptime"></a>`backuptime`
 
 Data type: `Hash[String,String]`
 
-Configure the name of each backupjob and the time of that job. Please note, use the 24 hour format like this: 18:00:00 (HH:MM:SS).
-Supports multiple jobs per day, with the following syntax: `{ 'jobname' => 'time', 'jobname2' => 'time2' }`.
+Configure the name of each backupjob and the time of that job.
 
-Default value: `'{ 'default' => '18:30:00'}'`
+Default value: `{ 'default' => '18:30:00' }`
+

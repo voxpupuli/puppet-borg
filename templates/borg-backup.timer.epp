@@ -7,7 +7,6 @@ Description=Daily Timer(s) for borg-backup
 [Timer]
 # OnBootSec=10min
 # OnUnitActiveSec=1d
-<% include stdlib -%>
 <% $backuptime.keys.each | $key | { -%>
 # Daily named job "<%= $key %>" at <%= $backuptime[$key] %>
 OnCalendar=*-*-* <%= $backuptime[$key] %>
