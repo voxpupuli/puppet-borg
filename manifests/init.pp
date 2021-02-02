@@ -126,7 +126,7 @@ class borg (
   Optional[String[1]] $proxy_server                        = undef,
   Boolean $manage_package                                  = true,
   Enum['rsa', 'ed25519'] $ssh_key_type                     = 'ed25519',
-  Hash[String,String] $backuptime                          = { 'default' => '18:30:00' },
+  Hash[String[1],String[1]] $backuptime                          = { 'default' => '18:30:00' },
 ) {
   contain borg::install
   contain borg::config

@@ -291,7 +291,7 @@ Default value: `'ed25519'`
 
 ##### <a name="backuptime"></a>`backuptime`
 
-Data type: `Hash[String,String]`
+Data type: `Hash[String[1],String[1]]`
 
 Configure the name of each backupjob and the time of that job.
 
