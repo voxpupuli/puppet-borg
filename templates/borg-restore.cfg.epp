@@ -1,7 +1,6 @@
-<%- | String[1] $username,
-      String[1] $backupdestdir
+<%- | String[1] $backupdestdir
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
-$borg_repo = "backup:<%= $username %>/<%= $backupdestdir %>";
+$borg_repo = "backup:<%= $backupdestdir %>";
 $cache_path_base = "/root/.cache/borg-restore.pl/";
 1;
