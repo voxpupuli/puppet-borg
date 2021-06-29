@@ -1,5 +1,4 @@
-<%- | String[1] $username,
-      String[1] $backupdestdir
+<%- | String[1] $backupdestdir
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
-export BORG_REPO=backup:<%= $username %>/<%= $backupdestdir %>
+export BORG_REPO=backup:<%= $backupdestdir %>

@@ -117,11 +117,14 @@ class borg::install {
   }
 
   # setup a profile to export the backup server/path. Otherwise the CLI tooles don't work
+  $backupdestdir = $borg::absolutebackupdestdir ? {
+    Undef   => "${borg::username}/${borg::backupdestdir}",
+    default => $borg::absolutebackupdestdir,
+  }
   file { '/etc/profile.d/borg.sh':
     ensure  => 'file',
     content => epp("${module_name}/borg.sh.epp", {
-        'username'      => $borg::username,
-        'backupdestdir' => $borg::backupdestdir,
+        'backupdestdir' => $backupdestdir,
     }),
   }
 }

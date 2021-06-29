@@ -43,7 +43,10 @@
 #   The path to the restore helper.
 #
 # @param backupdestdir
-#   The path on the remote server where the backups should be written to.
+#   The path on the remote server where the backups should be written to. $username will be prepended
+#
+# @param absolutebackupdestdir
+#  By defaults, backups will be written on the remote host to $username/$backupdestdir. if $absolutebackupdestdir is set this will be used instead
 #
 # @param manage_repository
 #   A Boolean that enables/disables repository management. Only true on Ubuntu 16.04 at the moment
@@ -110,6 +113,7 @@ class borg (
   Array[Stdlib::Absolutepath] $excludes                    = ['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs'],
   Array[Stdlib::Absolutepath] $includes                    = ['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log'],
   String[1] $backupdestdir                                 = 'borg',
+  Optional[String[1]] $absolutebackupdestdir               = undef,
   Array[String[1]] $exclude_pattern                        = ['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*'],
   Array[String[1]] $additional_exclude_pattern             = [],
   Array[String[1]] $restore_dependencies                   = [],

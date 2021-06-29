@@ -2,6 +2,11 @@
 class borg::config {
   assert_private()
 
+  $backupdestdir = $borg::absolutebackupdestdir ? {
+    Undef   => "${borg::username}/${borg::backupdestdir}",
+    default => $borg::absolutebackupdestdir,
+  }
+
   # script to run the backup
   file { '/usr/local/bin/borg-backup':
     ensure  => 'file',
@@ -12,8 +17,7 @@ class borg::config {
         'keep_weekly'     => $borg::keep_weekly,
         'keep_monthly'    => $borg::keep_monthly,
         'keep_yearly'     => $borg::keep_yearly,
-        'username'        => $borg::username,
-        'backupdestdir'   => $borg::backupdestdir,
+        'backupdestdir'   => $backupdestdir,
         'exclude_pattern' => $borg::exclude_pattern + $borg::additional_exclude_pattern,
     }),
     mode    => '0755',
@@ -29,11 +33,7 @@ class borg::config {
   # setup the config for the restore script
   file { '/etc/borg-restore.cfg':
     ensure  => 'file',
-    content => epp("${module_name}/borg-restore.cfg.epp",
-      {
-        'username'      => $borg::username,
-        'backupdestdir' => $borg::backupdestdir,
-    }),
+    content => epp("${module_name}/borg-restore.cfg.epp", { 'backupdestdir' => $backupdestdir, }),
   }
   # config file with all excludes and includes
   file { '/etc/backup-sh-conf.sh':
