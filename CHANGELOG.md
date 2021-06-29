@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.0](https://github.com/voxpupuli/puppet-borg/tree/v2.0.0) (2021-06-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.6.0...v2.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Ubuntu 16.04 support [\#101](https://github.com/voxpupuli/puppet-borg/pull/101) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EoL Puppet 5 support; Add Puppet 7 support [\#99](https://github.com/voxpupuli/puppet-borg/pull/99) ([bastelfreak](https://github.com/bastelfreak))
+- \[skip ci\] Drop soon-EOL CentOS/RHEL 6 [\#81](https://github.com/voxpupuli/puppet-borg/pull/81) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Fedora 22-31, add 32/33 [\#80](https://github.com/voxpupuli/puppet-borg/pull/80) ([bastelfreak](https://github.com/bastelfreak))
+- Drop CentOS/RHEL 5 from metadata.json [\#79](https://github.com/voxpupuli/puppet-borg/pull/79) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Debian 10 support [\#107](https://github.com/voxpupuli/puppet-borg/pull/107) ([bastelfreak](https://github.com/bastelfreak))
+- Enable user to configure the backup destination path [\#105](https://github.com/voxpupuli/puppet-borg/pull/105) ([bastelfreak](https://github.com/bastelfreak))
+- puppet/ssh\_keygen: Allow 5.x [\#98](https://github.com/voxpupuli/puppet-borg/pull/98) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 7.x [\#96](https://github.com/voxpupuli/puppet-borg/pull/96) ([bastelfreak](https://github.com/bastelfreak))
+- camptocamp/systemd: allow 3.x [\#95](https://github.com/voxpupuli/puppet-borg/pull/95) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/vcsrepo: Allow 4.x & 5.x [\#94](https://github.com/voxpupuli/puppet-borg/pull/94) ([bastelfreak](https://github.com/bastelfreak))
+- make ssh key type configureable [\#88](https://github.com/voxpupuli/puppet-borg/pull/88) ([bastelfreak](https://github.com/bastelfreak))
+- Introduce manage\_package variable [\#87](https://github.com/voxpupuli/puppet-borg/pull/87) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Fix wrong package dependencies on CentOS 8 [\#84](https://github.com/voxpupuli/puppet-borg/pull/84) ([bastelfreak](https://github.com/bastelfreak))
+- Keep intervalls: Allow 0 [\#83](https://github.com/voxpupuli/puppet-borg/pull/83) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- beaker: set US locale [\#106](https://github.com/voxpupuli/puppet-borg/pull/106) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/apt: allow 8.x [\#104](https://github.com/voxpupuli/puppet-borg/pull/104) ([bastelfreak](https://github.com/bastelfreak))
+- puppet/archive: Allow 5.x [\#103](https://github.com/voxpupuli/puppet-borg/pull/103) ([bastelfreak](https://github.com/bastelfreak))
+- saz/ssh: Allow 7.x [\#102](https://github.com/voxpupuli/puppet-borg/pull/102) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.6.0](https://github.com/voxpupuli/puppet-borg/tree/v1.6.0) (2020-10-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.5.0...v1.6.0)
