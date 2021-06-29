@@ -125,6 +125,39 @@ describe 'borg' do
 
         it { is_expected.to compile.with_all_deps }
       end
+
+      context 'fails without a valid backuptime present' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            backuptime: ''
+          }
+        end
+
+        it { is_expected.not_to compile }
+      end
+
+      context 'with nondefault backuptime present' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            backuptime:   { 'default' => '01:00:00' }
+          }
+        end
+
+        it { is_expected.to compile.with_all_deps }
+      end
+
+      context 'with multiple backuptimes present' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            backuptime:   { '1 am' => '01:00:00', '2 am' => '02:00:00' }
+          }
+        end
+
+        it { is_expected.to compile.with_all_deps }
+      end
     end
   end
 end
