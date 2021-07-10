@@ -38,7 +38,10 @@
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "Archlinux"
+      "operatingsystem": "Archlinux",
+      "operatingsystemrelease": [
+        "rolling"
+      ]
     },
     {
       "operatingsystem": "Gentoo"

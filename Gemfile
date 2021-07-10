@@ -13,8 +13,9 @@ group :development do
 end
 
 group :system_tests do
-  gem 'puppet_metadata', '~> 0.3.0',  :require => false
-  gem 'voxpupuli-acceptance',         :require => false
+  gem 'beaker-hostgenerator', :require => false, :git => 'https://github.com/ekohl/beaker-hostgenerator.git', :branch => 'add-archlinux'
+  gem 'puppet_metadata',      :require => false, :git => 'https://github.com/bastelfreak/puppet_metadata.git', :branch => 'add-archlinux'
+  gem 'voxpupuli-acceptance', :require => false
 end
 
 group :release do
