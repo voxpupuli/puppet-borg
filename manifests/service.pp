@@ -17,9 +17,11 @@ class borg::service {
       ),
     }
     -> systemd::unit_file { 'borg-backup.timer':
-      content => epp("${module_name}/borg-backup.timer.epp"),
-      enable  => true,
-      active  => true,
+      content      => epp("${module_name}/borg-backup.timer.epp",
+        backuptime => $borg::backuptime
+      ),
+      enable       => true,
+      active       => true,
     }
   }
 }
