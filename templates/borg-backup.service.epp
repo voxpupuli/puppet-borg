@@ -6,6 +6,10 @@
 # THIS FILE IS MANAGED BY PUPPET
 [Unit]
 Description=Create borg backups
+# start the service only after network is available
+# https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
