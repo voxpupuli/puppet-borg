@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-borg/tree/v2.1.0) (2021-07-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.0.0...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add support for multiple / variable backup times. [\#111](https://github.com/voxpupuli/puppet-borg/pull/111) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Start backups only if network is available [\#110](https://github.com/voxpupuli/puppet-borg/pull/110) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- Scheduling the time the backup is ran [\#91](https://github.com/voxpupuli/puppet-borg/issues/91)
+
 ## [v2.0.0](https://github.com/voxpupuli/puppet-borg/tree/v2.0.0) (2021-06-29)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v1.6.0...v2.0.0)
