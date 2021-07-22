@@ -1,6 +1,7 @@
 # puppet-borg
 
-[![Build Status](https://travis-ci.com/voxpupuli/puppet-borg.svg?branch=master)](https://travis-ci.com/voxpupuli/puppet-borg)
+[![Build Status](https://github.com/voxpupuli/puppet-borg/workflows/CI/badge.svg)](https://github.com/voxpupuli/puppet-borg/actions?query=workflow%3ACI)
+[![Release](https://github.com/voxpupuli/puppet-borg/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/puppet-borg/actions/workflows/release.yml)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/borg.svg)](https://forge.puppetlabs.com/puppet/borg)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/borg.svg)](https://forge.puppetlabs.com/puppet/borg)
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/borg.svg)](https://forge.puppetlabs.com/puppet/borg)
