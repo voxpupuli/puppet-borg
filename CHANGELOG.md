@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.1](https://github.com/voxpupuli/puppet-borg/tree/v2.1.1) (2021-07-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.0...v2.1.1)
+
+**Fixed bugs:**
+
+- fix broken README.md badges [\#114](https://github.com/voxpupuli/puppet-borg/pull/114) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- switch from camptocamp/systemd to voxpupuli/systemd [\#115](https://github.com/voxpupuli/puppet-borg/pull/115) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.1.0](https://github.com/voxpupuli/puppet-borg/tree/v2.1.0) (2021-07-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.0.0...v2.1.0)
