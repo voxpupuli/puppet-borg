@@ -16,7 +16,7 @@ group :development do
 end
 
 group :system_tests do
-  gem 'puppet_metadata', '~> 0.3.0',  :require => false
+  gem 'puppet_metadata', '~> 1.0',  :require => false
   gem 'voxpupuli-acceptance',         :require => false
 end
 
