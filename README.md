@@ -15,6 +15,7 @@
   * [Examples](#examples)
 * [Restore Script](#restore-script)
 * [Prometheus Exporter](#prometheus-exporter)
+* [Limitations](#limitations)
 * [Tests](#tests)
 * [Contributions](#contributions)
 * [License and Author](#license-and-author)
@@ -99,6 +100,17 @@ upstream documentation (including examples) at [metacpan.org](https://metacpan.o
 More and more people use prometheus. We vendor a bash script that can provide
 you metrics about your backups in the prometheus format. They are written to
 disk and the node\_exporter can collect them.
+
+## Limitations
+
+On CentOS 8, the PowerTools repository needs to be enabled by the user.
+Packages from EPEL8 require the repository but it's disabled by default. For
+more information see:
+* [CentOS 8 bug report about borgbackup](https://bugzilla.redhat.com/show_bug.cgi?id=1993287)
+* [EPEL8 setup guidelines](https://fedoraproject.org/wiki/EPEL#Quickstart)
+
+borgbackup before 1.1.17 didn't depend on packages from PowerTools so this
+worked by accident.
 
 ## Tests
 
