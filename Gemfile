@@ -4,7 +4,8 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
 group :test do
-  gem 'voxpupuli-test', '~> 2.1',  :require => false
+  gem 'voxpupuli-test', git: 'https://github.com/bastelfreak/voxpupuli-test.git', branch: 'pl', :require => false
+  gem 'voxpupuli-puppet-lint-plugins', git: 'https://github.com/voxpupuli/voxpupuli-puppet-lint-plugins.git', branch: 'master', :require => false
   gem 'coveralls',                 :require => false
   gem 'simplecov-console',         :require => false
   gem 'puppet-lint-param-docs',    :require => false
