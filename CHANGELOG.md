@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.2](https://github.com/voxpupuli/puppet-borg/tree/v2.1.2) (2021-08-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.1...v2.1.2)
+
+**Fixed bugs:**
+
+- Document CentOS8 requirement of PowerTools repo [\#119](https://github.com/voxpupuli/puppet-borg/pull/119) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Allow up-to-date dependencies [\#122](https://github.com/voxpupuli/puppet-borg/pull/122) ([smortex](https://github.com/smortex))
+
 ## [v2.1.1](https://github.com/voxpupuli/puppet-borg/tree/v2.1.1) (2021-07-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.0...v2.1.1)
