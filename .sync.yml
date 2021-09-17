@@ -3,3 +3,4 @@ Gemfile:
   optional:
     ':test':
       - gem: puppet-lint-param-docs
+      - gem: rspec_honeycomb_formatter
