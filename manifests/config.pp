@@ -51,16 +51,32 @@ class borg::config {
   }
 
   # /root/.ssh/config entry for the backup server
-  ssh::client::config::user { 'root':
-    ensure        => present,
-    user_home_dir => '/root',
-    options       => {
-      'Host backup' => {
-        'User'         => $borg::username,
-        'IdentityFile' => "~/.ssh/id_${borg::ssh_key_type}_borg",
-        'Hostname'     => $borg::backupserver,
-        'Port'         => $borg::ssh_port,
+  if $borg::ssh_proxyjump {
+    ssh::client::config::user { 'root':
+      ensure        => present,
+      user_home_dir => '/root',
+      options       => {
+        'Host backup' => {
+          'User'         => $borg::username,
+          'IdentityFile' => "~/.ssh/id_${borg::ssh_key_type}_borg",
+          'Hostname'     => $borg::backupserver,
+          'Port'         => $borg::ssh_port,
+          'ProxyJump'    => $borg::ssh_proxyjump,
+        },
       },
-    },
+    }
+  } else {
+    ssh::client::config::user { 'root':
+      ensure        => present,
+      user_home_dir => '/root',
+      options       => {
+        'Host backup' => {
+          'User'         => $borg::username,
+          'IdentityFile' => "~/.ssh/id_${borg::ssh_key_type}_borg",
+          'Hostname'     => $borg::backupserver,
+          'Port'         => $borg::ssh_port,
+        },
+      },
+    }
   }
 }
