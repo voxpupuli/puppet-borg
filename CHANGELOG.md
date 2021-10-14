@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.2.0](https://github.com/voxpupuli/puppet-borg/tree/v2.2.0) (2021-10-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.2...v2.2.0)
+
+**Implemented enhancements:**
+
+- Add support for jumphosts [\#128](https://github.com/voxpupuli/puppet-borg/pull/128) ([sebastianberm](https://github.com/sebastianberm))
+
+**Merged pull requests:**
+
+- saz/ssh: Allow 8.x [\#124](https://github.com/voxpupuli/puppet-borg/pull/124) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.1.2](https://github.com/voxpupuli/puppet-borg/tree/v2.1.2) (2021-08-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.1...v2.1.2)
