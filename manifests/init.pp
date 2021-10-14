@@ -96,6 +96,9 @@
 # @param backuptime
 #   Configure the name of each backupjob and the time of that job.
 #
+# @param ssh_proxyjump
+#   Configure possible bastionhosts for the connection.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -131,6 +134,7 @@ class borg (
   Boolean $manage_package                                  = true,
   Enum['rsa', 'ed25519'] $ssh_key_type                     = 'ed25519',
   Hash[String[1],String[1]] $backuptime                    = { 'default' => '18:30:00' },
+  Optional[String[1]] $ssh_proxyjump                       = undef,
 ) {
   contain borg::install
   contain borg::config

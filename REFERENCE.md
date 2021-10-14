@@ -306,3 +306,11 @@ Configure the name of each backupjob and the time of that job.
 
 Default value: `{ 'default' => '18:30:00' }`
 
+##### <a name="ssh_proxyjump"></a>`ssh_proxyjump`
+
+Data type: `Optional[String[1]]`
+
+Configure possible bastionhosts for the connection.
+
+Default value: ``undef``
+
