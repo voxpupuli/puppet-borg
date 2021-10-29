@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'borg' do
@@ -6,7 +8,7 @@ describe 'borg' do
   end
 
   on_supported_os.each do |os, facts|
-    context "on #{os} " do
+    context "on #{os}" do
       let :facts do
         facts
       end
@@ -48,9 +50,8 @@ describe 'borg' do
           it { is_expected.to contain_package('make') }
           it { is_expected.to contain_package('cpanminus') }
           it { is_expected.to contain_package('libdbd-sqlite3-perl') }
-          if facts[:os]['release']['major'] == '16.04'
-            it { is_expected.to contain_apt__ppa('ppa:costamagnagianfranco/borgbackup') }
-          end
+
+          it { is_expected.to contain_apt__ppa('ppa:costamagnagianfranco/borgbackup') } if facts[:os]['release']['major'] == '16.04'
         end
       when 'RedHat', 'CentOS'
         context 'on osfamily Redhat' do
@@ -59,6 +60,7 @@ describe 'borg' do
           it { is_expected.to contain_exec('install_borg_restore') }
           it { is_expected.to contain_file('/opt/BorgRestore') }
           it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
+
           if facts[:os]['release']['major'].to_i == 8
             it { is_expected.not_to contain_package('perl-TAP-Harness-Env') }
             it { is_expected.to contain_package('perl-App-cpanminus') }
@@ -95,6 +97,7 @@ describe 'borg' do
 
         it { is_expected.to compile.with_all_deps }
       end
+
       context 'fails without backupserver' do
         let :params do
           {}
@@ -115,7 +118,7 @@ describe 'borg' do
         it { is_expected.not_to contain_package('borgbackup') }
       end
 
-      context 'without manage_package' do
+      context 'with ssh_key_type set to rsa' do
         let :params do
           {
             backupserver: 'localhost',
@@ -141,7 +144,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            backuptime:   { 'default' => '01:00:00' }
+            backuptime: { 'default' => '01:00:00' }
           }
         end
 
@@ -152,7 +155,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            backuptime:   { '1 am' => '01:00:00', '2 am' => '02:00:00' }
+            backuptime: { '1 am' => '01:00:00', '2 am' => '02:00:00' }
           }
         end
 

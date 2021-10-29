@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'borg' do
   context 'with a backup server' do
-    if fact('os.name') == 'CentOS' && fact('os.release.major').to_i == 8
-      shell('sed -i "s/enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo')
-    end
+    shell('sed -i "s/enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo') if fact('os.name') == 'CentOS' && fact('os.release.major').to_i == 8
     let(:pp) do
       <<-PUPPET
       class { 'borg':
@@ -23,10 +23,12 @@ describe 'borg' do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+
     describe command('borg-restore.pl --version') do
       its(:stdout) { is_expected.to match(%r{^Version: 3.4.4$}) }
     end
   end
+
   context 'with a backup server and default repositry setup' do
     let(:pp) do
       <<-PUPPET
@@ -46,6 +48,7 @@ describe 'borg' do
       it { is_expected.to be_running }
     end
   end
+
   context 'with a backup server and App:BorgRestore' do
     let(:pp) do
       <<-PUPPET
@@ -66,6 +69,7 @@ describe 'borg' do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+
     describe command('borg-restore.pl --version') do
       its(:stdout) { is_expected.to match(%r{^Version: 3.4.4$}) }
     end
