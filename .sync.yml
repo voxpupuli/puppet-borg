@@ -1,5 +1,5 @@
 ---
-Gemfile:
-  optional:
-    ':test':
-      - gem: puppet-lint-param-docs
+Rakefile:
+  puppet_lint_checks:
+    - parameter_documentation
+    - parameter_types
