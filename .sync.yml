@@ -1,5 +1,4 @@
 ---
-Rakefile:
-  puppet_lint_checks:
+.puppet-lint.rc:
+  enabled_puppet_lint_checks:
     - parameter_documentation
-    - parameter_types

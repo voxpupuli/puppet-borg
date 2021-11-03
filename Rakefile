@@ -69,4 +69,21 @@ begin
 
 rescue LoadError
 end
+
+# This is a list of puppet-lint plugins that we would like to have everywhere.
+# They require a lot of rework so we make them opt-in
+# The list is hardcoded in modulesync_config
+voxpupuli_puppet_lint_disable_checks = %w[
+  parameter_documentation
+  parameter_types
+]
+
+# A list of puppet-lint plugins we enable for this specific module
+modulespecific_puppet_lint_checks = %w[
+  parameter_documentation
+]
+puppet_lint_disable_checks = voxpupuli_puppet_lint_disable_checks - modulespecific_puppet_lint_checks
+puppet_lint_disable_checks.each do |check|
+  PuppetLint.configuration.send("disable_#{check}")
+end
 # vim: syntax=ruby
