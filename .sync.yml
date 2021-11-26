@@ -1,4 +1,0 @@
----
-.puppet-lint.rc:
-  enabled_lint_checks:
-    - parameter_documentation
