@@ -161,6 +161,17 @@ describe 'borg' do
 
         it { is_expected.to compile.with_all_deps }
       end
+
+      context 'without nondefault compression present' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            compression: 'auto,zstd,6'
+          }
+        end
+
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^\s+--compression "auto,zstd,6"$}) }
+      end
     end
   end
 end
