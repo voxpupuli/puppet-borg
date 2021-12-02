@@ -81,8 +81,9 @@ class{'borg':
 ```
 
 We need to tell the script what we want to do with every mountpoint, backup it
-or ignore it. We can also exclude specific paths. The defaults are stored
-as hiera data [in this module](https://github.com/voxpupuli/puppet-borg/blob/master/data/common.yaml).
+or ignore it. We can also exclude specific paths. The defaults are stored in
+the [manifests/init.pp](https://github.com/voxpupuli/puppet-borg/blob/master/manifests/init.pp)
+with os-specific overrides in [data/](https://github.com/voxpupuli/puppet-borg/blob/master/data/).
 
 ## Restore Script
 
