@@ -57,7 +57,7 @@ will also configure a systemd service and a timer to execute it on a regular
 basis. Borg doesn't automatically prune old backups, our script has parameters
 for this.
 
-Please have a look at our [REFERENCE.d](REFERENCE.md). All parameters are
+Please have a look at our [REFERENCE.md](https://github.com/voxpupuli/puppet-borg/blob/master/REFERENCE.md). All parameters are
 documented in that file.
 
 ### Examples
@@ -122,7 +122,7 @@ by running:
 bundle exec rake test
 ```
 
-Detailed instructions are in the [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+Detailed instructions are in the [CONTRIBUTING.md](https://github.com/voxpupuli/puppet-borg/blob/master/.github/CONTRIBUTING.md)
 file.
 
 ## Contributions
@@ -135,7 +135,7 @@ Contribution is fairly easy:
 * Write a test for it (maybe start with the test first)
 * Create a pull request
 
-Detailed instructions are in the [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+Detailed instructions are in the [CONTRIBUTING.md](https://github.com/voxpupuli/puppet-borg/blob/master/.github/CONTRIBUTING.md)
 file.
 
 ## License and Author
