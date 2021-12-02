@@ -12,6 +12,9 @@
 # @param update_borg_restore_db_after_backuprun
 #   Enable the restore helper from Florian 'Bluewind' Pritz (https://metacpan.org/release/App-BorgRestore) as another postrun command (see also the install_restore_script parameter)
 #
+# @param manage_prune
+#   Enable management of backup prunes. If this is set to `false` all `keep_*` parameters are ignored.
+#
 # @param keep_yearly
 #   For how many years should we keep our backups?
 #
@@ -114,6 +117,7 @@ class borg (
   Boolean $create_prometheus_metrics                       = true,
   Boolean $use_upstream_reporter                           = false,
   Boolean $update_borg_restore_db_after_backuprun          = true,
+  Boolean $manage_prune                                    = true,
   Integer[0] $keep_yearly                                  = 3,
   Integer[0] $keep_monthly                                 = 24,
   Integer[0] $keep_weekly                                  = 36,
