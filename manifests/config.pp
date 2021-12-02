@@ -17,6 +17,7 @@ class borg::config {
         'keep_weekly'     => $borg::keep_weekly,
         'keep_monthly'    => $borg::keep_monthly,
         'keep_yearly'     => $borg::keep_yearly,
+        'compression'     => $borg::compression,
         'backupdestdir'   => $backupdestdir,
         'exclude_pattern' => $borg::exclude_pattern + $borg::additional_exclude_pattern,
     }),

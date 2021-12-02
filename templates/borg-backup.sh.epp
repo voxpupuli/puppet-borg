@@ -3,6 +3,7 @@
       Integer[0] $keep_weekly,
       Integer[0] $keep_daily,
       Integer[0] $keep_within,
+      String[1] $compression,
       String[1] $backupdestdir,
       Array[String[1]] $exclude_pattern,
 | -%>
@@ -151,7 +152,7 @@ backup_borg() {
   local -a options=(
     --verbose
     --numeric-owner
-    --compression lz4
+    --compression "<%= $compression %>"
     --exclude-from "$TMPDIR/exclude-list-borg"
     )
 
