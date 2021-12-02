@@ -172,6 +172,17 @@ describe 'borg' do
 
         it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^\s+--compression "auto,zstd,6"$}) }
       end
+
+      context 'without manage_prune' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            manage_prune: false
+          }
+        end
+
+        it { is_expected.not_to contain_file('/usr/local/bin/borg-backup').with_content(%r{/^\s+borg prune/}) }
+      end
     end
   end
 end

@@ -12,6 +12,7 @@ class borg::config {
     ensure  => 'file',
     content => epp("${module_name}/borg-backup.sh.epp",
       {
+        'manage_prune'    => $borg::manage_prune,
         'keep_within'     => $borg::keep_within,
         'keep_daily'      => $borg::keep_daily,
         'keep_weekly'     => $borg::keep_weekly,

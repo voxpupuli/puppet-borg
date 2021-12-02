@@ -17,9 +17,9 @@ ExecStart=/usr/local/bin/borg-backup
 <% if $create_prometheus_metrics { -%>
 ExecStartPost=/usr/local/bin/borg_exporter
 <% } -%>
-<% if ($use_upstream_reporter == true) { -%>
+<% if $use_upstream_reporter { -%>
 ExecStartPost=/usr/bin/cp /var/lib/node_exporter/textfile_collector/backup.prom /var/lib/prometheus-dropzone/
 <% } -%>
-<% if ($update_borg_restore_db_after_backuprun == true) { -%>
+<% if $update_borg_restore_db_after_backuprun { -%>
 ExecStartPost=<%= $restore_script_path %> --update-cache --debug
 <% } -%>
