@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.3.0](https://github.com/voxpupuli/puppet-borg/tree/v2.3.0) (2021-12-03)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.2.0...v2.3.0)
+
+**Implemented enhancements:**
+
+- Add ability to specify compression method and level [\#138](https://github.com/voxpupuli/puppet-borg/pull/138) ([hashworks](https://github.com/hashworks))
+- Add ability to disable borg prune call completly [\#137](https://github.com/voxpupuli/puppet-borg/pull/137) ([hashworks](https://github.com/hashworks))
+
+**Merged pull requests:**
+
+- Make sure README links are not 404 outside of GitHub [\#139](https://github.com/voxpupuli/puppet-borg/pull/139) ([hashworks](https://github.com/hashworks))
+- Update hiera documentation in README.md [\#135](https://github.com/voxpupuli/puppet-borg/pull/135) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.2.0](https://github.com/voxpupuli/puppet-borg/tree/v2.2.0) (2021-10-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.1.2...v2.2.0)
