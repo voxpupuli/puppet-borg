@@ -33,11 +33,13 @@ The following parameters are available in the `borg` class:
 * [`create_prometheus_metrics`](#create_prometheus_metrics)
 * [`use_upstream_reporter`](#use_upstream_reporter)
 * [`update_borg_restore_db_after_backuprun`](#update_borg_restore_db_after_backuprun)
+* [`manage_prune`](#manage_prune)
 * [`keep_yearly`](#keep_yearly)
 * [`keep_monthly`](#keep_monthly)
 * [`keep_weekly`](#keep_weekly)
 * [`keep_daily`](#keep_daily)
 * [`keep_within`](#keep_within)
+* [`compression`](#compression)
 * [`excludes`](#excludes)
 * [`includes`](#includes)
 * [`backupserver`](#backupserver)
@@ -61,6 +63,7 @@ The following parameters are available in the `borg` class:
 * [`manage_package`](#manage_package)
 * [`ssh_key_type`](#ssh_key_type)
 * [`backuptime`](#backuptime)
+* [`ssh_proxyjump`](#ssh_proxyjump)
 
 ##### <a name="package_name"></a>`package_name`
 
@@ -89,6 +92,14 @@ Default value: ``false``
 Data type: `Boolean`
 
 Enable the restore helper from Florian 'Bluewind' Pritz (https://metacpan.org/release/App-BorgRestore) as another postrun command (see also the install_restore_script parameter)
+
+Default value: ``true``
+
+##### <a name="manage_prune"></a>`manage_prune`
+
+Data type: `Boolean`
+
+Enable management of backup prunes. If this is set to `false` all `keep_*` parameters are ignored.
 
 Default value: ``true``
 
@@ -131,6 +142,14 @@ Data type: `Integer[0]`
 For how many days should we keep all backups we have?
 
 Default value: `30`
+
+##### <a name="compression"></a>`compression`
+
+Data type: `String[1]`
+
+Compression method and level to use. See the output of `borg help compression` for available options.
+
+Default value: `'lz4'`
 
 ##### <a name="excludes"></a>`excludes`
 
