@@ -208,6 +208,17 @@ describe 'borg' do
 
         it { is_expected.to contain_file('/etc/backup-sh-conf.sh').with_content(%r{^"/path with/spaces"$}) }
       end
+
+      context 'without exclude_pattern' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            exclude_pattern: ['sh:/some/path/*']
+          }
+        end
+
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^sh:/some/path/\*$}) }
+      end
     end
   end
 end
