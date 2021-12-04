@@ -183,6 +183,20 @@ describe 'borg' do
 
         it { is_expected.not_to contain_file('/usr/local/bin/borg-backup').with_content(%r{/^\s+borg prune/}) }
       end
+
+      context 'with absolute backup destination dir present' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            create_prometheus_metrics: true,
+            absolutebackupdestdir: '/some/other/path'
+          }
+        end
+
+        it { is_expected.to contain_file('/etc/borg').with_content(%r{^REPOSITORY=backup:/some/other/path$}) }
+        it { is_expected.to contain_file('/etc/profile.d/borg.sh').with_content(%r{^export BORG_REPO=backup:/some/other/path$}) }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{\s*borg_repo="backup:/some/other/path"$}) }
+      end
     end
   end
 end

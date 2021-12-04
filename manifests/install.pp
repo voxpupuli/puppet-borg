@@ -78,6 +78,12 @@ class borg::install {
       mode    => '0755',
     }
   }
+
+  $backupdestdir = $borg::absolutebackupdestdir ? {
+    Undef   => "${borg::username}/${borg::backupdestdir}",
+    default => $borg::absolutebackupdestdir,
+  }
+
   # we're now switching to rh-perl524 from centos-sclo-rh (which comes from the foreman module?)
   if $borg::create_prometheus_metrics {
     if $borg::use_upstream_reporter {
@@ -110,17 +116,12 @@ class borg::install {
     file { '/etc/borg':
       ensure  => 'file',
       content => epp("${module_name}/borg.epp", {
-          'username'      => $borg::username,
-          'backupdestdir' => $borg::backupdestdir,
+          'backupdestdir' => $backupdestdir,
       }),
     }
   }
 
   # setup a profile to export the backup server/path. Otherwise the CLI tooles don't work
-  $backupdestdir = $borg::absolutebackupdestdir ? {
-    Undef   => "${borg::username}/${borg::backupdestdir}",
-    default => $borg::absolutebackupdestdir,
-  }
   file { '/etc/profile.d/borg.sh':
     ensure  => 'file',
     content => epp("${module_name}/borg.sh.epp", {
