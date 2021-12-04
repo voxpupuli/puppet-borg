@@ -1,7 +1,6 @@
-<%- | String[1] $username,
-      String[1] $backupdestdir
+<%- | String[1] $backupdestdir
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
 BORG_PASSPHRASE=''
-REPOSITORY=backup:<%= $username %>/<%= $backupdestdir %>
+REPOSITORY=backup:<%= $backupdestdir %>
 COLLECTOR_DIR=/var/lib/prometheus-dropzone
