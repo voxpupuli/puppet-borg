@@ -197,6 +197,28 @@ describe 'borg' do
         it { is_expected.to contain_file('/etc/profile.d/borg.sh').with_content(%r{^export BORG_REPO=backup:/some/other/path$}) }
         it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{\s*borg_repo="backup:/some/other/path"$}) }
       end
+
+      context 'with additional excludes' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            additional_excludes: ['/path with/spaces']
+          }
+        end
+
+        it { is_expected.to contain_file('/etc/backup-sh-conf.sh').with_content(%r{^"/path with/spaces"$}) }
+      end
+
+      context 'without exclude_pattern' do
+        let :params do
+          {
+            backupserver: 'localhost',
+            exclude_pattern: ['sh:/some/path/*']
+          }
+        end
+
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^sh:/some/path/\*$}) }
+      end
     end
   end
 end

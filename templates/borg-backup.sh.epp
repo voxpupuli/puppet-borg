@@ -87,7 +87,7 @@ main() {
   # well as regex pattern. Refer to man borg for details.
   IFS='' read -r -d '' excludeList <<-EOF || true
 <% $borg::exclude_pattern.each |$key| { -%>
-  <%= $key %>
+<%= $key %>
 <% } -%>
 EOF
 

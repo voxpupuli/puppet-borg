@@ -2,17 +2,17 @@
 
 excludeMountpoints=(
 <% $borg::excludes.each |$key| { -%>
-<%= $key %>
+"<%= $key %>"
 <% } -%>
 <% $borg::additional_excludes.each |$key| { -%>
-<%= $key %>
+"<%= $key %>"
 <% } -%>
 )
 includeMountpoints=(
 <% $borg::includes.each |$key| { -%>
-<%= $key %>
+"<%= $key %>"
 <% } -%>
 <% $borg::additional_includes.each |$key| { -%>
-<%= $key %>
+"<%= $key %>"
 <% } -%>
 )
