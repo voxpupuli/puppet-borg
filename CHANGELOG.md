@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.3.1](https://github.com/voxpupuli/puppet-borg/tree/v2.3.1) (2021-12-05)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.3.0...v2.3.1)
+
+**Fixed bugs:**
+
+- Make sure /etc/borg contains the absolutebackupdestdir if it is set [\#142](https://github.com/voxpupuli/puppet-borg/pull/142) ([hashworks](https://github.com/hashworks))
+- Surround mountpoints in configuration file with quotes, avoid whitespace prefix for exclude patterns [\#141](https://github.com/voxpupuli/puppet-borg/pull/141) ([hashworks](https://github.com/hashworks))
+
 ## [v2.3.0](https://github.com/voxpupuli/puppet-borg/tree/v2.3.0) (2021-12-03)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.2.0...v2.3.0)
