@@ -1,1 +1,1 @@
---no-parameter_type-check
+--fail-on-warnings
