@@ -64,6 +64,9 @@ The following parameters are available in the `borg` class:
 * [`ssh_key_type`](#ssh_key_type)
 * [`backuptime`](#backuptime)
 * [`ssh_proxyjump`](#ssh_proxyjump)
+* [`wants`](#wants)
+* [`requires`](#requires)
+* [`after`](#after)
 
 ##### <a name="package_name"></a>`package_name`
 
@@ -332,4 +335,28 @@ Data type: `Optional[String[1]]`
 Configure possible bastionhosts for the connection.
 
 Default value: ``undef``
+
+##### <a name="wants"></a>`wants`
+
+Data type: `Array[String[1]]`
+
+Array of units where the borg-backup service should depend on
+
+Default value: `['network-online.target']`
+
+##### <a name="requires"></a>`requires`
+
+Data type: `Array[String[1]]`
+
+Array of units which the borg-backup service should require
+
+Default value: `[]`
+
+##### <a name="after"></a>`after`
+
+Data type: `Array[String[1]]`
+
+Array of units that should be started before the borg-backup service
+
+Default value: `['network-online.target']`
 

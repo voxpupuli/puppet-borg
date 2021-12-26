@@ -105,6 +105,15 @@
 # @param ssh_proxyjump
 #   Configure possible bastionhosts for the connection.
 #
+# @param wants
+#   Array of units where the borg-backup service should depend on
+#
+# @param requires
+#   Array of units which the borg-backup service should require
+#
+# @param after
+#   Array of units that should be started before the borg-backup service
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -143,6 +152,9 @@ class borg (
   Enum['rsa', 'ed25519'] $ssh_key_type                     = 'ed25519',
   Hash[String[1],String[1]] $backuptime                    = { 'default' => '18:30:00' },
   Optional[String[1]] $ssh_proxyjump                       = undef,
+  Array[String[1]] $wants                                  = ['network-online.target'],
+  Array[String[1]] $requires                               = [],
+  Array[String[1]] $after                                  = ['network-online.target'],
 ) {
   contain borg::install
   contain borg::config
