@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v2.3.1](https://github.com/voxpupuli/puppet-borg/tree/v2.3.1) (2021-12-05)
+## [v2.4.0](https://github.com/voxpupuli/puppet-borg/tree/v2.4.0) (2021-12-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.3.1...v2.4.0)
+
+**Implemented enhancements:**
+
+- Implement support for custom unit dependencies [\#146](https://github.com/voxpupuli/puppet-borg/pull/146) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v2.3.1](https://github.com/voxpupuli/puppet-borg/tree/v2.3.1) (2021-12-07)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.3.0...v2.3.1)
 
