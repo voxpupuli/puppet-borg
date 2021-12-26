@@ -1,15 +1,25 @@
 <%- | Boolean $create_prometheus_metrics,
       Boolean $use_upstream_reporter,
       Boolean $update_borg_restore_db_after_backuprun,
-      Stdlib::Absolutepath $restore_script_path
+      Stdlib::Absolutepath $restore_script_path,
+      Array[String[1]] $after,
+      Array[String[1]] $wants,
+      Array[String[1]] $requires,
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
 [Unit]
 Description=Create borg backups
 # start the service only after network is available
 # https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
-After=network-online.target
-Wants=network-online.target
+<% unless $after.empty { -%>
+After=<%= $after.join(' ') %>
+<% } -%>
+<% unless $wants.empty { -%>
+Wants=<%= $wants.join(' ') %>
+<% } -%>
+<% unless $requires.empty { -%>
+Requires=<%= $requires.join(' ') %>
+<% } -%>
 
 [Service]
 Type=oneshot

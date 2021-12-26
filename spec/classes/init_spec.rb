@@ -10,7 +10,7 @@ describe 'borg' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let :facts do
-        facts
+        facts.merge({ systemd: true })
       end
 
       let :params do
@@ -34,6 +34,25 @@ describe 'borg' do
         it { is_expected.to contain_ssh__client__config__user('root') }
         it { is_expected.to contain_ssh_keygen('root_borg') }
         it { is_expected.to contain_exec('ssh_keygen-root_borg') }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.timer') }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').without_content(%r{Requires=}) }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').with_content(%r{Wants=network-online.target}) }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').with_content(%r{After=network-online.target}) }
+      end
+
+      context 'with requires and no wants/after dependencies' do
+        let :params do
+          {
+            requires: ['foo'],
+            wants: [],
+            after: [],
+            backupserver: 'localhost',
+          }
+        end
+
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').with_content(%r{Requires=foo}) }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').without_content(%r{Wants=}) }
+        it { is_expected.to contain_systemd__unit_file('borg-backup.service').without_content(%r{After=}) }
       end
 
       case facts[:os]['name']
