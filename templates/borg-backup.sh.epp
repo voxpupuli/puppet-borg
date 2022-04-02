@@ -147,13 +147,13 @@ backup_borg() {
   local dst=$2
   local -a options=(
     --verbose
-    --numeric-owner
+    --numeric-ids
     --compression "<%= $compression %>"
     --exclude-from "$TMPDIR/exclude-list-borg"
     )
 
   if tty -s; then
-    options+=(--progress)
+    options+=(--progress --list --filter AME)
   fi
 
   borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "$src"
