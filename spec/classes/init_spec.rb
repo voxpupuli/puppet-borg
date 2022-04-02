@@ -22,7 +22,6 @@ describe 'borg' do
       context 'with all defaults' do
         it { is_expected.to compile.with_all_deps }
 
-        it { is_expected.to contain_file('/etc/backup-sh-conf.sh') }
         it { is_expected.to contain_file('/etc/borg') }
         it { is_expected.to contain_file('/etc/profile.d/borg.sh') }
         it { is_expected.to contain_file('/usr/local/bin/borg-backup') }
@@ -217,7 +216,7 @@ describe 'borg' do
           }
         end
 
-        it { is_expected.to contain_file('/etc/backup-sh-conf.sh').with_content(%r{^"/path with/spaces"$}) }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^"/path with/spaces"$}) }
       end
 
       context 'without exclude_pattern' do

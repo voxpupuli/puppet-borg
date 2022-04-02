@@ -37,12 +37,9 @@ class borg::config {
     ensure  => 'file',
     content => epp("${module_name}/borg-restore.cfg.epp", { 'backupdestdir' => $backupdestdir, }),
   }
-  # config file with all excludes and includes
+  # config file is deprecated and should be absent
   file { '/etc/backup-sh-conf.sh':
-    ensure  => 'file',
-    content => epp("${module_name}/backup-sh-conf.sh.epp"),
-    owner   => 'root',
-    group   => 'root',
+    ensure  => 'absent',
   }
   # create the backup key for a user
   ssh_keygen { 'root_borg':

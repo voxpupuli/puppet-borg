@@ -17,8 +17,6 @@
 #
 # Important steps:
 #  - define a host "backup" in root's .ssh/config
-#  - You can override variables from main() as well as the pre_backup() and post_backup() functions in
-#    $XDG_CONFIG_HOME/backup-sh-conf.sh or /etc/backup-sh-conf.sh
 #  - As root run `BORG_PASSPHRASE='' borg init -v --encryption=keyfile backup:<%= $backupdestdir %>`
 #    (note that zsh uses $HOST instead of $HOSTNAME)
 #  - If you want, increase the max_segment_size in
@@ -67,20 +65,22 @@ main() {
   # These mountpoints will be excluded. Mountpoints not listed in either this
   # or the includeMountpoints variable below will throw an error
   excludeMountpoints=(
-    /tmp
-    /sys
-    /dev
-    /proc
-    /run
-    /media
+    <% $borg::excludes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+    <% $borg::additional_excludes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
   )
 
   # These mountpoints will be included
   includeMountpoints=(
-    /
-    /boot
-    /home
-    /mnt/data
+    <% $borg::includes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+    <% $borg::additional_includes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
   )
 
   # List of patterns that should be excluded. This supports shell globbing as
@@ -91,11 +91,6 @@ main() {
 <% } -%>
 EOF
 
-  for configfile in "${XDG_CONFIG_HOME:-$HOME/.config}/backup-sh-conf.sh" /etc/backup-sh-conf.sh; do
-    if [[ -e "$configfile" ]]; then
-      source "$configfile"
-    fi
-  done
 
   exclude_mountpoints
   echo "$excludeList" > "$TMPDIR/exclude-list-borg"
