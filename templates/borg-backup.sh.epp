@@ -6,7 +6,9 @@
       Integer[0] $keep_within,
       String[1] $compression,
       String[1] $backupdestdir,
-      Array[String[1]] $exclude_pattern,
+      Stdlib::Absolutepath $backupdatadir,
+      Optional[String[1]] $pre_backup_script,
+      Optional[String[1]] $post_backup_script,
 | -%>
 #!/bin/bash
 #
@@ -46,7 +48,7 @@
 # modified by Tim 'bastelfreak' Meusel
 ##
 
-set -e
+set -eu
 
 # set PATH by hand so we ensure that the puppetlabs stuff is present
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/bin:/sbin"
@@ -89,21 +91,29 @@ main() {
 <% $borg::exclude_pattern.each |$key| { -%>
 <%= $key %>
 <% } -%>
+<% $borg::additional_exclude_pattern.each |$key| { -%>
+<%= $key %>
+<% } -%>
 EOF
 
+  source_paths=(
+    <% $borg::source_paths.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+  )
 
   exclude_mountpoints
   echo "$excludeList" > "$TMPDIR/exclude-list-borg"
 
   run_if_exists pre_backup
-  backup_borg / "$borg_repo"
+  backup_borg "$borg_repo" "${source_paths[@]}"
   run_if_exists post_backup
 }
 
 # This is called before creating the backup
 pre_backup() {
   # save some data that's useful for restores
-  local backupDataDir=/root/backup-data/
+  local backupDataDir="<%= $backupdatadir %>"
   mkdir -p "$backupDataDir"
   if [ $(command -v fdisk) ]; then
     fdisk -l > "$backupDataDir/fdisk"
@@ -131,6 +141,9 @@ pre_backup() {
   fi
 
   # If you wish to use snapshots, create them here
+<% if $pre_backup_script { -%>
+<%= $pre_backup_script %>
+<% } -%>
 
   return
 }
@@ -139,12 +152,16 @@ pre_backup() {
 post_backup() {
   # If you need to perform any cleanup do so here
 
+<% if $post_backup_script { -%>
+<%= $post_backup_script %>
+<% } -%>
+
   return
 }
 
 backup_borg() {
-  local src=$1
-  local dst=$2
+  local dst=$1; shift
+  local src=("$@")
   local -a options=(
     --verbose
     --numeric-ids
@@ -156,7 +173,7 @@ backup_borg() {
     options+=(--progress --list --filter AME)
   fi
 
-  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "$src"
+  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "${src[@]}"
 <% if $manage_prune { -%>
   # keep all backups from the last <%= $keep_within %> days
   # keep at least one backup for each day for <%= $keep_daily %> days

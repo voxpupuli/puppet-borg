@@ -40,12 +40,14 @@ The following parameters are available in the `borg` class:
 * [`keep_daily`](#keep_daily)
 * [`keep_within`](#keep_within)
 * [`compression`](#compression)
+* [`source_paths`](#source_paths)
 * [`excludes`](#excludes)
 * [`includes`](#includes)
 * [`backupserver`](#backupserver)
 * [`install_restore_script`](#install_restore_script)
 * [`restore_script_path`](#restore_script_path)
 * [`backupdestdir`](#backupdestdir)
+* [`backupdatadir`](#backupdatadir)
 * [`absolutebackupdestdir`](#absolutebackupdestdir)
 * [`manage_repository`](#manage_repository)
 * [`exclude_pattern`](#exclude_pattern)
@@ -67,6 +69,8 @@ The following parameters are available in the `borg` class:
 * [`wants`](#wants)
 * [`requires`](#requires)
 * [`after`](#after)
+* [`pre_backup_script`](#pre_backup_script)
+* [`post_backup_script`](#post_backup_script)
 
 ##### <a name="package_name"></a>`package_name`
 
@@ -154,6 +158,14 @@ Compression method and level to use. See the output of `borg help compression` f
 
 Default value: `'lz4'`
 
+##### <a name="source_paths"></a>`source_paths`
+
+Data type: `Array[String[1]]`
+
+A list of relative or absolute paths to backup.
+
+Default value: `['/']`
+
 ##### <a name="excludes"></a>`excludes`
 
 Data type: `Array[Stdlib::Absolutepath]`
@@ -195,6 +207,14 @@ Data type: `String[1]`
 The path on the remote server where the backups should be written to. $username will be prepended
 
 Default value: `'borg'`
+
+##### <a name="backupdatadir"></a>`backupdatadir`
+
+Data type: `Stdlib::Absolutepath`
+
+The path where additional backup data should be stored.
+
+Default value: `'/root/backup-data/'`
 
 ##### <a name="absolutebackupdestdir"></a>`absolutebackupdestdir`
 
@@ -359,4 +379,20 @@ Data type: `Array[String[1]]`
 Array of units that should be started before the borg-backup service
 
 Default value: `['network-online.target']`
+
+##### <a name="pre_backup_script"></a>`pre_backup_script`
+
+Data type: `Optional[String[1]]`
+
+BASH code to be executed before the backup job starts. If you wish to use snapshots, create them here.
+
+Default value: ``undef``
+
+##### <a name="post_backup_script"></a>`post_backup_script`
+
+Data type: `Optional[String[1]]`
+
+BASH code to be executed after the backup job has finished. If you need to perform any cleanup do so here.
+
+Default value: ``undef``
 

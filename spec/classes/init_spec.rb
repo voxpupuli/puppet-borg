@@ -205,7 +205,7 @@ describe 'borg' do
 
         it { is_expected.to contain_file('/etc/borg').with_content(%r{^REPOSITORY=backup:/some/other/path$}) }
         it { is_expected.to contain_file('/etc/profile.d/borg.sh').with_content(%r{^export BORG_REPO=backup:/some/other/path$}) }
-        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{\s*borg_repo="backup:/some/other/path"$}) }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^\s*borg_repo="backup:/some/other/path"$}) }
       end
 
       context 'with additional excludes' do
@@ -216,7 +216,7 @@ describe 'borg' do
           }
         end
 
-        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^"/path with/spaces"$}) }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{^\s*"/path with/spaces"$}) }
       end
 
       context 'without exclude_pattern' do
