@@ -19,6 +19,7 @@ class borg::config {
         'keep_monthly'       => $borg::keep_monthly,
         'keep_yearly'        => $borg::keep_yearly,
         'compression'        => $borg::compression,
+        'working_directory'  => $borg::working_directory,
         'backupdestdir'      => $backupdestdir,
         'backupdatadir'      => $borg::backupdatadir,
         'pre_backup_script'  => $borg::pre_backup_script,

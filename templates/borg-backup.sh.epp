@@ -5,6 +5,7 @@
       Integer[0] $keep_daily,
       Integer[0] $keep_within,
       String[1] $compression,
+      Stdlib::Absolutepath $working_directory,
       String[1] $backupdestdir,
       Stdlib::Absolutepath $backupdatadir,
       Optional[String[1]] $pre_backup_script,
@@ -172,6 +173,9 @@ backup_borg() {
   if tty -s; then
     options+=(--progress --list --filter AME)
   fi
+
+  # Change the working directory in case the source paths are relative
+  cd "<%= $working_directory %>"
 
   borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "${src[@]}"
 <% if $manage_prune { -%>
