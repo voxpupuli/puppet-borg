@@ -44,13 +44,6 @@
       "operatingsystem": "Gentoo"
     },
     {
-      "operatingsystem": "Fedora",
-      "operatingsystemrelease": [
-        "32",
-        "33"
-      ]
-    },
-    {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7",

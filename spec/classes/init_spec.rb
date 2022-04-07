@@ -92,14 +92,6 @@ describe 'borg' do
         context 'on osfamily Gentoo' do
           it { is_expected.to contain_package('App-cpanminus') }
         end
-      when 'Fedora'
-        context 'on osfamily Fedora' do
-          it { is_expected.to contain_package('perl-Path-Tiny') }
-          it { is_expected.to contain_package('perl-Test-MockObject') }
-          it { is_expected.to contain_package('perl-Test') }
-          it { is_expected.to contain_package('perl-autodie') }
-          it { is_expected.to contain_package('perl-App-cpanminus') }
-        end
       end
 
       context 'with keep intervall set to 0' do
