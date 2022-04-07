@@ -8,6 +8,6 @@ configure_beaker do |host|
   when 'Debian'
     install_module_from_forge_on(host, 'puppetlabs-apt'.dup, '>= 4.1.0 < 9.0.0'.dup)
   when 'RedHat'
-    install_package(host, 'epel-release') unless fact_on(host, 'os.name') == 'Fedora'
+    install_package(host, 'epel-release')
   end
 end
