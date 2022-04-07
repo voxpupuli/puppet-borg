@@ -4,7 +4,7 @@ require 'spec_helper_acceptance'
 
 describe 'borg' do
   context 'with a backup server' do
-    shell('sed -i "s/enabled=0/enabled=1/" /etc/yum.repos.d/CentOS-Linux-PowerTools.repo') if fact('os.name') == 'CentOS' && fact('os.release.major').to_i == 8
+    shell('dnf config-manager --set-enabled powertools') if fact('os.name') == 'CentOS' && fact('os.release.major').to_i == 8
     let(:pp) do
       <<-PUPPET
       class { 'borg':
