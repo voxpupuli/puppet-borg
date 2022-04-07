@@ -33,6 +33,9 @@
 # @param compression
 #   Compression method and level to use. See the output of `borg help compression` for available options.
 #
+# @param source_paths
+#   A list of relative or absolute paths to backup.
+#
 # @param excludes
 #   list of default mountpoints that should be excluded from backups. Every mountpoint needs to be explicitly excluded or included. See also the additional_excludes parameter.
 #
@@ -50,6 +53,9 @@
 #
 # @param backupdestdir
 #   The path on the remote server where the backups should be written to. $username will be prepended
+#
+# @param backupdatadir
+#   The path where additional backup data should be stored.
 #
 # @param absolutebackupdestdir
 #  By defaults, backups will be written on the remote host to $username/$backupdestdir. if $absolutebackupdestdir is set this will be used instead
@@ -114,6 +120,12 @@
 # @param after
 #   Array of units that should be started before the borg-backup service
 #
+# @param pre_backup_script
+#   BASH code to be executed before the backup job starts. If you wish to use snapshots, create them here.
+#
+# @param post_backup_script
+#   BASH code to be executed after the backup job has finished. If you need to perform any cleanup do so here.
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -133,9 +145,11 @@ class borg (
   Integer[0] $keep_daily                                   = 60,
   Integer[0] $keep_within                                  = 30,
   String[1] $compression                                   = 'lz4',
+  Array[String[1]] $source_paths                           = ['/'],
   Array[Stdlib::Absolutepath] $excludes                    = ['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs'],
   Array[Stdlib::Absolutepath] $includes                    = ['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log'],
   String[1] $backupdestdir                                 = 'borg',
+  Stdlib::Absolutepath $backupdatadir                      = '/root/backup-data/',
   Optional[String[1]] $absolutebackupdestdir               = undef,
   Array[String[1]] $exclude_pattern                        = ['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*'],
   Array[String[1]] $additional_exclude_pattern             = [],
@@ -155,6 +169,8 @@ class borg (
   Array[String[1]] $wants                                  = ['network-online.target'],
   Array[String[1]] $requires                               = [],
   Array[String[1]] $after                                  = ['network-online.target'],
+  Optional[String[1]] $pre_backup_script                   = undef,
+  Optional[String[1]] $post_backup_script                  = undef,
 ) {
   contain borg::install
   contain borg::config

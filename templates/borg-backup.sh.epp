@@ -6,7 +6,9 @@
       Integer[0] $keep_within,
       String[1] $compression,
       String[1] $backupdestdir,
-      Array[String[1]] $exclude_pattern,
+      Stdlib::Absolutepath $backupdatadir,
+      Optional[String[1]] $pre_backup_script,
+      Optional[String[1]] $post_backup_script,
 | -%>
 #!/bin/bash
 #
@@ -17,8 +19,6 @@
 #
 # Important steps:
 #  - define a host "backup" in root's .ssh/config
-#  - You can override variables from main() as well as the pre_backup() and post_backup() functions in
-#    $XDG_CONFIG_HOME/backup-sh-conf.sh or /etc/backup-sh-conf.sh
 #  - As root run `BORG_PASSPHRASE='' borg init -v --encryption=keyfile backup:<%= $backupdestdir %>`
 #    (note that zsh uses $HOST instead of $HOSTNAME)
 #  - If you want, increase the max_segment_size in
@@ -48,7 +48,7 @@
 # modified by Tim 'bastelfreak' Meusel
 ##
 
-set -e
+set -eu
 
 # set PATH by hand so we ensure that the puppetlabs stuff is present
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin:/bin:/sbin"
@@ -67,20 +67,22 @@ main() {
   # These mountpoints will be excluded. Mountpoints not listed in either this
   # or the includeMountpoints variable below will throw an error
   excludeMountpoints=(
-    /tmp
-    /sys
-    /dev
-    /proc
-    /run
-    /media
+    <% $borg::excludes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+    <% $borg::additional_excludes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
   )
 
   # These mountpoints will be included
   includeMountpoints=(
-    /
-    /boot
-    /home
-    /mnt/data
+    <% $borg::includes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+    <% $borg::additional_includes.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
   )
 
   # List of patterns that should be excluded. This supports shell globbing as
@@ -89,26 +91,29 @@ main() {
 <% $borg::exclude_pattern.each |$key| { -%>
 <%= $key %>
 <% } -%>
+<% $borg::additional_exclude_pattern.each |$key| { -%>
+<%= $key %>
+<% } -%>
 EOF
 
-  for configfile in "${XDG_CONFIG_HOME:-$HOME/.config}/backup-sh-conf.sh" /etc/backup-sh-conf.sh; do
-    if [[ -e "$configfile" ]]; then
-      source "$configfile"
-    fi
-  done
+  source_paths=(
+    <% $borg::source_paths.each |$key| { -%>
+    "<%= $key %>"
+    <% } -%>
+  )
 
   exclude_mountpoints
   echo "$excludeList" > "$TMPDIR/exclude-list-borg"
 
   run_if_exists pre_backup
-  backup_borg / "$borg_repo"
+  backup_borg "$borg_repo" "${source_paths[@]}"
   run_if_exists post_backup
 }
 
 # This is called before creating the backup
 pre_backup() {
   # save some data that's useful for restores
-  local backupDataDir=/root/backup-data/
+  local backupDataDir="<%= $backupdatadir %>"
   mkdir -p "$backupDataDir"
   if [ $(command -v fdisk) ]; then
     fdisk -l > "$backupDataDir/fdisk"
@@ -136,6 +141,9 @@ pre_backup() {
   fi
 
   # If you wish to use snapshots, create them here
+<% if $pre_backup_script { -%>
+<%= $pre_backup_script %>
+<% } -%>
 
   return
 }
@@ -144,24 +152,28 @@ pre_backup() {
 post_backup() {
   # If you need to perform any cleanup do so here
 
+<% if $post_backup_script { -%>
+<%= $post_backup_script %>
+<% } -%>
+
   return
 }
 
 backup_borg() {
-  local src=$1
-  local dst=$2
+  local dst=$1; shift
+  local src=("$@")
   local -a options=(
     --verbose
-    --numeric-owner
+    --numeric-ids
     --compression "<%= $compression %>"
     --exclude-from "$TMPDIR/exclude-list-borg"
     )
 
   if tty -s; then
-    options+=(--progress)
+    options+=(--progress --list --filter AME)
   fi
 
-  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "$src"
+  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "${src[@]}"
 <% if $manage_prune { -%>
   # keep all backups from the last <%= $keep_within %> days
   # keep at least one backup for each day for <%= $keep_daily %> days

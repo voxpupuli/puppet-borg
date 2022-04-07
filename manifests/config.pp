@@ -12,15 +12,17 @@ class borg::config {
     ensure  => 'file',
     content => epp("${module_name}/borg-backup.sh.epp",
       {
-        'manage_prune'    => $borg::manage_prune,
-        'keep_within'     => $borg::keep_within,
-        'keep_daily'      => $borg::keep_daily,
-        'keep_weekly'     => $borg::keep_weekly,
-        'keep_monthly'    => $borg::keep_monthly,
-        'keep_yearly'     => $borg::keep_yearly,
-        'compression'     => $borg::compression,
-        'backupdestdir'   => $backupdestdir,
-        'exclude_pattern' => $borg::exclude_pattern + $borg::additional_exclude_pattern,
+        'manage_prune'       => $borg::manage_prune,
+        'keep_within'        => $borg::keep_within,
+        'keep_daily'         => $borg::keep_daily,
+        'keep_weekly'        => $borg::keep_weekly,
+        'keep_monthly'       => $borg::keep_monthly,
+        'keep_yearly'        => $borg::keep_yearly,
+        'compression'        => $borg::compression,
+        'backupdestdir'      => $backupdestdir,
+        'backupdatadir'      => $borg::backupdatadir,
+        'pre_backup_script'  => $borg::pre_backup_script,
+        'post_backup_script' => $borg::post_backup_script,
     }),
     mode    => '0755',
     owner   => 'root',
@@ -37,12 +39,9 @@ class borg::config {
     ensure  => 'file',
     content => epp("${module_name}/borg-restore.cfg.epp", { 'backupdestdir' => $backupdestdir, }),
   }
-  # config file with all excludes and includes
+  # config file is deprecated and should be absent
   file { '/etc/backup-sh-conf.sh':
-    ensure  => 'file',
-    content => epp("${module_name}/backup-sh-conf.sh.epp"),
-    owner   => 'root',
-    group   => 'root',
+    ensure  => 'absent',
   }
   # create the backup key for a user
   ssh_keygen { 'root_borg':
