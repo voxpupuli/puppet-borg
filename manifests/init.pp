@@ -33,6 +33,9 @@
 # @param compression
 #   Compression method and level to use. See the output of `borg help compression` for available options.
 #
+# @param working_directory
+#   The working directory from where the backup should be created.
+#
 # @param source_paths
 #   A list of relative or absolute paths to backup.
 #
@@ -145,6 +148,7 @@ class borg (
   Integer[0] $keep_daily                                   = 60,
   Integer[0] $keep_within                                  = 30,
   String[1] $compression                                   = 'lz4',
+  Stdlib::Absolutepath $working_directory                  = '/',
   Array[String[1]] $source_paths                           = ['/'],
   Array[Stdlib::Absolutepath] $excludes                    = ['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs'],
   Array[Stdlib::Absolutepath] $includes                    = ['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log'],

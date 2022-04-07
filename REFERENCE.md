@@ -40,6 +40,7 @@ The following parameters are available in the `borg` class:
 * [`keep_daily`](#keep_daily)
 * [`keep_within`](#keep_within)
 * [`compression`](#compression)
+* [`working_directory`](#working_directory)
 * [`source_paths`](#source_paths)
 * [`excludes`](#excludes)
 * [`includes`](#includes)
@@ -157,6 +158,14 @@ Data type: `String[1]`
 Compression method and level to use. See the output of `borg help compression` for available options.
 
 Default value: `'lz4'`
+
+##### <a name="working_directory"></a>`working_directory`
+
+Data type: `Stdlib::Absolutepath`
+
+The working directory from where the backup should be created.
+
+Default value: `'/'`
 
 ##### <a name="source_paths"></a>`source_paths`
 
