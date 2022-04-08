@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v2.4.0](https://github.com/voxpupuli/puppet-borg/tree/v2.4.0) (2021-12-26)
+## [v3.0.0](https://github.com/voxpupuli/puppet-borg/tree/v3.0.0) (2022-04-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.4.0...v3.0.0)
+
+**Breaking changes:**
+
+- Drop support for Debian 9 since it's EoL [\#156](https://github.com/voxpupuli/puppet-borg/pull/156) ([hashworks](https://github.com/hashworks))
+- Fedora: Drop support [\#154](https://github.com/voxpupuli/puppet-borg/pull/154) ([bastelfreak](https://github.com/bastelfreak))
+- Add support for snapshots using pre/post scripts; replace `--numeric-owner` with `--numeric-ids` [\#150](https://github.com/voxpupuli/puppet-borg/pull/150) ([hashworks](https://github.com/hashworks))
+
+**Implemented enhancements:**
+
+- Add configureable working directory from where the backup should be created [\#155](https://github.com/voxpupuli/puppet-borg/pull/155) ([hashworks](https://github.com/hashworks))
+- Add Ubuntu 20.04 support [\#153](https://github.com/voxpupuli/puppet-borg/pull/153) ([bastelfreak](https://github.com/bastelfreak))
+- Add Debian 11 support [\#152](https://github.com/voxpupuli/puppet-borg/pull/152) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- saz/ssh: Allow 9.x / Fix CentOS 8 acceptance tests  [\#151](https://github.com/voxpupuli/puppet-borg/pull/151) ([bastelfreak](https://github.com/bastelfreak))
+- Implement Arch Linux acceptance testing [\#149](https://github.com/voxpupuli/puppet-borg/pull/149) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v2.4.0](https://github.com/voxpupuli/puppet-borg/tree/v2.4.0) (2021-12-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.3.1...v2.4.0)
 
