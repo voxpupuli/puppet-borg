@@ -7,3 +7,4 @@ fixtures:
     apt: https://github.com/puppetlabs/puppetlabs-apt.git
     ssh_keygen: https://github.com/voxpupuli/puppet-ssh_keygen.git
     systemd: https://github.com/voxpupuli/puppet-systemd.git
+    sshkeys_core: https://github.com/puppetlabs/puppetlabs-sshkeys_core.git
