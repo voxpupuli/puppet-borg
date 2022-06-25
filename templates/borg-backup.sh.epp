@@ -185,7 +185,7 @@ backup_borg() {
   # keep at least one backup for each month for <%= $keep_monthly %> months
   # keep at least one backup for each year for <%= $keep_yearly %> years
   # more details at https://borgbackup.readthedocs.io/en/stable/usage/prune.html
-  borg prune --stats --verbose --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> "$dst"
+  borg prune --stats --list --verbose --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> "$dst"
 <% } -%>
 }
 
