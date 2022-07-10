@@ -15,6 +15,7 @@
   * [Examples](#examples)
 * [Restore Script](#restore-script)
 * [Prometheus Exporter](#prometheus-exporter)
+* [Facts](#facts)
 * [Limitations](#limitations)
 * [Tests](#tests)
 * [Contributions](#contributions)
@@ -101,6 +102,21 @@ upstream documentation (including examples) at [metacpan.org](https://metacpan.o
 More and more people use prometheus. We vendor a bash script that can provide
 you metrics about your backups in the prometheus format. They are written to
 disk and the node\_exporter can collect them.
+
+## Facts
+
+This module provides you a structed fact, named `borgbackup`. It currently only
+lists the borgbackup version. It's a structured so it can easily be extended
+without breaking changes and without further topscope pollution.
+
+```
+# puppet facts show borgbackup
+{
+  "borgbackup": {
+    "version": "1.2.1"
+  }
+}
+```
 
 ## Limitations
 
