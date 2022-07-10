@@ -6,6 +6,10 @@ class borg::config {
     Undef   => "${borg::username}/${borg::backupdestdir}",
     default => $borg::absolutebackupdestdir,
   }
+  $numeric = versioncmp(pick(fact('borgbackup.version'), '1.2.0'), '1.2.0') ? {
+    -1      => '--numeric-owner',
+    default => '--numeric-ids',
+  }
 
   # script to run the backup
   file { '/usr/local/bin/borg-backup':
@@ -24,6 +28,7 @@ class borg::config {
         'backupdatadir'      => $borg::backupdatadir,
         'pre_backup_script'  => $borg::pre_backup_script,
         'post_backup_script' => $borg::post_backup_script,
+        'numeric'            => $numeric,
     }),
     mode    => '0755',
     owner   => 'root',
