@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.1.0](https://github.com/voxpupuli/puppet-borg/tree/v3.1.0) (2022-07-10)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.0.0...v3.1.0)
+
+**Implemented enhancements:**
+
+- Implement support for older borg versions [\#161](https://github.com/voxpupuli/puppet-borg/pull/161) ([bastelfreak](https://github.com/bastelfreak))
+- Add version fact [\#160](https://github.com/voxpupuli/puppet-borg/pull/160) ([bastelfreak](https://github.com/bastelfreak))
+- borg prune: List archives that wont be deleted [\#159](https://github.com/voxpupuli/puppet-borg/pull/159) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-borg/tree/v3.0.0) (2022-04-08)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v2.4.0...v3.0.0)
