@@ -10,6 +10,7 @@
       Stdlib::Absolutepath $backupdatadir,
       Optional[String[1]] $pre_backup_script,
       Optional[String[1]] $post_backup_script,
+      Enum['--numeric-owner', '--numeric-ids'] $numeric,
 | -%>
 #!/bin/bash
 #
@@ -165,7 +166,7 @@ backup_borg() {
   local src=("$@")
   local -a options=(
     --verbose
-    --numeric-ids
+    <%= $numeric %>
     --compression "<%= $compression %>"
     --exclude-from "$TMPDIR/exclude-list-borg"
     )
