@@ -81,6 +81,8 @@ jobs:
           LC_ALL: en_US.UTF-8
           BEAKER_PUPPET_COLLECTION: ${{ matrix.puppet.collection }}
           BEAKER_setfile: ${{ matrix.setfile.value }}
+          BEAKER_HYPERVISOR: 'hcloud'
+          HCLOUD_TOKEN: '${{ secrets.HCLOUD_TOKEN }}'
 
   tests:
     needs:
