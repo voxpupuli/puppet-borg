@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.2.0](https://github.com/voxpupuli/puppet-borg/tree/v3.2.0) (2022-12-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.1.0...v3.2.0)
+
+**Implemented enhancements:**
+
+- saz/ssh: Allow 10.x [\#164](https://github.com/voxpupuli/puppet-borg/pull/164) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.1.0](https://github.com/voxpupuli/puppet-borg/tree/v3.1.0) (2022-07-10)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.0.0...v3.1.0)

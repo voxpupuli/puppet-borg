@@ -29,89 +29,89 @@ Main class, includes all other classes.
 
 The following parameters are available in the `borg` class:
 
-* [`package_name`](#package_name)
-* [`create_prometheus_metrics`](#create_prometheus_metrics)
-* [`use_upstream_reporter`](#use_upstream_reporter)
-* [`update_borg_restore_db_after_backuprun`](#update_borg_restore_db_after_backuprun)
-* [`manage_prune`](#manage_prune)
-* [`keep_yearly`](#keep_yearly)
-* [`keep_monthly`](#keep_monthly)
-* [`keep_weekly`](#keep_weekly)
-* [`keep_daily`](#keep_daily)
-* [`keep_within`](#keep_within)
-* [`compression`](#compression)
-* [`working_directory`](#working_directory)
-* [`source_paths`](#source_paths)
-* [`excludes`](#excludes)
-* [`includes`](#includes)
-* [`backupserver`](#backupserver)
-* [`install_restore_script`](#install_restore_script)
-* [`restore_script_path`](#restore_script_path)
-* [`backupdestdir`](#backupdestdir)
-* [`backupdatadir`](#backupdatadir)
-* [`absolutebackupdestdir`](#absolutebackupdestdir)
-* [`manage_repository`](#manage_repository)
-* [`exclude_pattern`](#exclude_pattern)
-* [`additional_exclude_pattern`](#additional_exclude_pattern)
-* [`restore_dependencies`](#restore_dependencies)
-* [`package_ensure`](#package_ensure)
-* [`additional_excludes`](#additional_excludes)
-* [`additional_includes`](#additional_includes)
-* [`username`](#username)
-* [`ssh_port`](#ssh_port)
-* [`borg_restore_version`](#borg_restore_version)
-* [`install_fatpacked_cpanm`](#install_fatpacked_cpanm)
-* [`proxy_type`](#proxy_type)
-* [`proxy_server`](#proxy_server)
-* [`manage_package`](#manage_package)
-* [`ssh_key_type`](#ssh_key_type)
-* [`backuptime`](#backuptime)
-* [`ssh_proxyjump`](#ssh_proxyjump)
-* [`wants`](#wants)
-* [`requires`](#requires)
-* [`after`](#after)
-* [`pre_backup_script`](#pre_backup_script)
-* [`post_backup_script`](#post_backup_script)
+* [`package_name`](#-borg--package_name)
+* [`create_prometheus_metrics`](#-borg--create_prometheus_metrics)
+* [`use_upstream_reporter`](#-borg--use_upstream_reporter)
+* [`update_borg_restore_db_after_backuprun`](#-borg--update_borg_restore_db_after_backuprun)
+* [`manage_prune`](#-borg--manage_prune)
+* [`keep_yearly`](#-borg--keep_yearly)
+* [`keep_monthly`](#-borg--keep_monthly)
+* [`keep_weekly`](#-borg--keep_weekly)
+* [`keep_daily`](#-borg--keep_daily)
+* [`keep_within`](#-borg--keep_within)
+* [`compression`](#-borg--compression)
+* [`working_directory`](#-borg--working_directory)
+* [`source_paths`](#-borg--source_paths)
+* [`excludes`](#-borg--excludes)
+* [`includes`](#-borg--includes)
+* [`backupserver`](#-borg--backupserver)
+* [`install_restore_script`](#-borg--install_restore_script)
+* [`restore_script_path`](#-borg--restore_script_path)
+* [`backupdestdir`](#-borg--backupdestdir)
+* [`backupdatadir`](#-borg--backupdatadir)
+* [`absolutebackupdestdir`](#-borg--absolutebackupdestdir)
+* [`manage_repository`](#-borg--manage_repository)
+* [`exclude_pattern`](#-borg--exclude_pattern)
+* [`additional_exclude_pattern`](#-borg--additional_exclude_pattern)
+* [`restore_dependencies`](#-borg--restore_dependencies)
+* [`package_ensure`](#-borg--package_ensure)
+* [`additional_excludes`](#-borg--additional_excludes)
+* [`additional_includes`](#-borg--additional_includes)
+* [`username`](#-borg--username)
+* [`ssh_port`](#-borg--ssh_port)
+* [`borg_restore_version`](#-borg--borg_restore_version)
+* [`install_fatpacked_cpanm`](#-borg--install_fatpacked_cpanm)
+* [`proxy_type`](#-borg--proxy_type)
+* [`proxy_server`](#-borg--proxy_server)
+* [`manage_package`](#-borg--manage_package)
+* [`ssh_key_type`](#-borg--ssh_key_type)
+* [`backuptime`](#-borg--backuptime)
+* [`ssh_proxyjump`](#-borg--ssh_proxyjump)
+* [`wants`](#-borg--wants)
+* [`requires`](#-borg--requires)
+* [`after`](#-borg--after)
+* [`pre_backup_script`](#-borg--pre_backup_script)
+* [`post_backup_script`](#-borg--post_backup_script)
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-borg--package_name"></a>`package_name`
 
 Data type: `Variant[String[1],Array[String[1]]]`
 
 Name of the borg package
 
-##### <a name="create_prometheus_metrics"></a>`create_prometheus_metrics`
+##### <a name="-borg--create_prometheus_metrics"></a>`create_prometheus_metrics`
 
 Data type: `Boolean`
 
 Enable a postrun command to create prometheus compatible metrics about all backups
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="use_upstream_reporter"></a>`use_upstream_reporter`
+##### <a name="-borg--use_upstream_reporter"></a>`use_upstream_reporter`
 
 Data type: `Boolean`
 
 Enable to upstream reporter (see create_prometheus_metrics param) or our vendored version
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="update_borg_restore_db_after_backuprun"></a>`update_borg_restore_db_after_backuprun`
+##### <a name="-borg--update_borg_restore_db_after_backuprun"></a>`update_borg_restore_db_after_backuprun`
 
 Data type: `Boolean`
 
 Enable the restore helper from Florian 'Bluewind' Pritz (https://metacpan.org/release/App-BorgRestore) as another postrun command (see also the install_restore_script parameter)
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="manage_prune"></a>`manage_prune`
+##### <a name="-borg--manage_prune"></a>`manage_prune`
 
 Data type: `Boolean`
 
 Enable management of backup prunes. If this is set to `false` all `keep_*` parameters are ignored.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="keep_yearly"></a>`keep_yearly`
+##### <a name="-borg--keep_yearly"></a>`keep_yearly`
 
 Data type: `Integer[0]`
 
@@ -119,7 +119,7 @@ For how many years should we keep our backups?
 
 Default value: `3`
 
-##### <a name="keep_monthly"></a>`keep_monthly`
+##### <a name="-borg--keep_monthly"></a>`keep_monthly`
 
 Data type: `Integer[0]`
 
@@ -127,7 +127,7 @@ For how many months should we keep our backups?
 
 Default value: `24`
 
-##### <a name="keep_weekly"></a>`keep_weekly`
+##### <a name="-borg--keep_weekly"></a>`keep_weekly`
 
 Data type: `Integer[0]`
 
@@ -135,7 +135,7 @@ For how many weeks should we keep our backups?
 
 Default value: `36`
 
-##### <a name="keep_daily"></a>`keep_daily`
+##### <a name="-borg--keep_daily"></a>`keep_daily`
 
 Data type: `Integer[0]`
 
@@ -143,7 +143,7 @@ For how many days should we keep our backups?
 
 Default value: `60`
 
-##### <a name="keep_within"></a>`keep_within`
+##### <a name="-borg--keep_within"></a>`keep_within`
 
 Data type: `Integer[0]`
 
@@ -151,7 +151,7 @@ For how many days should we keep all backups we have?
 
 Default value: `30`
 
-##### <a name="compression"></a>`compression`
+##### <a name="-borg--compression"></a>`compression`
 
 Data type: `String[1]`
 
@@ -159,7 +159,7 @@ Compression method and level to use. See the output of `borg help compression` f
 
 Default value: `'lz4'`
 
-##### <a name="working_directory"></a>`working_directory`
+##### <a name="-borg--working_directory"></a>`working_directory`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -167,7 +167,7 @@ The working directory from where the backup should be created.
 
 Default value: `'/'`
 
-##### <a name="source_paths"></a>`source_paths`
+##### <a name="-borg--source_paths"></a>`source_paths`
 
 Data type: `Array[String[1]]`
 
@@ -175,7 +175,7 @@ A list of relative or absolute paths to backup.
 
 Default value: `['/']`
 
-##### <a name="excludes"></a>`excludes`
+##### <a name="-borg--excludes"></a>`excludes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -183,7 +183,7 @@ list of default mountpoints that should be excluded from backups. Every mountpoi
 
 Default value: `['/tmp', '/sys', '/dev', '/proc', '/run', '/media', '/var/lib/nfs/rpc_pipefs']`
 
-##### <a name="includes"></a>`includes`
+##### <a name="-borg--includes"></a>`includes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -191,25 +191,25 @@ list of default mountpoints that should be included from backups. Every mountpoi
 
 Default value: `['/', '/boot', '/boot/efi', '/boot/EFI', '/var/log']`
 
-##### <a name="backupserver"></a>`backupserver`
+##### <a name="-borg--backupserver"></a>`backupserver`
 
 Data type: `String[1]`
 
 FQDN for the remote server. Will be written into the local ssh client configuration file.
 
-##### <a name="install_restore_script"></a>`install_restore_script`
+##### <a name="-borg--install_restore_script"></a>`install_restore_script`
 
 Data type: `Boolean`
 
 Install the restore helper via cpanm.
 
-##### <a name="restore_script_path"></a>`restore_script_path`
+##### <a name="-borg--restore_script_path"></a>`restore_script_path`
 
 Data type: `Stdlib::Absolutepath`
 
 The path to the restore helper.
 
-##### <a name="backupdestdir"></a>`backupdestdir`
+##### <a name="-borg--backupdestdir"></a>`backupdestdir`
 
 Data type: `String[1]`
 
@@ -217,7 +217,7 @@ The path on the remote server where the backups should be written to. $username 
 
 Default value: `'borg'`
 
-##### <a name="backupdatadir"></a>`backupdatadir`
+##### <a name="-borg--backupdatadir"></a>`backupdatadir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -225,21 +225,21 @@ The path where additional backup data should be stored.
 
 Default value: `'/root/backup-data/'`
 
-##### <a name="absolutebackupdestdir"></a>`absolutebackupdestdir`
+##### <a name="-borg--absolutebackupdestdir"></a>`absolutebackupdestdir`
 
 Data type: `Optional[String[1]]`
 
 By defaults, backups will be written on the remote host to $username/$backupdestdir. if $absolutebackupdestdir is set this will be used instead
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_repository"></a>`manage_repository`
+##### <a name="-borg--manage_repository"></a>`manage_repository`
 
 Data type: `Boolean`
 
 A Boolean that enables/disables repository management. Only true on Ubuntu 16.04 at the moment
 
-##### <a name="exclude_pattern"></a>`exclude_pattern`
+##### <a name="-borg--exclude_pattern"></a>`exclude_pattern`
 
 Data type: `Array[String[1]]`
 
@@ -247,7 +247,7 @@ We currently support excludes/includes for mountpoints. borg supports also a lis
 
 Default value: `['sh:/home/*/.cache/*', 'sh:/root/.cache/*', 'sh:/var/cache/pacman/pkg/*']`
 
-##### <a name="additional_exclude_pattern"></a>`additional_exclude_pattern`
+##### <a name="-borg--additional_exclude_pattern"></a>`additional_exclude_pattern`
 
 Data type: `Array[String[1]]`
 
@@ -255,7 +255,7 @@ Another array of patterns to extend the modules built-in list (`exclude_pattern`
 
 Default value: `[]`
 
-##### <a name="restore_dependencies"></a>`restore_dependencies`
+##### <a name="-borg--restore_dependencies"></a>`restore_dependencies`
 
 Data type: `Array[String[1]]`
 
@@ -263,7 +263,7 @@ A list of dependencies for the restore helper.
 
 Default value: `[]`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-borg--package_ensure"></a>`package_ensure`
 
 Data type: `String[1]`
 
@@ -271,7 +271,7 @@ Ensure state for the borg package.
 
 Default value: `present`
 
-##### <a name="additional_excludes"></a>`additional_excludes`
+##### <a name="-borg--additional_excludes"></a>`additional_excludes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -279,7 +279,7 @@ Another array of mountpoints to extend the modules built-in list (`excludes` par
 
 Default value: `[]`
 
-##### <a name="additional_includes"></a>`additional_includes`
+##### <a name="-borg--additional_includes"></a>`additional_includes`
 
 Data type: `Array[Stdlib::Absolutepath]`
 
@@ -287,7 +287,7 @@ Another array of mountpoints to extend to modules built-in list (`includes` para
 
 Default value: `[]`
 
-##### <a name="username"></a>`username`
+##### <a name="-borg--username"></a>`username`
 
 Data type: `String[1]`
 
@@ -295,7 +295,7 @@ The ssh username to connect to the remote borg service.
 
 Default value: `$facts['networking']['hostname']`
 
-##### <a name="ssh_port"></a>`ssh_port`
+##### <a name="-borg--ssh_port"></a>`ssh_port`
 
 Data type: `Stdlib::Port`
 
@@ -303,7 +303,7 @@ SSH port for the remote server (default: 22). Will be written into the local ssh
 
 Default value: `22`
 
-##### <a name="borg_restore_version"></a>`borg_restore_version`
+##### <a name="-borg--borg_restore_version"></a>`borg_restore_version`
 
 Data type: `Pattern[/^\d*\.\d*\.\d*$/]`
 
@@ -311,37 +311,37 @@ Version for the perl script App::BorgRestore. change this version and the module
 
 Default value: `'3.4.4'`
 
-##### <a name="install_fatpacked_cpanm"></a>`install_fatpacked_cpanm`
+##### <a name="-borg--install_fatpacked_cpanm"></a>`install_fatpacked_cpanm`
 
 Data type: `Boolean`
 
 cpanm is required on systems where we want to have App::BorgRestore. Legacy systems ship a too old cpanm version. For those operating systems we can install the upstream version.
 
-##### <a name="proxy_type"></a>`proxy_type`
+##### <a name="-borg--proxy_type"></a>`proxy_type`
 
 Data type: `Optional[Enum['none', 'ftp','http','https']]`
 
 configue a network proxy *type* for the archive resources in this module. You also need to set `proxy_server` if you need a proxy.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="proxy_server"></a>`proxy_server`
+##### <a name="-borg--proxy_server"></a>`proxy_server`
 
 Data type: `Optional[String[1]]`
 
 Configurea network proxy for the archive resources in this module. By default no proxy will be used
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package"></a>`manage_package`
+##### <a name="-borg--manage_package"></a>`manage_package`
 
 Data type: `Boolean`
 
 Enable/Disable management of the actual borg package. People on legacy OS or isolated environments can disable this and manage the binary in their profile.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="ssh_key_type"></a>`ssh_key_type`
+##### <a name="-borg--ssh_key_type"></a>`ssh_key_type`
 
 Data type: `Enum['rsa', 'ed25519']`
 
@@ -349,7 +349,7 @@ configure your most favourite ssh key type. This will be used to connect to the 
 
 Default value: `'ed25519'`
 
-##### <a name="backuptime"></a>`backuptime`
+##### <a name="-borg--backuptime"></a>`backuptime`
 
 Data type: `Hash[String[1],String[1]]`
 
@@ -357,15 +357,15 @@ Configure the name of each backupjob and the time of that job.
 
 Default value: `{ 'default' => '18:30:00' }`
 
-##### <a name="ssh_proxyjump"></a>`ssh_proxyjump`
+##### <a name="-borg--ssh_proxyjump"></a>`ssh_proxyjump`
 
 Data type: `Optional[String[1]]`
 
 Configure possible bastionhosts for the connection.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="wants"></a>`wants`
+##### <a name="-borg--wants"></a>`wants`
 
 Data type: `Array[String[1]]`
 
@@ -373,7 +373,7 @@ Array of units where the borg-backup service should depend on
 
 Default value: `['network-online.target']`
 
-##### <a name="requires"></a>`requires`
+##### <a name="-borg--requires"></a>`requires`
 
 Data type: `Array[String[1]]`
 
@@ -381,7 +381,7 @@ Array of units which the borg-backup service should require
 
 Default value: `[]`
 
-##### <a name="after"></a>`after`
+##### <a name="-borg--after"></a>`after`
 
 Data type: `Array[String[1]]`
 
@@ -389,19 +389,19 @@ Array of units that should be started before the borg-backup service
 
 Default value: `['network-online.target']`
 
-##### <a name="pre_backup_script"></a>`pre_backup_script`
+##### <a name="-borg--pre_backup_script"></a>`pre_backup_script`
 
 Data type: `Optional[String[1]]`
 
 BASH code to be executed before the backup job starts. If you wish to use snapshots, create them here.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="post_backup_script"></a>`post_backup_script`
+##### <a name="-borg--post_backup_script"></a>`post_backup_script`
 
 Data type: `Optional[String[1]]`
 
 BASH code to be executed after the backup job has finished. If you need to perform any cleanup do so here.
 
-Default value: ``undef``
+Default value: `undef`
 
