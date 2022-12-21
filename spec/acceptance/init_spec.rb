@@ -4,7 +4,8 @@ require 'spec_helper_acceptance'
 
 describe 'borg' do
   context 'with a backup server' do
-    shell('dnf config-manager --set-enabled powertools') if fact('os.name') == 'CentOS' && fact('os.release.major').to_i == 8
+    shell('yum install -y dnf-plugins-core') if fact('os.family') == 'RedHat' && fact('os.release.major').to_i == 8
+    shell('dnf config-manager --set-enabled powertools') if fact('os.family') == 'RedHat' && fact('os.release.major').to_i == 8
     let(:pp) do
       <<-PUPPET
       class { 'borg':
