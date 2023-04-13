@@ -27,6 +27,8 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
+      - name: gem list
+        run: gem list && gem --help
       - name: Run static validations
         run: bundle exec rake validate lint check
       - name: Run rake rubocop
