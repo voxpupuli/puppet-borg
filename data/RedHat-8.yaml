@@ -4,3 +4,4 @@ borg::restore_dependencies:
   - perl-core
   - perl-App-cpanminus
 borg::install_fatpacked_cpanm: false
+borg::config::default_version: '1.1.18'
