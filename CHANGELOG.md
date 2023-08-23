@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-borg/tree/v4.0.0) (2023-08-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.2.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop EL7 support  [\#175](https://github.com/voxpupuli/puppet-borg/pull/175) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Puppet 6 support [\#174](https://github.com/voxpupuli/puppet-borg/pull/174) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Puppet 8 support [\#173](https://github.com/voxpupuli/puppet-borg/pull/173) ([bastelfreak](https://github.com/bastelfreak))
+- bump puppet/systemd to \< 5.0.0 [\#168](https://github.com/voxpupuli/puppet-borg/pull/168) ([jhoblitt](https://github.com/jhoblitt))
+
 ## [v3.2.0](https://github.com/voxpupuli/puppet-borg/tree/v3.2.0) (2022-12-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.1.0...v3.2.0)
