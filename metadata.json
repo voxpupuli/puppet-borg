@@ -46,14 +46,12 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "7",
         "8"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "7",
         "8"
       ]
     },
@@ -69,12 +67,6 @@
       "operatingsystemrelease": [
         "10",
         "11"
-      ]
-    },
-    {
-      "operatingsystem": "VirtuozzoLinux",
-      "operatingsystemrelease": [
-        "7"
       ]
     },
     {
