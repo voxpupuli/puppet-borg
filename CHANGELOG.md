@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-borg/tree/v4.1.0) (2023-08-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.0.0...v4.1.0)
+
+**Implemented enhancements:**
+
+- puppet/ssh\_keygen: Allow 7.x [\#180](https://github.com/voxpupuli/puppet-borg/pull/180) ([bastelfreak](https://github.com/bastelfreak))
+- puppet/systemd: Allow 5.x [\#179](https://github.com/voxpupuli/puppet-borg/pull/179) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/vcsrepo: Allow 6.x [\#178](https://github.com/voxpupuli/puppet-borg/pull/178) ([bastelfreak](https://github.com/bastelfreak))
+- saz/ssh: Allow 11.x [\#177](https://github.com/voxpupuli/puppet-borg/pull/177) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#172](https://github.com/voxpupuli/puppet-borg/pull/172) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-borg/tree/v4.0.0) (2023-08-23)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v3.2.0...v4.0.0)
