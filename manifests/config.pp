@@ -1,12 +1,14 @@
 # @api private
-class borg::config {
+class borg::config (
+  Pattern[/^\d*\.\d*\.\d*$/] $default_version = '1.2.0',
+) {
   assert_private()
 
   $backupdestdir = $borg::absolutebackupdestdir ? {
     Undef   => "${borg::username}/${borg::backupdestdir}",
     default => $borg::absolutebackupdestdir,
   }
-  $numeric = versioncmp(pick(fact('borgbackup.version'), '1.2.0'), '1.2.0') ? {
+  $numeric = versioncmp(pick(fact('borgbackup.version'), $default_version), '1.2.0') ? {
     -1      => '--numeric-owner',
     default => '--numeric-ids',
   }
