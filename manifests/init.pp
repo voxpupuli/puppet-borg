@@ -166,7 +166,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_includes         = [],
   String[1] $username                                      = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                                   = 22,
-  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.4',
+  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.5',
   Optional[Enum['none', 'ftp','http','https']] $proxy_type = undef,
   Optional[String[1]] $proxy_server                        = undef,
   Boolean $manage_package                                  = true,

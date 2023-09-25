@@ -310,7 +310,7 @@ Data type: `Pattern[/^\d*\.\d*\.\d*$/]`
 
 Version for the perl script App::BorgRestore. change this version and the module will upgrade/downgrade it
 
-Default value: `'3.4.4'`
+Default value: `'3.4.5'`
 
 ##### <a name="-borg--install_fatpacked_cpanm"></a>`install_fatpacked_cpanm`
 
