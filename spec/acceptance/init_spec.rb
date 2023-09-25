@@ -26,7 +26,7 @@ describe 'borg' do
     end
 
     describe command('PATH="/usr/bin/vendor_perl:${PATH}" borg-restore.pl --version') do
-      its(:stdout) { is_expected.to match(%r{^Version: 3.4.4$}) }
+      its(:stdout) { is_expected.to match(%r{^Version: 3.4.5$}) }
     end
   end
 
@@ -74,7 +74,7 @@ describe 'borg' do
     end
 
     describe command('borg-restore.pl --version') do
-      its(:stdout) { is_expected.to match(%r{^Version: 3.4.4$}) }
+      its(:stdout) { is_expected.to match(%r{^Version: 3.4.5$}) }
     end
   end
 end

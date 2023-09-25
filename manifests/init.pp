@@ -129,6 +129,9 @@
 # @param post_backup_script
 #   BASH code to be executed after the backup job has finished. If you need to perform any cleanup do so here.
 #
+# @param restore_package
+#   Optional package name for the perl based script
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -163,7 +166,7 @@ class borg (
   Array[Stdlib::Absolutepath] $additional_includes         = [],
   String[1] $username                                      = $facts['networking']['hostname'],
   Stdlib::Port $ssh_port                                   = 22,
-  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.4',
+  Pattern[/^\d*\.\d*\.\d*$/] $borg_restore_version         = '3.4.5',
   Optional[Enum['none', 'ftp','http','https']] $proxy_type = undef,
   Optional[String[1]] $proxy_server                        = undef,
   Boolean $manage_package                                  = true,
@@ -175,6 +178,7 @@ class borg (
   Array[String[1]] $after                                  = ['network-online.target'],
   Optional[String[1]] $pre_backup_script                   = undef,
   Optional[String[1]] $post_backup_script                  = undef,
+  Optional[String[1]] $restore_package                     = undef,
 ) {
   contain borg::install
   contain borg::config
