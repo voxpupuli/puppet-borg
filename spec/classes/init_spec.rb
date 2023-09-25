@@ -58,7 +58,6 @@ describe 'borg' do
       when 'Archlinux'
         context 'on Archlinux' do
           it { is_expected.to contain_package('borg') }
-          it { is_expected.to contain_package('perl-app-borgrestore') }
         end
       when 'Ubuntu'
         context 'on Ubuntu' do

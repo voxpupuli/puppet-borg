@@ -72,6 +72,7 @@ The following parameters are available in the `borg` class:
 * [`after`](#-borg--after)
 * [`pre_backup_script`](#-borg--pre_backup_script)
 * [`post_backup_script`](#-borg--post_backup_script)
+* [`restore_package`](#-borg--restore_package)
 
 ##### <a name="-borg--package_name"></a>`package_name`
 
@@ -402,6 +403,14 @@ Default value: `undef`
 Data type: `Optional[String[1]]`
 
 BASH code to be executed after the backup job has finished. If you need to perform any cleanup do so here.
+
+Default value: `undef`
+
+##### <a name="-borg--restore_package"></a>`restore_package`
+
+Data type: `Optional[String[1]]`
+
+Optional package name for the perl based script
 
 Default value: `undef`
 

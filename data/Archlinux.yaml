@@ -1,8 +1,8 @@
 ---
 borg::package_name:
   - 'borg'
-  - 'perl-app-borgrestore'
+borg::restore_package: 'perl-app-borgrestore'
 borg::restore_script_path: '/usr/bin/vendor_perl/borg-restore.pl'
-borg::install_restore_script: false
+borg::install_restore_script: true
 borg::manage_repository: false
 borg::install_fatpacked_cpanm: false
