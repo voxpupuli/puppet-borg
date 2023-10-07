@@ -31,6 +31,7 @@ class borg::config (
         'pre_backup_script'  => $borg::pre_backup_script,
         'post_backup_script' => $borg::post_backup_script,
         'numeric'            => $numeric,
+        'upload_ratelimit'   => $borg::upload_ratelimit,
     }),
     mode    => '0755',
     owner   => 'root',

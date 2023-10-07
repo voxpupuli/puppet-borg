@@ -11,6 +11,7 @@
       Optional[String[1]] $pre_backup_script,
       Optional[String[1]] $post_backup_script,
       Enum['--numeric-owner', '--numeric-ids'] $numeric,
+      Integer[0] $upload_ratelimit = 0,
 | -%>
 #!/bin/bash
 #
@@ -169,6 +170,7 @@ backup_borg() {
     <%= $numeric %>
     --compression "<%= $compression %>"
     --exclude-from "$TMPDIR/exclude-list-borg"
+    --upload-ratelimit <%= $upload_ratelimit %>
     )
 
   if tty -s; then
