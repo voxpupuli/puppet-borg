@@ -73,6 +73,7 @@ The following parameters are available in the `borg` class:
 * [`pre_backup_script`](#-borg--pre_backup_script)
 * [`post_backup_script`](#-borg--post_backup_script)
 * [`restore_package`](#-borg--restore_package)
+* [`upload_ratelimit`](#-borg--upload_ratelimit)
 
 ##### <a name="-borg--package_name"></a>`package_name`
 
@@ -413,4 +414,12 @@ Data type: `Optional[String[1]]`
 Optional package name for the perl based script
 
 Default value: `undef`
+
+##### <a name="-borg--upload_ratelimit"></a>`upload_ratelimit`
+
+Data type: `Integer[0]`
+
+Upload ratelimit in kiByte/s. Default: 0=unlimited
+
+Default value: `0`
 

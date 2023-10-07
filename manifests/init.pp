@@ -132,6 +132,9 @@
 # @param restore_package
 #   Optional package name for the perl based script
 #
+# @param upload_ratelimit
+#   Upload ratelimit in kiByte/s. Default: 0=unlimited
+#
 # @see https://metacpan.org/pod/App::BorgRestore
 #
 class borg (
@@ -179,6 +182,7 @@ class borg (
   Optional[String[1]] $pre_backup_script                   = undef,
   Optional[String[1]] $post_backup_script                  = undef,
   Optional[String[1]] $restore_package                     = undef,
+  Integer[0] $upload_ratelimit                             = 0,
 ) {
   contain borg::install
   contain borg::config
