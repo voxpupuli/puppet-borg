@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.2.0](https://github.com/voxpupuli/puppet-borg/tree/v4.2.0) (2023-10-12)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.1.0...v4.2.0)
+
+**Implemented enhancements:**
+
+- Make upload ratelimit configurable [\#183](https://github.com/voxpupuli/puppet-borg/pull/183) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Arch Linux: Dont install perl-app-borgrestore when borg should be installed [\#182](https://github.com/voxpupuli/puppet-borg/pull/182) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- puppet/systemd: Allow 6.x [\#184](https://github.com/voxpupuli/puppet-borg/pull/184) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-borg/tree/v4.1.0) (2023-08-23)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.0.0...v4.1.0)
