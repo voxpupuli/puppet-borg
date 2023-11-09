@@ -24,7 +24,7 @@ describe 'borg' do
 
         it { is_expected.to contain_file('/etc/borg') }
         it { is_expected.to contain_file('/etc/profile.d/borg.sh') }
-        it { is_expected.to contain_file('/usr/local/bin/borg-backup') }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').with_content(%r{borg create.*" \|\| true}) }
         it { is_expected.to contain_file('/usr/local/bin/borg_exporter') }
         it { is_expected.to contain_file('/etc/borg-restore.cfg') }
         it { is_expected.to contain_class('borg::install') }
@@ -190,7 +190,7 @@ describe 'borg' do
           }
         end
 
-        it { is_expected.not_to contain_file('/usr/local/bin/borg-backup').with_content(%r{/^\s+borg prune/}) }
+        it { is_expected.to contain_file('/usr/local/bin/borg-backup').without_content(%r{/^\s+borg prune/}).without_content(%r{borg create.*" \|\| true}) }
       end
 
       context 'with absolute backup destination dir present' do

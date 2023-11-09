@@ -180,7 +180,7 @@ backup_borg() {
   # Change the working directory in case the source paths are relative
   cd "<%= $working_directory %>"
 
-  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "${src[@]}"
+  borg create "${options[@]}" --stats --verbose "$dst::backup-$(date "+%Y%m%d-%H%M%S")" "${src[@]}"<% if $manage_prune { %> || true<% } %>
 <% if $manage_prune { -%>
   # keep all backups from the last <%= $keep_within %> days
   # keep at least one backup for each day for <%= $keep_daily %> days
