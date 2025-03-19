@@ -50,7 +50,7 @@ class borg::config (
   }
   # config file is deprecated and should be absent
   file { '/etc/backup-sh-conf.sh':
-    ensure  => 'absent',
+    ensure => 'absent',
   }
   # create the backup key for a user
   ssh_keygen { 'root_borg':
