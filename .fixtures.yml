@@ -1,10 +1,11 @@
+---
 fixtures:
   repositories:
+    apt: https://github.com/puppetlabs/puppetlabs-apt.git
     archive: https://github.com/voxpupuli/puppet-archive.git
     concat: https://github.com/puppetlabs/puppetlabs-concat.git
-    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
     ssh: https://github.com/saz/puppet-ssh.git
-    apt: https://github.com/puppetlabs/puppetlabs-apt.git
     ssh_keygen: https://github.com/voxpupuli/puppet-ssh_keygen.git
-    systemd: https://github.com/voxpupuli/puppet-systemd.git
     sshkeys_core: https://github.com/puppetlabs/puppetlabs-sshkeys_core.git
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
+    systemd: https://github.com/voxpupuli/puppet-systemd.git
