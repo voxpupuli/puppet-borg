@@ -71,7 +71,7 @@ class borg::install {
       -> exec { 'install_borg_restore':
         command     => "cpanm --local-lib-contained ${venv_directory} App::BorgRestore@${borg::borg_restore_version}",
         unless      => "perl -T -I /opt/BorgRestore/lib/perl5/ -MApp::BorgRestore -E 'exit (\"\$App::BorgRestore::VERSION\" ne \"${borg::borg_restore_version}\")'",
-        path        => "${$venv_directory}/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin",
+        path        => "${$venv_directory}/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/vendor_perl",
         environment => $env_vars,
         timeout     => 1200,
         cwd         => '/root',
