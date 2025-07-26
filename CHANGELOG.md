@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-borg/tree/v5.0.0) (2025-07-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.2.0...v5.0.0)
+
+**Breaking changes:**
+
+- Drop Debian 10 support [\#193](https://github.com/voxpupuli/puppet-borg/pull/193) ([zilchms](https://github.com/zilchms))
+- Drop Ubuntu 18.04 support [\#192](https://github.com/voxpupuli/puppet-borg/pull/192) ([zilchms](https://github.com/zilchms))
+
+**Implemented enhancements:**
+
+- saz/ssh Allow 13.x, puppetlabs/vcsrepo Allow 7.x [\#212](https://github.com/voxpupuli/puppet-borg/pull/212) ([TheMeier](https://github.com/TheMeier))
+- metadata.json: Add OpenVox [\#207](https://github.com/voxpupuli/puppet-borg/pull/207) ([jstraw](https://github.com/jstraw))
+- puppet/systemd: allow 8.x [\#204](https://github.com/voxpupuli/puppet-borg/pull/204) ([jay7x](https://github.com/jay7x))
+- Add Ubuntu 22.04 support [\#194](https://github.com/voxpupuli/puppet-borg/pull/194) ([zilchms](https://github.com/zilchms))
+- Run backup create with set +e if pruning is enabled [\#186](https://github.com/voxpupuli/puppet-borg/pull/186) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- ArchLinux: Remove perl-app-borgrestore [\#211](https://github.com/voxpupuli/puppet-borg/pull/211) ([TheMeier](https://github.com/TheMeier))
+
 ## [v4.2.0](https://github.com/voxpupuli/puppet-borg/tree/v4.2.0) (2023-10-12)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.1.0...v4.2.0)
