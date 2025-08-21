@@ -78,7 +78,7 @@ describe 'borg' do
           it { is_expected.to contain_file('/opt/BorgRestore') }
           it { is_expected.to contain_file('/usr/local/bin/borg-restore.pl') }
 
-          if facts[:os]['release']['major'].to_i == 8
+          if facts[:os]['release']['major'].to_i >= 8
             it { is_expected.not_to contain_package('perl-TAP-Harness-Env') }
             it { is_expected.to contain_package('perl-App-cpanminus') }
           else
