@@ -24,6 +24,7 @@ class borg::config (
         'keep_weekly'        => $borg::keep_weekly,
         'keep_monthly'       => $borg::keep_monthly,
         'keep_yearly'        => $borg::keep_yearly,
+        'compact_day_of_week'=> $borg::compact_day_of_week,
         'compression'        => $borg::compression,
         'working_directory'  => $borg::working_directory,
         'backupdestdir'      => $backupdestdir,

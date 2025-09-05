@@ -4,6 +4,7 @@
       Integer[0] $keep_weekly,
       Integer[0] $keep_daily,
       Integer[0] $keep_within,
+      Integer[-1,7] $compact_day_of_week,
       String[1] $compression,
       Stdlib::Absolutepath $working_directory,
       String[1] $backupdestdir,
@@ -189,6 +190,14 @@ backup_borg() {
   # keep at least one backup for each year for <%= $keep_yearly %> years
   # more details at https://borgbackup.readthedocs.io/en/stable/usage/prune.html
   borg prune --stats --list --verbose --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> "$dst"
+<% } -%>
+
+  # Run repository compaction on a specific weekday if configured
+<% if $compact_day_of_week >= 0 { -%>
+  current_day=$(date +%w)
+  if [ "$current_day" = "<%= $compact_day_of_week %>" ] || { [ "<%= $compact_day_of_week %>" = "7" ] && [ "$current_day" = "0" ]; }; then
+    borg compact -v --progress "$dst"
+  fi
 <% } -%>
 }
 
