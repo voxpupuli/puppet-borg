@@ -39,6 +39,7 @@ The following parameters are available in the `borg` class:
 * [`keep_weekly`](#-borg--keep_weekly)
 * [`keep_daily`](#-borg--keep_daily)
 * [`keep_within`](#-borg--keep_within)
+* [`compact_day_of_week`](#-borg--compact_day_of_week)
 * [`compression`](#-borg--compression)
 * [`working_directory`](#-borg--working_directory)
 * [`source_paths`](#-borg--source_paths)
@@ -152,6 +153,15 @@ Data type: `Integer[0]`
 For how many days should we keep all backups we have?
 
 Default value: `30`
+
+##### <a name="-borg--compact_day_of_week"></a>`compact_day_of_week`
+
+Data type: `Integer[-1,7]`
+
+Day of the week when the `borg compact` operation should run. 0 = Sunday, 1 = Monday, ..., 6 = Saturday, 7 = Sunday.
+Set to -1 to disable the feature entirely.
+
+Default value: `-1`
 
 ##### <a name="-borg--compression"></a>`compression`
 
