@@ -192,8 +192,8 @@ backup_borg() {
   borg prune --stats --list --verbose --keep-within <%= $keep_within %>d --keep-daily <%= $keep_daily %> --keep-weekly <%= $keep_weekly %> --keep-monthly <%= $keep_monthly %> --keep-yearly <%= $keep_yearly %> "$dst"
 <% } -%>
 
-  # Run repository compaction on a specific weekday if configured
 <% if $compact_day_of_week >= 0 { -%>
+  # Run repository compaction on a specific weekday if configured
   current_day=$(date +%w)
   if [ "$current_day" = "<%= $compact_day_of_week %>" ] || { [ "<%= $compact_day_of_week %>" = "7" ] && [ "$current_day" = "0" ]; }; then
     borg compact -v --progress "$dst"
