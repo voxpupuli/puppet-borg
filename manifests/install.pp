@@ -124,7 +124,7 @@ class borg::install {
     file { '/etc/borg':
       ensure  => 'file',
       content => epp("${module_name}/borg.epp", {
-          'backupdestdir' => $backupdestdir,
+        'backupdestdir' => $backupdestdir,
       }),
     }
   }
@@ -133,7 +133,7 @@ class borg::install {
   file { '/etc/profile.d/borg.sh':
     ensure  => 'file',
     content => epp("${module_name}/borg.sh.epp", {
-        'backupdestdir' => $backupdestdir,
+      'backupdestdir' => $backupdestdir,
     }),
   }
 }
