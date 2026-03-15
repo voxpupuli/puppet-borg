@@ -15,7 +15,7 @@ describe 'borg' do
 
       let :params do
         {
-          backupserver: 'localhost'
+          backupserver: 'localhost',
         }
       end
 
@@ -100,7 +100,7 @@ describe 'borg' do
             keep_weekly: 0,
             keep_daily: 0,
             keep_within: 0,
-            backupserver: 'localhost'
+            backupserver: 'localhost',
           }
         end
 
@@ -119,7 +119,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            manage_package: false
+            manage_package: false,
           }
         end
 
@@ -131,7 +131,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            ssh_key_type: 'rsa'
+            ssh_key_type: 'rsa',
           }
         end
 
@@ -142,7 +142,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            backuptime: ''
+            backuptime: '',
           }
         end
 
@@ -153,7 +153,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            backuptime: { 'default' => '01:00:00' }
+            backuptime: { 'default' => '01:00:00' },
           }
         end
 
@@ -164,7 +164,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            backuptime: { '1 am' => '01:00:00', '2 am' => '02:00:00' }
+            backuptime: { '1 am' => '01:00:00', '2 am' => '02:00:00' },
           }
         end
 
@@ -175,7 +175,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            compression: 'auto,zstd,6'
+            compression: 'auto,zstd,6',
           }
         end
 
@@ -186,7 +186,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            manage_prune: false
+            manage_prune: false,
           }
         end
 
@@ -198,7 +198,7 @@ describe 'borg' do
           {
             backupserver: 'localhost',
             create_prometheus_metrics: true,
-            absolutebackupdestdir: '/some/other/path'
+            absolutebackupdestdir: '/some/other/path',
           }
         end
 
@@ -211,7 +211,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            additional_excludes: ['/path with/spaces']
+            additional_excludes: ['/path with/spaces'],
           }
         end
 
@@ -222,7 +222,7 @@ describe 'borg' do
         let :params do
           {
             backupserver: 'localhost',
-            exclude_pattern: ['sh:/some/path/*']
+            exclude_pattern: ['sh:/some/path/*'],
           }
         end
 
