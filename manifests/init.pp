@@ -30,6 +30,10 @@
 # @param keep_within
 #   For how many days should we keep all backups we have?
 #
+# @param compact_day_of_week
+#   Day of the week when the `borg compact` operation should run. 0 = Sunday, 1 = Monday, ..., 6 = Saturday, 7 = Sunday.
+#   Set to -1 to disable the feature entirely.
+#
 # @param compression
 #   Compression method and level to use. See the output of `borg help compression` for available options.
 #
@@ -153,6 +157,7 @@ class borg (
   Integer[0] $keep_weekly                                  = 36,
   Integer[0] $keep_daily                                   = 60,
   Integer[0] $keep_within                                  = 30,
+  Integer[-1,7] $compact_day_of_week                       = -1,
   String[1] $compression                                   = 'lz4',
   Stdlib::Absolutepath $working_directory                  = '/',
   Array[String[1]] $source_paths                           = ['/'],
