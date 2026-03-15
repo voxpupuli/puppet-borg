@@ -58,7 +58,7 @@ class borg::install {
         }
       }
       $venv_directory = '/opt/BorgRestore'
-      ensure_packages($borg::restore_dependencies, { before => Exec['install_borg_restore'] })
+      stdlib::ensure_packages($borg::restore_dependencies, { before => Exec['install_borg_restore'] })
       $basic_env_vars = ["PERL_MB_OPT='--install_base ${venv_directory}'", "PERL_MM_OPT='INSTALL_BASE=${venv_directory}'", "PERL5LIB='${venv_directory}/lib/perl5'", "PERL_LOCAL_LIB_ROOT=${venv_directory}", 'HOME=/root']
 
       $env_vars = $borg::proxy_server ? {
