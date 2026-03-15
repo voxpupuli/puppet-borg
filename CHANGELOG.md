@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.0.0](https://github.com/voxpupuli/puppet-borg/tree/v6.0.0) (2026-03-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v5.0.0...v6.0.0)
+
+**Breaking changes:**
+
+- Remove EoL Ubuntu 20.04 [\#227](https://github.com/voxpupuli/puppet-borg/pull/227) ([bastelfreak](https://github.com/bastelfreak))
+- Remove EoL CentOS 8 support [\#226](https://github.com/voxpupuli/puppet-borg/pull/226) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Require 9.x [\#222](https://github.com/voxpupuli/puppet-borg/pull/222) ([pccibot](https://github.com/pccibot))
+- Drop puppet, update openvox minimum version to 8.19 [\#214](https://github.com/voxpupuli/puppet-borg/pull/214) ([TheMeier](https://github.com/TheMeier))
+
+**Implemented enhancements:**
+
+- puppet/systemd: Allow 9.x [\#224](https://github.com/voxpupuli/puppet-borg/pull/224) ([bastelfreak](https://github.com/bastelfreak))
+- saz/ssh: Allow 14.x [\#223](https://github.com/voxpupuli/puppet-borg/pull/223) ([bastelfreak](https://github.com/bastelfreak))
+- Feature/add compacting [\#219](https://github.com/voxpupuli/puppet-borg/pull/219) ([sebastianberm](https://github.com/sebastianberm))
+- Support El9 [\#217](https://github.com/voxpupuli/puppet-borg/pull/217) ([marek130](https://github.com/marek130))
+- Add support for Debian 12 [\#216](https://github.com/voxpupuli/puppet-borg/pull/216) ([smortex](https://github.com/smortex))
+
+**Closed issues:**
+
+- Adding periodic borg compact after pruning [\#218](https://github.com/voxpupuli/puppet-borg/issues/218)
+
 ## [v5.0.0](https://github.com/voxpupuli/puppet-borg/tree/v5.0.0) (2025-07-26)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v4.2.0...v5.0.0)
