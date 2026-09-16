@@ -8,7 +8,7 @@ describe Facter::Util::Fact.to_s do
 
   context 'borg not in path' do
     before do
-      allow(Facter::Util::Resolution).to receive(:which).with('borg').and_return(nil)
+      allow(Facter::Core::Execution).to receive(:which).with('borg').and_return(nil)
     end
 
     it { expect(Facter.fact(:borgbackup).value).to eq(nil) }
@@ -16,12 +16,12 @@ describe Facter::Util::Fact.to_s do
 
   context 'valid run' do
     before do
-      allow(Facter::Util::Resolution).to receive(:which).with('borg').and_return('/usr/bin/borg')
+      allow(Facter::Core::Execution).to receive(:which).with('borg').and_return('/usr/bin/borg')
     end
 
     context 'borgbackup version' do
       before do
-        allow(Facter::Util::Resolution).to receive(:exec).with('borg --version') { command_output }
+        allow(Facter::Core::Execution).to receive(:execute).with('borg --version') { command_output }
       end
 
       it { expect(Facter.fact(:borgbackup).value).to eq fact_output }

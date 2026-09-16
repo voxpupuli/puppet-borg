@@ -2,10 +2,10 @@
 
 Facter.add(:borgbackup) do
   confine do
-    Facter::Util::Resolution.which('borg')
+    Facter::Core::Execution.which('borg')
   end
   setcode do
-    version = Facter::Util::Resolution.exec('borg --version').split.last
+    version = Facter::Core::Execution.execute('borg --version').split.last
     { 'version' => version }
   end
 end
