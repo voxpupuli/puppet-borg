@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.1.0](https://github.com/voxpupuli/puppet-borg/tree/v6.1.0) (2026-10-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v6.0.0...v6.1.0)
+
+**Implemented enhancements:**
+
+- puppet/systemd: Allow 11.x [\#233](https://github.com/voxpupuli/puppet-borg/pull/233) ([bastelfreak](https://github.com/bastelfreak))
+- Update requirements to allow OpenVox 9 [\#232](https://github.com/voxpupuli/puppet-borg/pull/232) ([sebastianrakel](https://github.com/sebastianrakel))
+- replace deprecated calls with Facter::Core::Execution [\#230](https://github.com/voxpupuli/puppet-borg/pull/230) ([corporate-gadfly](https://github.com/corporate-gadfly))
+
 ## [v6.0.0](https://github.com/voxpupuli/puppet-borg/tree/v6.0.0) (2026-03-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-borg/compare/v5.0.0...v6.0.0)
